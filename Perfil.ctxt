@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=dniPersona\ perNombre\ perApellidos\ perDireccion
+comment0.target=Perfil(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment0.text=\r\n\ Da\ de\ alta\ los\ campos\ gen\u00E9ricos\ de\ un\ perfil\ de\ usuario\r\n\ \r\n\ @param\ dniPersona\ N\u00FAmero\ y\ letra\ del\ DNI\ del\ usuario.\r\n\ @param\ perNombre\ Nombre\ del\ usuario.\r\n\ @param\ perApellidos\ Apellidos\ del\ usuario.\r\n\ @param\ perDireccion\ Direccion\ local\ del\ usuario.\r\n
+comment1.params=permisoInput
+comment1.target=void\ setPermisoID(int)
+comment1.text=\r\n\ M\u00E9todo\ de\ modificaci\u00F3n\ de\ los\ permisos\ y\ el\ tipo\ de\ usuario\ que\ se\ crea\r\n\ \r\n\ @param\ \ permisoInput\ \ \ entrada\ que\ establece\ el\ tipo\ de\ usuario\r\n\ 0\ \=\ Usuario,\ \r\n\ 1\ \=\ Bibliotecario,\ \r\n\ 2\ \=\ Director\r\n
+comment2.params=
+comment2.target=void\ list()
+comment2.text=\r\n\ Print\ details\ about\ this\ item\ to\ the\ text\ terminal.\r\n
+numComments=3
