@@ -1,3 +1,11 @@
+#Doc Ordner
+**/doc
+*.class
+*.pkh
+*.ctxt
+*.bluej
+.DS_Store
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
