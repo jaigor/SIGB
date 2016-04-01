@@ -1,8 +1,8 @@
 #BlueJ class context
-comment0.params=
-comment0.target=Material()
+comment0.params=matNombre\ matAutor\ matStock
+comment0.target=Material(java.lang.String,\ java.lang.String,\ int)
 comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Material\r\n
-comment1.params=y
-comment1.target=int\ sampleMethod(int)
-comment1.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\ \r\n\ @param\ \ y\ \ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ \ the\ sum\ of\ x\ and\ y\ \r\n
+comment1.params=
+comment1.target=int\ getIDMaterial()
+comment1.text=\r\n\ M\u00E9todo\ usado\ para\ agregar\ un\ campo\ id\ n\u00FAmerico\ a\ cada\ usuario\r\n\ Es\ un\ m\u00E9todo\ est\u00E1tico\ porque\ no\ nos\ interesa\ el\ conocer\ de\r\n\ que\ biblioteca\ es\ el\ perfil\r\n\ \r\n\ @return\ \ contadorPerfiles\ \ \ \ devuelve\ el\ n\u00FAmero\ actual\ de\ usuario\r\n
 numComments=2

@@ -22,7 +22,8 @@ public class test
     public void test()
     {
         //test
-        Biblioteca b1 = new Biblioteca("bN", "bD", 944118888, "bH");
+        //Biblioteca b1 = new Biblioteca("bN", "bD", 944118888, "bH");
+        ListaBiblioteca b1 = new ListaBiblioteca();
         Perfil user1 = new Usuario("789254640J", "Igor", "Q", "Calle Haro");
         Perfil user2 = new Usuario("455646122F", "David", "V", "Calle Bilbao");
         b1.añadirPerfil(user1);

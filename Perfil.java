@@ -28,7 +28,7 @@ public class Perfil
      */
     public Perfil(String dniPersona,String perNombre, String perApellidos, String perDireccion)
     {
-        idPerfil = Biblioteca.getIDPerfil();
+        idPerfil = ListaBiblioteca.getIDPerfil();
         dni = dniPersona;
         pNombre = perNombre;
         pApellidos = perApellidos;
@@ -46,6 +46,14 @@ public class Perfil
     public void setPermisoID(int permisoInput)
     {
         permisoID = permisoInput;
+    }
+    
+    /**
+     * Print details about this item to the text terminal.
+     */
+    public String getDNI()
+    {
+         return dni;
     }
     
     /**

@@ -5,29 +5,19 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Libro
+public class Libro extends Material
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    String ISBN;
+    String fechaEdicion;
 
     /**
      * Constructor for objects of class Libro
      */
-    public Libro()
+    public Libro(String matNombre, String matAutor, int matStock, String lISBN, String lFecha)
     {
-        // initialise instance variables
-        x = 0;
+        super(matNombre, matAutor, matStock);
+        ISBN = lISBN;
+        fechaEdicion = lFecha;
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
 }

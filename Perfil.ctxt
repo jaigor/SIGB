@@ -6,6 +6,9 @@ comment1.params=permisoInput
 comment1.target=void\ setPermisoID(int)
 comment1.text=\r\n\ M\u00E9todo\ de\ modificaci\u00F3n\ de\ los\ permisos\ y\ el\ tipo\ de\ usuario\ que\ se\ crea\r\n\ \r\n\ @param\ \ permisoInput\ \ \ entrada\ que\ establece\ el\ tipo\ de\ usuario\r\n\ 0\ \=\ Usuario,\ \r\n\ 1\ \=\ Bibliotecario,\ \r\n\ 2\ \=\ Director\r\n
 comment2.params=
-comment2.target=void\ list()
+comment2.target=java.lang.String\ getDNI()
 comment2.text=\r\n\ Print\ details\ about\ this\ item\ to\ the\ text\ terminal.\r\n
-numComments=3
+comment3.params=
+comment3.target=void\ list()
+comment3.text=\r\n\ Print\ details\ about\ this\ item\ to\ the\ text\ terminal.\r\n
+numComments=4

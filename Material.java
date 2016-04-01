@@ -7,27 +7,37 @@
  */
 public class Material
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    private int idMaterial;
+    private String mNombre;
+    private String mAutor;
+    private boolean mPrestado = false;
+    private int mStock; // se inicializa a 0 el contador de inventario
 
+    private int contadorMateriales; 
+    
     /**
      * Constructor for objects of class Material
      */
-    public Material()
+    public Material(String matNombre, String matAutor, int matStock)
     {
-        // initialise instance variables
-        x = 0;
+        idMaterial = getIDMaterial();
+        String mNombre = matNombre;
+        String mAutor = matAutor;
+        int mStock = matStock;       
+    }
+    
+     /**
+     * Método usado para agregar un campo id númerico a cada usuario
+     * Es un método estático porque no nos interesa el conocer de
+     * que biblioteca es el perfil
+     * 
+     * @return  contadorPerfiles    devuelve el número actual de usuario
+     */
+    public int getIDMaterial()
+    {
+        contadorMateriales++;
+        return contadorMateriales;
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
+    
 }

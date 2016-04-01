@@ -5,29 +5,17 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Video
+public class Video extends Material
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
+    private int duracion;
+    
     /**
      * Constructor for objects of class Video
      */
-    public Video()
+    public Video(String matNombre, String matAutor, int matStock, int durac)
     {
-        // initialise instance variables
-        x = 0;
+        super(matNombre, matAutor, matStock);
+        duracion = durac;
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
 }
