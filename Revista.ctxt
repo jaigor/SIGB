@@ -1,5 +1,5 @@
 #BlueJ class context
-comment0.params=matNombre\ matAutor\ matStock
-comment0.target=Revista(java.lang.String,\ java.lang.String,\ int)
+comment0.params=matNombre\ matAutor\ matStock\ matPrecio
+comment0.target=Revista(java.lang.String,\ java.lang.String,\ int,\ float)
 comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Revista\r\n
 numComments=1

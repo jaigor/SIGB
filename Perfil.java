@@ -59,9 +59,11 @@ public class Perfil
     /**
      * Print details about this item to the text terminal.
      */
-    public void list()
+    public void listar()
     {
-         System.out.println("ID: " + idPerfil + ", DNI: " + dni + ", Nombre: " + pNombre +
-         ", Apellidos: " + pApellidos + ", Direccion: " + pDireccion + ", Permiso: " + permisoID);
+        System.out.println("***************************************"); 
+        System.out.println("ID: " + idPerfil + ", DNI: " + dni);
+        System.out.println("Nombre: " + pNombre + ", Apellidos: " + pApellidos 
+        + ", Direccion: " + pDireccion + ", Permiso: " + permisoID);
     }
 }

@@ -12,9 +12,9 @@ public class Periodico extends Material
     /**
      * Constructor for objects of class Periodico
      */
-    public Periodico(String matNombre, String matAutor, int matStock)
+    public Periodico(String matNombre, String matAutor, int matStock, float matPrecio)
     {
-        super(matNombre, matAutor, matStock);
+        super(matNombre, matAutor, matStock, matPrecio);
     }
 
 }

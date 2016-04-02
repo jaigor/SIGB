@@ -12,9 +12,9 @@ public class Revista extends Material
     /**
      * Constructor for objects of class Revista
      */
-    public Revista(String matNombre, String matAutor, int matStock)
+    public Revista(String matNombre, String matAutor, int matStock, float matPrecio)
     {
-        super(matNombre, matAutor, matStock);
+        super(matNombre, matAutor, matStock, matPrecio);
     }
 
 }

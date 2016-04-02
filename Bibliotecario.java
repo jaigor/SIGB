@@ -11,7 +11,7 @@ public class Bibliotecario extends Perfil
     private int permisoID = 1; //id equivalente a clase bibliotecario, dentro de perfiles
 
     /**
-     * Inicializa el usuario
+     * Inicializa el usuario Bibliotecario
      * 
      * @param dniPersona Número y letra del DNI del usuario.
      * @param perNombre Nombre del usuario.

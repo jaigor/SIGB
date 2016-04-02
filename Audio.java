@@ -12,9 +12,9 @@ public class Audio extends Material
     /**
      * Constructor for objects of class Audio
      */
-    public Audio(String matNombre, String matAutor, int matStock, int numPistas)
+    public Audio(String matTitulo, String matAutor, int matStock, float matPrecio, int numPistas)
     {
-        super(matNombre, matAutor, matStock);
+        super(matTitulo, matAutor, matStock, matPrecio);
         numeroPistas = numPistas;
     }
 

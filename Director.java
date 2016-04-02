@@ -11,7 +11,7 @@ public class Director extends Perfil
     private int permisoID = 2; //id equivalente a clase director, dentro de perfiles
 
     /**
-     * Inicializa el usuario
+     * Inicializa el usuario Director
      * 
      * @param dniPersona Número y letra del DNI del usuario.
      * @param perNombre Nombre del usuario.

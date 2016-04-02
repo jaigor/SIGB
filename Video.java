@@ -12,9 +12,9 @@ public class Video extends Material
     /**
      * Constructor for objects of class Video
      */
-    public Video(String matNombre, String matAutor, int matStock, int durac)
+    public Video(String matNombre, String matAutor, int matStock, float matPrecio, int durac)
     {
-        super(matNombre, matAutor, matStock);
+        super(matNombre, matAutor, matStock, matPrecio);
         duracion = durac;
     }
 

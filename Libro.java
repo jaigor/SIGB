@@ -7,15 +7,16 @@
  */
 public class Libro extends Material
 {
-    String ISBN;
-    String fechaEdicion;
+    private String ISBN;
+    private String fechaEdicion;
 
     /**
      * Constructor for objects of class Libro
      */
-    public Libro(String matNombre, String matAutor, int matStock, String lISBN, String lFecha)
+    public Libro(String matTitulo, String matAutor, int matStock, float matPrecio, 
+    String lISBN, String lFecha)
     {
-        super(matNombre, matAutor, matStock);
+        super(matTitulo, matAutor, matStock, matPrecio);
         ISBN = lISBN;
         fechaEdicion = lFecha;
     }

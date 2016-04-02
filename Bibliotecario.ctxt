@@ -1,5 +1,5 @@
 #BlueJ class context
 comment0.params=dniPersona\ perNombre\ perApellidos\ perDireccion
 comment0.target=Bibliotecario(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
-comment0.text=\r\n\ Inicializa\ el\ usuario\r\n\ \r\n\ @param\ dniPersona\ N\u00FAmero\ y\ letra\ del\ DNI\ del\ usuario.\r\n\ @param\ perNombre\ Nombre\ del\ usuario.\r\n\ @param\ perApellidos\ Apellidos\ del\ usuario.\r\n\ @param\ perDireccion\ Direccion\ local\ del\ usuario.\r\n
+comment0.text=\r\n\ Inicializa\ el\ usuario\ Bibliotecario\r\n\ \r\n\ @param\ dniPersona\ N\u00FAmero\ y\ letra\ del\ DNI\ del\ usuario.\r\n\ @param\ perNombre\ Nombre\ del\ usuario.\r\n\ @param\ perApellidos\ Apellidos\ del\ usuario.\r\n\ @param\ perDireccion\ Direccion\ local\ del\ usuario.\r\n
 numComments=1

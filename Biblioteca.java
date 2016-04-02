@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Esta es la clase principal del sistema de gestión.
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 public class Biblioteca
 {
     // Arrays de las diferentes colecciones 
-    private ArrayList<Material> materiales;
+    private HashMap<ETipoMaterial, ArrayList> materiales;
     private ArrayList<Prestamo> prestamos;
     private ArrayList<Suscripcion> suscripciones;
         
@@ -39,7 +40,13 @@ public class Biblioteca
     public Biblioteca(String bNombre, String bDireccion, int bTelefono, String bHorario)
     {
         // Inicialización de las colecciones
-        materiales = new ArrayList<Material>();
+        materiales = new HashMap<ETipoMaterial, ArrayList>();
+        materiales.put(ETipoMaterial.LIBRO, new ArrayList<Libro>());
+        materiales.put(ETipoMaterial.AUDIO, new ArrayList<Audio>());
+        materiales.put(ETipoMaterial.VIDEO, new ArrayList<Video>());
+        materiales.put(ETipoMaterial.PERIODICO, new ArrayList<Periodico>());
+        materiales.put(ETipoMaterial.REVISTA, new ArrayList<Revista>());
+        
         prestamos = new ArrayList<Prestamo>();
         suscripciones = new ArrayList<Suscripcion>();
         // Asignacion de los campos correspondientes a la biblioteca
@@ -55,17 +62,45 @@ public class Biblioteca
      */
     public void añadirMaterial(Material nuevoMaterial)
     {
-        materiales.add(nuevoMaterial);
+        if (nuevoMaterial instanceof Libro){
+            materiales.get(ETipoMaterial.LIBRO).add(nuevoMaterial);
+        } else if (nuevoMaterial instanceof Audio) {
+            materiales.get(ETipoMaterial.AUDIO).add(nuevoMaterial);
+        } else if (nuevoMaterial instanceof Video){
+            materiales.get(ETipoMaterial.VIDEO).add(nuevoMaterial);
+        } else if (nuevoMaterial instanceof Periodico){
+            materiales.get(ETipoMaterial.PERIODICO).add(nuevoMaterial);
+        } else if(nuevoMaterial instanceof Revista){
+            materiales.get(ETipoMaterial.REVISTA).add(nuevoMaterial);
+        }
     }
     
     /**
      * Borrar un Material de la base de datos (Dar de Baja)
      * @param  bajaMaterial   el material a eliminar
      */
-    public void eliminarMaterial(Perfil bajaMaterial)
+    public void eliminarMaterial(Material bajaMaterial)
     {
-        materiales.remove(bajaMaterial);
+        if (bajaMaterial instanceof Libro){
+            materiales.get(ETipoMaterial.LIBRO).remove(bajaMaterial);
+        } else if (bajaMaterial instanceof Audio) {
+            materiales.get(ETipoMaterial.AUDIO).remove(bajaMaterial);
+        } else if (bajaMaterial instanceof Video){
+            materiales.get(ETipoMaterial.VIDEO).remove(bajaMaterial);
+        } else if (bajaMaterial instanceof Periodico){
+            materiales.get(ETipoMaterial.PERIODICO).remove(bajaMaterial);
+        } else if(bajaMaterial instanceof Revista){
+            materiales.get(ETipoMaterial.REVISTA).remove(bajaMaterial);
+        }
     }
+    
+    /**
+    * @return  la colección almacenada en material (cada uno de los items)
+    */
+   public ArrayList<Material> getMateriales(ETipoMaterial tipoMaterial)
+   {
+       return materiales.get(tipoMaterial);
+   }
     
     /***************PRESTAMOS
      * Añadir un nuevo Prestamo a la base de datos

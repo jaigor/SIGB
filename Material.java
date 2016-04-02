@@ -1,29 +1,43 @@
 
 /**
- * Write a description of class Material here.
+ * Esta es la clase abstracta en la que se definen los métodos generales 
+ * que afectan a distintos tipos de usuario pertenecientes a la biblioteca. 
+ * Los tipos de usuario o perfiles que heredan esta clase son: 
+ *      Libro
+ *      Audio
+ *      Video
+ *      Periodico
+ *      Revist
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Igor Quintela 
+ * @version 01/03/2016
  */
 public class Material
 {
     private int idMaterial;
-    private String mNombre;
+    private String mTitulo;
     private String mAutor;
     private boolean mPrestado = false;
-    private int mStock; // se inicializa a 0 el contador de inventario
+    private int mStock = 0; // se inicializa a 0 el contador de inventario
+    private float mPrecio;
 
-    private int contadorMateriales; 
+    private static int contadorMateriales; 
     
     /**
-     * Constructor for objects of class Material
+     * Da de alta los campos genéricos de un material
+     * 
+     * @param matTitulo Nombre de la obra/item.
+     * @param matAutor  Nombre del autor de la obra.
+     * @param matStock  Número de elementos que hay en base de datos.
+     * @param matPrecio Cantidad de euros que cuesta el elemento.
      */
-    public Material(String matNombre, String matAutor, int matStock)
+    public Material(String matTitulo, String matAutor, int matStock, float matPrecio)
     {
         idMaterial = getIDMaterial();
-        String mNombre = matNombre;
-        String mAutor = matAutor;
-        int mStock = matStock;       
+        mTitulo = matTitulo;
+        mAutor = matAutor;
+        mStock = matStock;
+        mPrecio = matPrecio;
     }
     
      /**
@@ -33,11 +47,20 @@ public class Material
      * 
      * @return  contadorPerfiles    devuelve el número actual de usuario
      */
-    public int getIDMaterial()
+    public static int getIDMaterial()
     {
         contadorMateriales++;
         return contadorMateriales;
     }
-
+    
+    /**
+     * Print details about this item to the text terminal.
+     */
+    public void listar()
+    {
+        System.out.println("***************************************");
+        System.out.println("ID: " + idMaterial + ", Título: " + mTitulo + ", Autor: " + mAutor);
+        System.out.println("Inventario: " + mStock + ", Precio: " + mPrecio + " €");
+    }
     
 }
