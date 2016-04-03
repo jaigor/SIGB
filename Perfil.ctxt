@@ -10,5 +10,5 @@ comment2.target=java.lang.String\ getDNI()
 comment2.text=\r\n\ Print\ details\ about\ this\ item\ to\ the\ text\ terminal.\r\n
 comment3.params=
 comment3.target=void\ listar()
-comment3.text=\r\n\ Print\ details\ about\ this\ item\ to\ the\ text\ terminal.\r\n
+comment3.text=\r\n\ \ Imprime\ en\ pantalla\ los\ datos\ correspondientes\ al\ usuario\ indicado\r\n
 numComments=4

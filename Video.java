@@ -1,9 +1,10 @@
 
 /**
- * Write a description of class Video here.
+ * Esta clase representa al objeto Video.
+ * Almacena y devuelve información relacionada con el mismo.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Igor Quintela 
+ * @version 01/03/2016
  */
 public class Video extends Material
 {

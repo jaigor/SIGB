@@ -1,9 +1,10 @@
 
 /**
- * Write a description of class Revista here.
+ * Esta clase representa al objeto Revista.
+ * Almacena y devuelve información relacionada con el mismo.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Igor Quintela 
+ * @version 01/03/2016
  */
 public class Revista extends Material
 {

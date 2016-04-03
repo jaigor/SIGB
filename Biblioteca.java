@@ -94,13 +94,54 @@ public class Biblioteca
         }
     }
     
-    /**
+   /**
     * @return  la colección almacenada en material (cada uno de los items)
     */
    public ArrayList<Material> getMateriales(ETipoMaterial tipoMaterial)
    {
        return materiales.get(tipoMaterial);
    }
+    
+   /**
+    * Buscador simple usando el Titulo de la obra e imprimiendo el material buscado
+    * 
+    * @return  el material en concreto buscado por el usuario
+    */
+   public Material buscarMaterial(String matTitulo)
+   {
+       ArrayList <Material> listaMatLibro = materiales.get(ETipoMaterial.LIBRO);
+       ArrayList <Material> listaMatAudio = materiales.get(ETipoMaterial.AUDIO);
+       ArrayList <Material> listaMatVideo = materiales.get(ETipoMaterial.VIDEO);
+       ArrayList <Material> listaMatPeriodico = materiales.get(ETipoMaterial.PERIODICO);
+       ArrayList <Material> listaMatRevista = materiales.get(ETipoMaterial.REVISTA);
+       
+       for (Material titulo : listaMatLibro){
+            if (titulo.getMTitulo() == matTitulo){
+                return titulo;
+            }
+       }
+       for (Material titulo : listaMatAudio){
+            if (titulo.getMTitulo() == matTitulo){
+                return titulo;
+            }
+       }
+       for (Material titulo : listaMatVideo){
+            if (titulo.getMTitulo() == matTitulo){
+                return titulo;
+            }
+       }
+       for (Material titulo : listaMatPeriodico){
+            if (titulo.getMTitulo() == matTitulo){
+                return titulo;
+            }
+       }
+       for (Material titulo : listaMatRevista){
+            if (titulo.getMTitulo() == matTitulo){
+                return titulo;
+            }
+       }
+       return null;
+    }
     
     /***************PRESTAMOS
      * Añadir un nuevo Prestamo a la base de datos

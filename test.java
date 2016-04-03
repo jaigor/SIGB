@@ -37,8 +37,8 @@ public class test
         // Materiales
         Biblioteca b1 = new Biblioteca("UNED", "Portugalete", 944448888, "10:00-20:00");
         
-        Material mat1 = new Libro("Los Mundos de Koda", "Perico", 10, 50, "HFGG12312", "02/01/2015");
-        Material mat2 = new Libro("Apocalipse", "Juanico", 2, 60, "GGG11311", "02/01/1980");
+        Material mat1 = new Libro("Los Mundos de Koda", "Perico", 10, 50, "HFGG12312", "02/01/2015", 140);
+        Material mat2 = new Libro("Apocalipse", "Juanico", 2, 60, "GGG11311", "02/01/1980", 150);
         b1.añadirMaterial(mat1);
         b1.añadirMaterial(mat2);        
         for (Material material : b1.getMateriales(ETipoMaterial.LIBRO)) {

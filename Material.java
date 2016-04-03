@@ -7,7 +7,7 @@
  *      Audio
  *      Video
  *      Periodico
- *      Revist
+ *      Revista
  * 
  * @author Igor Quintela 
  * @version 01/03/2016
@@ -41,11 +41,11 @@ public class Material
     }
     
      /**
-     * Método usado para agregar un campo id númerico a cada usuario
+     * Método usado para agregar un campo id númerico a cada material
      * Es un método estático porque no nos interesa el conocer de
      * que biblioteca es el perfil
      * 
-     * @return  contadorPerfiles    devuelve el número actual de usuario
+     * @return  El número de ID exacto buscado
      */
     public static int getIDMaterial()
     {
@@ -54,7 +54,17 @@ public class Material
     }
     
     /**
-     * Print details about this item to the text terminal.
+     * Retorna el título de la obra
+     * 
+     * @return  El Título del material buscado
+     */
+    public String getMTitulo()
+    {
+        return mTitulo;
+    }
+    
+    /**
+     * Imprime en pantalla los datos correspondientes al material indicado
      */
     public void listar()
     {

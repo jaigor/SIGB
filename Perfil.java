@@ -57,7 +57,7 @@ public class Perfil
     }
     
     /**
-     * Print details about this item to the text terminal.
+     *  Imprime en pantalla los datos correspondientes al usuario indicado
      */
     public void listar()
     {
