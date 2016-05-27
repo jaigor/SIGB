@@ -1,3 +1,5 @@
+import java.util.Date;
+import java.util.Calendar;
 
 /**
  * Write a description of class Suscripcion here.
@@ -7,27 +9,43 @@
  */
 public class Suscripcion
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    private Socio perSuscrito;
+    private MaterialSuscripcion matSuscrito;
+    private Date fechaSuscripcion;
 
     /**
      * Constructor for objects of class Suscripcion
      */
-    public Suscripcion()
+    public Suscripcion(Date fechaSuscripcion, Socio perSuscrito, MaterialSuscripcion matSuscrito)
     {
-        // initialise instance variables
-        x = 0;
+       this.perSuscrito = perSuscrito;
+       this.matSuscrito = matSuscrito; 
+       this.fechaSuscripcion = fechaSuscripcion;
+       
+       // se llama a la Clase Calendar para establecer una periodicidad en el prestamo
+       Calendar cal = Calendar.getInstance();
+       cal.setTime(fechaSuscripcion);          // se fija la fecha a comparar
+       fechaSuscripcion = cal.getTime();       // fechaSuscripcion se obtiene tras el cálculo
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * Retorna el Socio que se encuentra suscrito
      * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * @return  Socio (clase) suscrito 
      */
-    public int sampleMethod(int y)
+    public Socio getPerSuscrito()
     {
-        // put your code here
-        return x + y;
+        return perSuscrito;
     }
+    
+    /**
+     * Retorna el Material que se encuentra suscrito
+     * 
+     * @return  Material (clase) suscrito  
+     */
+    public MaterialSuscripcion getMatSuscrito()
+    {
+        return matSuscrito;
+    }
+    
 }

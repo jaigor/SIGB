@@ -1,14 +1,32 @@
 #BlueJ class context
-comment0.params=dniPersona\ perNombre\ perApellidos\ perDireccion
-comment0.target=Perfil(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
-comment0.text=\r\n\ Da\ de\ alta\ los\ campos\ gen\u00E9ricos\ de\ un\ perfil\ de\ usuario\r\n\ \r\n\ @param\ dniPersona\ N\u00FAmero\ y\ letra\ del\ DNI\ del\ usuario.\r\n\ @param\ perNombre\ Nombre\ del\ usuario.\r\n\ @param\ perApellidos\ Apellidos\ del\ usuario.\r\n\ @param\ perDireccion\ Direccion\ local\ del\ usuario.\r\n
-comment1.params=permisoInput
+comment0.params=perDNI\ perNombre\ perApellidos\ perDireccion\ perUser\ perPassword
+comment0.target=Perfil(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment0.text=\r\n\ Da\ de\ alta\ los\ campos\ gen\u00E9ricos\ de\ un\ perfil\ de\ usuario\r\n\ \r\n\ @param\ perDNI\ \ \ \ \ \ \ \ N\u00FAmero\ y\ letra\ del\ DNI\ del\ usuario.\r\n\ @param\ perNombre\ \ \ \ \ Nombre\ del\ usuario.\r\n\ @param\ perApellidos\ \ Apellidos\ del\ usuario.\r\n\ @param\ perDireccion\ \ Direccion\ local\ del\ usuario.\r\n\ @param\ perUser\ \ \ \ \ \ \ Alias/nick\ del\ usuario.\r\n\ @param\ perPassword\ \ \ Password\ del\ usuario.\r\n
+comment1.params=permisoID
 comment1.target=void\ setPermisoID(int)
-comment1.text=\r\n\ M\u00E9todo\ de\ modificaci\u00F3n\ de\ los\ permisos\ y\ el\ tipo\ de\ usuario\ que\ se\ crea\r\n\ \r\n\ @param\ \ permisoInput\ \ \ entrada\ que\ establece\ el\ tipo\ de\ usuario\r\n\ 0\ \=\ Usuario,\ \r\n\ 1\ \=\ Bibliotecario,\ \r\n\ 2\ \=\ Director\r\n
+comment1.text=\r\n\ Modificaci\u00F3n\ de\ los\ permisos\ y\ el\ tipo\ de\ usuario\ que\ se\ crea\r\n\ \r\n\ @param\ \ permisoID\ \ \ numero\ que\ establece\ el\ tipo\ de\ usuario\r\n\ 1\ \=\ Socio,\ \r\n\ 2\ \=\ Bibliotecario,\ \r\n\ 3\ \=\ Director\r\n
 comment2.params=
-comment2.target=java.lang.String\ getDNI()
-comment2.text=\r\n\ Print\ details\ about\ this\ item\ to\ the\ text\ terminal.\r\n
+comment2.target=int\ getPermisoID()
+comment2.text=\r\n\ Devuelve\ el\ n\u00FAmero\ de\ ID\ del\ permiso\ del\ usuario\ en\ cuesti\u00F3n.\r\n\ \r\n\ @return\ ID\ del\ tipo\ de\ permiso\ \r\n
 comment3.params=
-comment3.target=void\ listar()
-comment3.text=\r\n\ \ Imprime\ en\ pantalla\ los\ datos\ correspondientes\ al\ usuario\ indicado\r\n
-numComments=4
+comment3.target=int\ getIdPerfil()
+comment3.text=\r\n\ Devuelve\ el\ n\u00FAmero\ de\ ID\ asignado\ al\ perfil\ en\ cuesti\u00F3n.\r\n\ \r\n\ @return\ ID\ del\ usuario\ \r\n
+comment4.params=
+comment4.target=java.lang.String\ getPerDNI()
+comment4.text=\r\n\ Devuelve\ el\ n\u00FAmero\ de\ DNI\ del\ perfil\ en\ cuesti\u00F3n.\r\n\ \r\n\ @return\ DNI\ con\ letra\ (String)\ \r\n
+comment5.params=
+comment5.target=java.lang.String\ getPerNombre()
+comment5.text=\r\n\ Devuelve\ el\ Nombre\ del\ perfil\ en\ cuesti\u00F3n.\r\n\ \r\n\ @return\ \ Nombre\ (String)\ del\ usuario\ \r\n
+comment6.params=
+comment6.target=java.lang.String\ getPerApellidos()
+comment6.text=\r\n\ Devuelve\ los\ Apellidos\ del\ perfil\ en\ cuesti\u00F3n.\r\n\ \r\n\ @return\ \ Apellidos\ (String)\ del\ usuario\ \r\n
+comment7.params=
+comment7.target=java.lang.String\ getPerDireccion()
+comment7.text=\r\n\ Devuelve\ la\ Direcci\u00F3n\ del\ perfil\ en\ cuesti\u00F3n.\r\n\ \r\n\ @return\ \ Direcci\u00F3n\ (String)\ del\ usuario\ \r\n
+comment8.params=
+comment8.target=java.lang.String\ getPerUser()
+comment8.text=\r\n\ Devuelve\ el\ alias\ del\ perfil\ en\ cuesti\u00F3n.\r\n\ \r\n\ @return\ \ Alias\ (String)\ del\ usuario\ \r\n
+comment9.params=
+comment9.target=java.lang.String\ getPerPassword()
+comment9.text=\r\n\ Devuelve\ el\ password\ del\ perfil\ en\ cuesti\u00F3n.\r\n\ \r\n\ @return\ \ Password\ (String)\ del\ usuario\ \r\n
+numComments=10

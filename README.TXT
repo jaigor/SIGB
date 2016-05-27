@@ -7,7 +7,7 @@ all he/she needs to know. The comments should usually include at least:
 PROJECT TITLE: SIGB
 PURPOSE OF PROJECT: sistema integrado de gestión de una biblioteca, en el 
 que se encuentran definidos los materiales de la biblioteca y sus distintos
-métodos de gestión.
+métodos de gestión de la misma.
 VERSION or DATE: 04/03/2016
 HOW TO START THIS PROJECT: 
 AUTHORS: Igor Quintela

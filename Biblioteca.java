@@ -1,182 +1,144 @@
-import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
- * Esta es la clase principal del sistema de gestión.
+ * Clase en la que se instancian y se
+ * gestionan las distintas bibliotecas que
+ * pueden encontrarse en el sistema de gestión,
+ * así como la gestión de perfiles.
  * En ella, se inician las diferentes colecciones
- * de items que tiene el sistema:
- *      Perfiles
+ * de elementos que tiene el sistema:
  *      Materiales
  *      Prestamos
  *      Suscripciones
- *      ...
+ *      Perfiles
  * 
  * @author Igor Quintela 
  * @version 01/03/2016
  */
-public class Biblioteca
+class Biblioteca
 {
-    // Arrays de las diferentes colecciones 
-    private HashMap<ETipoMaterial, ArrayList> materiales;
-    private ArrayList<Prestamo> prestamos;
-    private ArrayList<Suscripcion> suscripciones;
-        
-    // Campos exclusivos pertenecientes a la biblioteca
-    private String bNombre;
-    private String bDireccion;
-    private int bTelefono;
-    private String bHorario;
+    // Singleton para acceder a la biblioteca
+    private static Biblioteca instancia = new Biblioteca();
+    public static Biblioteca getInstacia()
+    {
+        return instancia;
+    }
+    
+    //Define los diferentes Gestores de elementos
+    private GestorPerfiles gestPerf;
+    private GestorMateriales gestorMat;
+    private GestorPrestamos gestorPrest;
+    private GestorSuscripciones gestorSusc;
+    
+    // Campos especificos pertenecientes a la biblioteca
+    private String bibNombre;
+    private String bibDireccion;
+    private int bibTelefono;
+    private String bibHorario;
 
     /**
-     * Crea bases de datos de las diferentes clases
+     * Instancia los diferentes gestores
      * y asigna los valores registrados a los campos
      * de la nueva biblioteca
      * 
-     * @param bNombre Nombre completo de la biblioteca.
-     * @param bDireccion Direccion local de la biblioteca.
-     * @param bTelefono Número de teléfono de la biblioteca.
-     * @param bHorario Horario de apertura de la biblioteca.
+     * @param bibNombre         Nombre completo de la biblioteca.
+     * @param bibDireccion      Direccion local de la biblioteca.
+     * @param bibTelefono       Número de teléfono de la biblioteca.
+     * @param bibHorario        Horario de apertura de la biblioteca.
      */
-    public Biblioteca(String bNombre, String bDireccion, int bTelefono, String bHorario)
+    public void inicializarBiblioteca(String bibNombre, String bibDireccion,
+    int bibTelefono, String bibHorario)
     {
-        // Inicialización de las colecciones
-        materiales = new HashMap<ETipoMaterial, ArrayList>();
-        materiales.put(ETipoMaterial.LIBRO, new ArrayList<Libro>());
-        materiales.put(ETipoMaterial.AUDIO, new ArrayList<Audio>());
-        materiales.put(ETipoMaterial.VIDEO, new ArrayList<Video>());
-        materiales.put(ETipoMaterial.PERIODICO, new ArrayList<Periodico>());
-        materiales.put(ETipoMaterial.REVISTA, new ArrayList<Revista>());
+        // Inicialización de los gestores
+        gestPerf = new GestorPerfiles();
+        gestorMat = new GestorMateriales();
+        gestorPrest = new GestorPrestamos();
+        gestorSusc = new GestorSuscripciones();
         
-        prestamos = new ArrayList<Prestamo>();
-        suscripciones = new ArrayList<Suscripcion>();
         // Asignacion de los campos correspondientes a la biblioteca
-        this.bNombre = bNombre;
-        this.bDireccion = bDireccion;
-        this.bTelefono = bTelefono;
-        this.bHorario = bHorario;
-    }
-    
-    /***************MATERIALES
-     * Añadir un nuevo Material a la base de datos
-     * @param  materiales   el nuevo material a añadir
-     */
-    public void añadirMaterial(Material nuevoMaterial)
-    {
-        if (nuevoMaterial instanceof Libro){
-            materiales.get(ETipoMaterial.LIBRO).add(nuevoMaterial);
-        } else if (nuevoMaterial instanceof Audio) {
-            materiales.get(ETipoMaterial.AUDIO).add(nuevoMaterial);
-        } else if (nuevoMaterial instanceof Video){
-            materiales.get(ETipoMaterial.VIDEO).add(nuevoMaterial);
-        } else if (nuevoMaterial instanceof Periodico){
-            materiales.get(ETipoMaterial.PERIODICO).add(nuevoMaterial);
-        } else if(nuevoMaterial instanceof Revista){
-            materiales.get(ETipoMaterial.REVISTA).add(nuevoMaterial);
-        }
+        this.bibNombre = bibNombre;
+        this.bibDireccion = bibDireccion;
+        this.bibTelefono = bibTelefono;
+        this.bibHorario = bibHorario;
     }
     
     /**
-     * Borrar un Material de la base de datos (Dar de Baja)
-     * @param  bajaMaterial   el material a eliminar
+     * Devuelve el nombre de la biblioteca.
+     * 
+     *  @return   Nombre (String) de la biblioteca 
      */
-    public void eliminarMaterial(Material bajaMaterial)
+    public String getBibNombre()
     {
-        if (bajaMaterial instanceof Libro){
-            materiales.get(ETipoMaterial.LIBRO).remove(bajaMaterial);
-        } else if (bajaMaterial instanceof Audio) {
-            materiales.get(ETipoMaterial.AUDIO).remove(bajaMaterial);
-        } else if (bajaMaterial instanceof Video){
-            materiales.get(ETipoMaterial.VIDEO).remove(bajaMaterial);
-        } else if (bajaMaterial instanceof Periodico){
-            materiales.get(ETipoMaterial.PERIODICO).remove(bajaMaterial);
-        } else if(bajaMaterial instanceof Revista){
-            materiales.get(ETipoMaterial.REVISTA).remove(bajaMaterial);
-        }
-    }
-    
-   /**
-    * @return  la colección almacenada en material (cada uno de los items)
-    */
-   public ArrayList<Material> getMateriales(ETipoMaterial tipoMaterial)
-   {
-       return materiales.get(tipoMaterial);
-   }
-    
-   /**
-    * Buscador simple usando el Titulo de la obra e imprimiendo el material buscado
-    * 
-    * @return  el material en concreto buscado por el usuario
-    */
-   public Material buscarMaterial(String matTitulo)
-   {
-       ArrayList <Material> listaMatLibro = materiales.get(ETipoMaterial.LIBRO);
-       ArrayList <Material> listaMatAudio = materiales.get(ETipoMaterial.AUDIO);
-       ArrayList <Material> listaMatVideo = materiales.get(ETipoMaterial.VIDEO);
-       ArrayList <Material> listaMatPeriodico = materiales.get(ETipoMaterial.PERIODICO);
-       ArrayList <Material> listaMatRevista = materiales.get(ETipoMaterial.REVISTA);
-       
-       for (Material titulo : listaMatLibro){
-            if (titulo.getMTitulo() == matTitulo){
-                return titulo;
-            }
-       }
-       for (Material titulo : listaMatAudio){
-            if (titulo.getMTitulo() == matTitulo){
-                return titulo;
-            }
-       }
-       for (Material titulo : listaMatVideo){
-            if (titulo.getMTitulo() == matTitulo){
-                return titulo;
-            }
-       }
-       for (Material titulo : listaMatPeriodico){
-            if (titulo.getMTitulo() == matTitulo){
-                return titulo;
-            }
-       }
-       for (Material titulo : listaMatRevista){
-            if (titulo.getMTitulo() == matTitulo){
-                return titulo;
-            }
-       }
-       return null;
-    }
-    
-    /***************PRESTAMOS
-     * Añadir un nuevo Prestamo a la base de datos
-     * @param  nuevoPrestamo   el nuevo prestamo a añadir
-     */
-    public void añadirPrestamo(Prestamo nuevoPrestamo)
-    {
-        prestamos.add(nuevoPrestamo);
+         return bibNombre;
     }
     
     /**
-     * Borrar un Prestamo de la base de datos (Dar de Baja)
-     * @param  bajaPrestamo   el prestamo a eliminar
+     * Devuelve la dirección de la biblioteca.
+     * 
+     *  @return   Dirección (String) de la biblioteca 
      */
-    public void eliminarPrestamo(Perfil bajaPrestamo)
+    public String getBibDireccion()
     {
-        prestamos.remove(bajaPrestamo);
-    }
-    
-    /***************SUSCRIPCIONES
-     * Añadir una nueva Suscripcion a la base de datos
-     * @param  nuevaSuscripcion   la nueva suscripcion a añadir
-     */
-    public void añadirSuscripcion(Suscripcion nuevaSuscripcion)
-    {
-        suscripciones.add(nuevaSuscripcion);
+         return bibDireccion;
     }
     
     /**
-     * Borrar una Suscripcion de la base de datos (Dar de Baja)
-     * @param  bajaSuscripcion   la suscripcion a eliminar
+     * Devuelve el teléfono de la biblioteca.
+     * 
+     *  @return   Teléfono (int) de la biblioteca  
      */
-    public void eliminarSuscripcion(Perfil bajaSuscripcion)
+    public int getBibTelefono()
     {
-        suscripciones.remove(bajaSuscripcion);
+         return bibTelefono;
+    }
+    
+    /**
+     * Devuelve el horario de la biblioteca.
+     * 
+     *  @return   Horario (String) de la biblioteca  
+     */
+    public String getBibHorario()
+    {
+         return bibHorario;
+    }
+    
+    /**
+     * Devuelve el aceeso al gestor de perfiles
+     * 
+     * @return   El gestor de perfiles indicado
+     */
+    public GestorPerfiles getGestPerf()
+    {
+        return gestPerf;
+    }
+    
+    /**
+     * Devuelve el gestor de Materiales asociado.
+     * 
+     *  @return   Gestor de Materiales 
+     */
+    public GestorMateriales getGestMat()
+    {
+         return gestorMat;
+    }
+    
+    /**
+     * Devuelve el gestor de Préstamos asociado.
+     * 
+     *  @return   Gestor de Préstamos 
+     */
+    public GestorPrestamos getGestPrest()
+    {
+         return gestorPrest;
+    }
+    
+    /**
+     * Devuelve el gestor de Suscripciones asociado.
+     * 
+     *  @return   Gestor de Suscripciones 
+     */
+    public GestorSuscripciones getGestSusc()
+    {
+         return gestorSusc;
     }
         
 }

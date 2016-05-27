@@ -12,14 +12,15 @@
  * @author Igor Quintela 
  * @version 01/03/2016
  */
-public class Material
+public abstract class Material
 {
+    // definición de los campos genéricos
     private int idMaterial;
-    private String mTitulo;
-    private String mAutor;
-    private boolean mPrestado = false;
-    private int mStock = 0; // se inicializa a 0 el contador de inventario
-    private float mPrecio;
+    private String matTitulo;
+    private String matAutor;
+    private boolean matPrestado = false;
+    private int stockActual = 0; // se inicializa a 0 el contador de inventario
+    private double matPrecio;
 
     private static int contadorMateriales; 
     
@@ -28,49 +29,93 @@ public class Material
      * 
      * @param matTitulo Nombre de la obra/item.
      * @param matAutor  Nombre del autor de la obra.
-     * @param matStock  Número de elementos que hay en base de datos.
+     * @param stockActual  Número de elementos que hay en base de datos.
      * @param matPrecio Cantidad de euros que cuesta el elemento.
      */
-    public Material(String matTitulo, String matAutor, int matStock, float matPrecio)
+    public Material(String matTitulo, String matAutor, int stockActual, double matPrecio)
     {
-        idMaterial = getIDMaterial();
-        mTitulo = matTitulo;
-        mAutor = matAutor;
-        mStock = matStock;
-        mPrecio = matPrecio;
+        idMaterial = addIDMaterial();
+        this.matTitulo = matTitulo;
+        this.matAutor = matAutor;
+        this.stockActual = stockActual;
+        this.matPrecio = matPrecio;
     }
     
      /**
      * Método usado para agregar un campo id númerico a cada material
-     * Es un método estático porque no nos interesa el conocer de
-     * que biblioteca es el perfil
      * 
      * @return  El número de ID exacto buscado
      */
-    public static int getIDMaterial()
+    public static int addIDMaterial()
     {
         contadorMateriales++;
         return contadorMateriales;
     }
     
     /**
-     * Retorna el título de la obra
+     * Devuelve el título de la obra
      * 
      * @return  El Título del material buscado
      */
-    public String getMTitulo()
+    public int getIDMaterial()
     {
-        return mTitulo;
+        return idMaterial;
     }
     
     /**
-     * Imprime en pantalla los datos correspondientes al material indicado
+     * Devuelve el título de la obra
+     * 
+     * @return  El Título del material buscado
      */
-    public void listar()
+    public String getMatTitulo()
     {
-        System.out.println("***************************************");
-        System.out.println("ID: " + idMaterial + ", Título: " + mTitulo + ", Autor: " + mAutor);
-        System.out.println("Inventario: " + mStock + ", Precio: " + mPrecio + " €");
+        return matTitulo;
+    }
+    
+    /**
+     * Devuelve el nombre del autor de la obra
+     * 
+     * @return  El Nombre del Autor del material buscado
+     */
+    public String getMatAutor()
+    {
+        return matAutor;
+    }
+    
+    /**
+     * Devuelve el total de materiales disponibles 
+     * 
+     * @return  número entero de materiales por prestar
+    */
+    public int getStockActual()
+    {
+        return stockActual;
+    }
+    
+    /**
+     * Devuelve el precio del material 
+     * 
+     * @return  Precio (decimal) del material
+    */
+    public double getMatPrecio()
+    {
+        return matPrecio;
+    }
+    
+    /**
+     * Añade o elimina un registro del stock del material 
+     * 
+     * @param  dato   número que se utiliza 
+    */
+    public void actualizarStock(int dato)
+    {
+        // al menos un material en stock
+        if (stockActual <= 0){
+            System.out.println("El material que intenta añadir/eliminar no se encuentra en la base de datos");
+        } else {
+            stockActual = stockActual + dato;
+            System.out.println("Stock modificado correctamente");
+        }
     }
     
 }
