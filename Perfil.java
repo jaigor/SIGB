@@ -12,7 +12,6 @@
 public class Perfil
 {
     // Campos genéricos de los perfiles
-    private int idPerfil;
     private String perDNI;
     private String perNombre;
     private String perApellidos;
@@ -34,7 +33,6 @@ public class Perfil
     public Perfil(String perDNI,String perNombre, String perApellidos, String perDireccion, 
     String perUser, String perPassword)
     {
-        idPerfil = GestorPerfiles.getIDPerfil();
         this.perDNI = perDNI;
         this.perNombre = perNombre;
         this.perApellidos = perApellidos;
@@ -64,16 +62,6 @@ public class Perfil
     public int getPermisoID()
     {
          return permisoID;
-    }
-    
-    /**
-     * Devuelve el número de ID asignado al perfil en cuestión.
-     * 
-     * @return ID del usuario 
-     */
-    public int getIdPerfil()
-    {
-         return idPerfil;
     }
     
     /**

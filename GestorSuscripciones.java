@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public class GestorSuscripciones
 {
     private ArrayList<Suscripcion> suscripciones;
-
     /**
      * Constructor for objects of class GestorSuscripciones
      */
@@ -48,12 +47,11 @@ public class GestorSuscripciones
     {
         if (suscripciones.size() > 0) {
             for (Suscripcion suscripcion : suscripciones) {
-                if (suscripcion.getPerSuscrito() == perSuscrito){
+                if (suscripcion.getPerSuscrito().equals(perSuscrito)){
                     return suscripcion;
                 }
             }
         }
         return null;
     }
-
 }

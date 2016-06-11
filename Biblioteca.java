@@ -139,6 +139,5 @@ class Biblioteca
     public GestorSuscripciones getGestSusc()
     {
          return gestorSusc;
-    }
-        
+    }  
 }

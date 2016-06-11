@@ -111,7 +111,8 @@ public abstract class Material
     {
         // al menos un material en stock
         if (stockActual <= 0){
-            System.out.println("El material que intenta añadir/eliminar no se encuentra en la base de datos");
+            System.out.println("El material que " +
+            "intenta añadir/eliminar no se encuentra en la base de datos");
         } else {
             stockActual = stockActual + dato;
             System.out.println("Stock modificado correctamente");

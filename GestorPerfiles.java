@@ -11,8 +11,6 @@ public class GestorPerfiles
 {
     // Array de la coleccion almacenada
     private ArrayList<Perfil> perfiles;
-    // ID usado para enumerar a todos los usuarios inicializado a 0
-    private static int contadorPerfiles = 0; 
     
     private Perfil perfilBuscado;
     
@@ -21,7 +19,7 @@ public class GestorPerfiles
      */
     public GestorPerfiles()
     {
-        perfiles = new ArrayList<Perfil>();       
+        perfiles = new ArrayList<Perfil>();
     }
     
     /**
@@ -32,19 +30,6 @@ public class GestorPerfiles
     public ArrayList<Perfil> getPerfiles()
     {
         return perfiles;
-    }
- 
-    /**
-     * Agrega un campo ID númerico a cada usuario
-     * Método estático porque no nos interesa el conocer de
-     * que biblioteca es el perfil
-     * 
-     * @return  contadorPerfiles    devuelve el ID (int) actual de usuario
-     */
-    public static int getIDPerfil()
-    {
-        contadorPerfiles++;
-        return contadorPerfiles;
     }
     
     /**
@@ -87,14 +72,12 @@ public class GestorPerfiles
      */ 
     public Perfil buscarPerfil(String stringBuscado)
     { 
-        if (perfiles.size() > 0) {
+        if (perfiles.size() > 0){
             for (Perfil perfil : perfiles) {
-                if (perfil.getPerDNI() == stringBuscado){
+                if (perfil.getPerDNI().equals(stringBuscado)){
                     return perfil;
-                }else if (perfil.getPerUser() == stringBuscado){
+                }else if (perfil.getPerUser().equals(stringBuscado)){
                     return perfil;
-                } else {
-                    return null;
                 }
             }
         }
@@ -113,7 +96,7 @@ public class GestorPerfiles
         System.out.println();
         System.out.println("****************CARNET**********************"); 
         System.out.println("****************BIBLIOTECA******************"); 
-        System.out.println("ID: " + user.getIdPerfil() + "    DNI: " + user.getPerDNI());
+        System.out.println("DNI: " + user.getPerDNI());
         System.out.println("Nombre: " + user.getPerNombre() + "    Apellidos: " + user.getPerApellidos());
         System.out.println("Direccion: " + user.getPerDireccion() + "    Perfil: " +
         traductorPermiso(user.getPermisoID()));
@@ -154,7 +137,7 @@ public class GestorPerfiles
     public boolean controlAcceso(String user, String password)
     {
         for (Perfil perfil : perfiles){
-            if (perfil.getPerUser() == user && perfil.getPerPassword() == password) {
+            if (perfil.getPerUser().equals(user) && perfil.getPerPassword().equals(password)) {
                 return true;
             }
         }

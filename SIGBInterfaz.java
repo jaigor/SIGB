@@ -6,7 +6,7 @@ import java.lang.NullPointerException;
  * menú de la herramienta de gestión.
  * 
  * @author Igor Quintela 
- * @version 01/03/2016
+ * @version 11/06/2016
  */
 public class SIGBInterfaz
 {
@@ -17,7 +17,7 @@ public class SIGBInterfaz
      */
     public SIGBInterfaz()
     {
-        // initialise instance variables
+        // 
     }
 
     /**
@@ -26,7 +26,7 @@ public class SIGBInterfaz
      */
     public void inicio()
     {
-        // iniciamos el menu principal de la interfaz
+        // inicia el menu principal de la interfaz
         new test();
         this.menuAcceso();
     }
@@ -43,20 +43,23 @@ public class SIGBInterfaz
         System.out.println("    Control de acceso");
         System.out.println("***********************************************");
         System.out.println("Introduzca su usuario y contraseña para acceder");
-        System.out.println("***********************************************");
-        System.out.print("Usuario: ");
-        String user = in.next();
-        System.out.print("Contraseña: ");
-        String password = in.next();
-        System.out.println("***********************************************");
-        if (Biblioteca.getInstacia().getGestPerf().controlAcceso(user, password)){
-            menuFunciones(user);
-        } else {
-            System.out.println("Usuario/Contraseña no válido, Vuelva a intentarlo.");
-            System.out.println();
-            menuAcceso();
-        }
-    }
+        boolean inputValido = false;
+        do{
+            System.out.println("***********************************************");
+            System.out.print("Usuario: ");
+            String user = in.next();
+            System.out.print("Contraseña: ");
+            String password = in.next();
+            System.out.println("***********************************************");
+            if (Biblioteca.getInstacia().getGestPerf().controlAcceso(user, password)){
+                inputValido = true;
+                menuFunciones(user);
+            } else {
+                System.out.println("Usuario/Contraseña no válido, Vuelva a intentarlo.");
+                System.out.println();
+            }
+        } while (inputValido == false);
+    } 
     
     /**
      * Método que muestra las funciones dependiendo
@@ -66,31 +69,34 @@ public class SIGBInterfaz
      */
     public void menuFunciones(String user)
     {
-        //segun el tipo de usuario cargamos un menú u otro
+        // Segun el tipo de usuario carga un menú u otro
         if(Biblioteca.getInstacia().getGestPerf().buscarPerfil(user).getPermisoID() > 1){
-            // menu de funciones correspondientes a Bibliotecario/Director
-            System.out.println("***********************************************");
-            System.out.println("Menú opciones");
-            System.out.println("1. Perfiles");
-            System.out.println("2. Materiales");
-            System.out.println("3. Préstamos");
-            System.out.println("4. Suscripciones");
-            System.out.println("0. Salir");
-            System.out.println("***********************************************");
+            // Menú de funciones correspondientes a Bibliotecario/Director
             boolean salir = false;
-            int opcion;
             do {
+                System.out.println("***********************************************");
+                System.out.println("Menú opciones");
+                System.out.println("1. Perfiles");
+                System.out.println("2. Materiales");
+                System.out.println("3. Préstamos");
+                System.out.println("4. Suscripciones");
+                System.out.println("0. Salir");
+                System.out.println("***********************************************");
+                int opcion;
                 System.out.print("Escoja una de las opciones siguientes: ");
-                opcion = in.nextInt();
+                opcion = getInteger(in);
                 switch(opcion) {
                     case 1:
                         menuPerfiles();
-                    case 2: 
-                         menuMateriales();
+                        break;
+                    case 2:
+                        menuMateriales();
+                        break;
                     case 3:
-                         menuPrestamos();
+                        menuPrestamos();
+                        break;
                     case 4:
-                     // hacer tal;
+                        //menuSuscripciones(); ** a implementar **
                     case 0:
                         salir = true;
                         break;
@@ -100,14 +106,41 @@ public class SIGBInterfaz
                 }
             }
             while (!salir);
-
         } else {
-            // iniciamos el menu de funciones correspondientes a Socio
-            Scanner in = new Scanner(System.in);
-            System.out.println("***********************************************");
-            /* A REVISAR */   
+            // Menu de funciones correspondientes a Socio
+            boolean salir = false;
+            do {
+                System.out.println("***********************************************");
+                System.out.println("Menú opciones");
+                System.out.println("1. Préstamos");
+                System.out.println("2. Suscripciones");
+                System.out.println("3. Generar Carnet");
+                System.out.println("0. Salir");
+                System.out.println("***********************************************");
+                int opcion;
+                System.out.print("Escoja una de las opciones siguientes: ");
+                opcion = getInteger(in);
+                switch(opcion) {
+                    case 1:
+                        menuPrestamos(user);
+                        break;
+                    case 2: 
+                         //menuSuscripciones(); ** a implementar **
+                    case 3: 
+                         Perfil userBuscado = Biblioteca.getInstacia().getGestPerf().buscarPerfil(user);
+                         Biblioteca.getInstacia().getGestPerf().generarTarjeta(userBuscado);
+                         break;
+                    case 0:
+                        salir = true;
+                        break;
+                    default:
+                        System.out.println("Error, Vuelva a intentarlo");
+                        System.out.println();
+                }
+            }
+            while (!salir);
+            menuAcceso();
         }
-        
     }
     
     //Menús PERFILES
@@ -118,25 +151,28 @@ public class SIGBInterfaz
      */
     public void menuPerfiles()
     {
-        // iniciamos el menu de Perfiles
-        System.out.println("***********************************************");
-        System.out.println("1. Añadir Perfil");
-        System.out.println("2. Eliminar Perfil");
-        System.out.println("3. Buscar Perfil (Generacion Tarjeta)");
-        System.out.println("0. Salir");
-        System.out.println("***********************************************");
+        // inicia el menu de Perfiles
         boolean salir = false;
-        int opcion;
         do {
+            System.out.println("***********************************************");
+            System.out.println("1. Añadir Perfil");
+            System.out.println("2. Eliminar Perfil");
+            System.out.println("3. Buscar Perfil (Generacion Tarjeta)");
+            System.out.println("0. Salir");
+            System.out.println("***********************************************");
+            int opcion;
             System.out.print("Escoja una de las opciones siguientes: ");
-            opcion = in.nextInt();
+            opcion = getInteger(in);
             switch(opcion) {
                 case 1:
                     altaPerfil();
+                    break;
                 case 2: 
                     bajaPerfil();
+                    break;
                 case 3:
                     printPerfil();
+                    break;
                 case 0:
                     salir = true;
                     break;
@@ -146,6 +182,7 @@ public class SIGBInterfaz
             }
         }
         while (!salir);
+        menuAcceso();
     }
     
     /**
@@ -171,7 +208,7 @@ public class SIGBInterfaz
         String perPassword = in.next(); 
         System.out.println("***********************************************");
         
-        // se añade el perfil a la base de datos
+        // Añade el perfil a la base de datos
         Perfil nuevoPerfil = new Perfil(perDNI, perNombre, perApellidos, perDireccion, perUser, perPassword);
         Biblioteca.getInstacia().getGestPerf().añadirPerfil(nuevoPerfil);
     }
@@ -219,7 +256,7 @@ public class SIGBInterfaz
         Perfil userBuscado = buscarPerfil();
         Biblioteca.getInstacia().getGestPerf().generarTarjeta(userBuscado);
     }
-    
+        
     // Menús MATERIALES
     /**
      * Las distintas opciones o submenús del menú Materiales
@@ -227,25 +264,28 @@ public class SIGBInterfaz
      */
     public void menuMateriales()
     {
-        // iniciamos el menu de Materiales
-        System.out.println("***********************************************");
-        System.out.println("1. Añadir Material");
-        System.out.println("2. Eliminar Material");
-        System.out.println("3. Buscar Material");
-        System.out.println("0. Salir");
-        System.out.println("***********************************************");
+        // inicia el menu de Materiales
         boolean salir = false;
-        int opcion;
         do {
+            System.out.println("***********************************************");
+            System.out.println("1. Añadir Material");
+            System.out.println("2. Eliminar Material");
+            System.out.println("3. Buscar Material");
+            System.out.println("0. Salir");
+            System.out.println("***********************************************");
+            int opcion;
             System.out.print("Escoja una de las opciones siguientes: ");
-            opcion = in.nextInt();
+            opcion = getInteger(in);
             switch(opcion) {
                 case 1:
                     altaTipoMaterial();
+                    break;
                 case 2: 
                     bajaMaterial();
+                    break;
                 case 3:
                     printMaterial();
+                    break;
                 case 0:
                     salir = true;
                     break;
@@ -255,6 +295,7 @@ public class SIGBInterfaz
             }
         }
         while (!salir);
+        menuAcceso();
     }
     
     /**
@@ -274,7 +315,7 @@ public class SIGBInterfaz
         System.out.println("0. Salir");
         int opcion;
         System.out.print("Escoja el Material a crear: ");
-        opcion = in.nextInt();
+        opcion = getInteger(in);
         if (opcion != 0){
             altaMaterial(opcion);
         } else { 
@@ -302,15 +343,14 @@ public class SIGBInterfaz
         System.out.print("Autor: ");
         String matAutor = in.next();
         
-        // se comprueba que los datos introducidos son números   
+        // Comprueba que los datos introducidos son números   
         System.out.print("Stock: ");
         int stockActual = getInteger(in);
         System.out.print("Precio: ");
         double matPrecio = getDouble(in);
    
-        // Hasta aqui están los datos genericos de material
-        // Ahora se solicitan los especificos por tipo y
-        // se añaden a la base de datos
+        // Hasta aqui están los datos genericos de material,
+        // solicitan los especificos por tipo y se añaden a la base de datos
         if (tipoMaterial == 1) { // Libro
             System.out.print("ISBN: ");
             String isbn = in.next();
@@ -329,7 +369,7 @@ public class SIGBInterfaz
             Biblioteca.getInstacia().getGestMat().añadirMaterial(nuevoAudio);
         } else if (tipoMaterial == 3) { // Video
             System.out.print("Duración del video: ");
-            int duracion = in.nextInt();         
+            int duracion = getInteger(in);         
             System.out.println("***********************************************");
             Material nuevoVideo = new Video(matTitulo, matAutor, stockActual, matPrecio, duracion);
             Biblioteca.getInstacia().getGestMat().añadirMaterial(nuevoVideo);
@@ -346,6 +386,8 @@ public class SIGBInterfaz
             Material nuevaRevista = new Revista(matTitulo, matAutor, stockActual, matPrecio, tematica);
             Biblioteca.getInstacia().getGestMat().añadirMaterial(nuevaRevista);
         }
+        
+        System.out.print("El material se ha añadido correctamente.");
     }
     
     /**
@@ -405,6 +447,7 @@ public class SIGBInterfaz
     {
         Material matBaja = buscarMaterial();
         Biblioteca.getInstacia().getGestMat().eliminarMaterial(matBaja);
+        System.out.print("El material se ha eliminado correctamente.");
     }
       
     /**
@@ -417,10 +460,10 @@ public class SIGBInterfaz
         Material matBuscado = null;
         while(matBuscado == null){
             System.out.println("***********************************************");
-            System.out.println("Indique el Titulo del material: ");
+            System.out.println("Indique el Titulo del material, si lo desconoce introduzca 0");
             System.out.print("Titulo: ");
             String matTitulo = in.next();
-            System.out.println("Indique, si lo conoce, el Autor también: ");
+            System.out.println("Indique el Nombre del Autor, si lo desconoce introduzca 0");
             System.out.print("Autor: ");
             String matAutor = in.next();
             System.out.println("***********************************************");
@@ -443,7 +486,7 @@ public class SIGBInterfaz
         Biblioteca.getInstacia().getGestMat().print(matPrint);
     }
     
-    // Menús PRESTAMOS
+    // Menús PRESTAMOS (admin y user)
     /**
      * Formulario de alta del tipo de Material 
      * leyendo las entradas del usuario 
@@ -452,33 +495,34 @@ public class SIGBInterfaz
     public void menuPrestamos()
     {
         // inicio del menú Prestamos
-        System.out.println("***********************************************");
-        System.out.println("1. Añadir Préstamo");
-        System.out.println("2. Eliminar Préstamo");
-        System.out.println("3. Buscar Préstamo");
-        System.out.println("4. Avisos materiales fuera de plazo");
-        System.out.println("5. Gestión de multas");
-        System.out.println("6. Listados de materiales prestados");
-        System.out.println("0. Salir");
-        System.out.println("***********************************************");
         boolean salir = false;
-        int opcion;
         do {
+            System.out.println("***********************************************");
+            System.out.println("1. Añadir Préstamo");
+            System.out.println("2. Eliminar Préstamo");
+            System.out.println("3. Buscar Préstamo");
+            System.out.println("4. Gestión de multas");
+            System.out.println("5. Listados de materiales prestados");
+            System.out.println("0. Salir");
+            System.out.println("***********************************************");
+            int opcion;
             System.out.print("Escoja una de las opciones siguientes: ");
-            opcion = in.nextInt();
+            opcion = getInteger(in);
             switch(opcion) {
                 case 1:
                     altaPrestamo();
+                    break;
                 case 2: 
                     bajaPrestamo();
+                    break;
                 case 3:
                     printPrestamo();
+                    break;
                 case 4:
-                    //avisosFueraPlazo();
+                    gestionMultas(); 
                 case 5:
-                    //gestionMultas();
-                case 6:
                     listadosPrestamos();
+                    break;
                 case 0:
                     salir = true;
                     break;
@@ -488,6 +532,57 @@ public class SIGBInterfaz
             }
         }
         while (!salir);
+        menuAcceso();
+    }
+    
+    // submenu correspondiente al usuario
+     /**
+     * Formulario de alta del tipo de Material 
+     * leyendo las entradas del usuario 
+     * 
+     */
+    public void menuPrestamos(String user)
+    {
+        // inicio del menú Préstamos
+        boolean salir = false;
+        Perfil userUsado = Biblioteca.getInstacia().getGestPerf().buscarPerfil(user);
+        do {
+            System.out.println("***********************************************");
+            System.out.println("1. Añadir Préstamo");
+            System.out.println("2. Eliminar Préstamo");
+            System.out.println("3. Historial de Préstamos");
+            System.out.println("4. Préstamos en activo");
+            System.out.println("5. Gestión de multas");
+            System.out.println("0. Salir");
+            System.out.println("***********************************************");
+            int opcion;
+            System.out.print("Escoja una de las opciones siguientes: ");
+            opcion = getInteger(in);
+            switch(opcion) {
+                case 1:
+                    altaPrestamo(userUsado);
+                    break;
+                case 2: 
+                    bajaPrestamo();
+                    break;
+                case 3:
+                    Biblioteca.getInstacia().getGestPrest().printHistorial((Socio)userUsado);
+                    break;
+                case 4:
+                    Biblioteca.getInstacia().getGestPrest().printPrestamosEnActivo((Socio)userUsado);
+                    break;
+                case 5:
+                    //gestionMultas(); ** a implementar **
+                case 0:
+                    salir = true;
+                    break;
+                default:
+                    System.out.println("Error, Vuelva a intentarlo");
+                    System.out.println();
+            }
+        }
+        while (!salir);
+        menuAcceso();
     }
     
     /**
@@ -497,8 +592,20 @@ public class SIGBInterfaz
      */
     public void altaPrestamo()
     {
-        Prestamo nuevoPrestamo = buscarPrestamo();
-        Biblioteca.getInstacia().getGestPrest().añadirPrestamo(nuevoPrestamo.getMatPrestado(), nuevoPrestamo.getSocioPrestamo());
+        Material matPrestado = buscarMaterial();
+        Socio socioPrestamo = (Socio)buscarPerfil();
+        Biblioteca.getInstacia().getGestPrest().añadirPrestamo(matPrestado, socioPrestamo);
+    }
+    
+    /**
+     * Formulario de alta del tipo de Material 
+     * leyendo las entradas del usuario 
+     * 
+     */
+    public void altaPrestamo(Perfil userUsado)
+    {
+        Material matPrestado = buscarMaterial();
+        Biblioteca.getInstacia().getGestPrest().añadirPrestamo(matPrestado, (Socio)userUsado);  
     }
     
     /**
@@ -558,15 +665,36 @@ public class SIGBInterfaz
         System.out.println("4. Periodico");
         System.out.println("5. Revista");
         System.out.println("***********************************************");
-        String tipoMatBuscado = in.next();
-        if (tipoMatBuscado == 1){
-            ETipoMaterial tipoMatBuscado = LIBRO;
-        } else if (tipoMatBuscado == 2){
-            ETipoMaterial tipoMatBuscado = AUDIO;
-        } else if (tipoMatBuscado == 3){
-            ETipoMaterial tipoMatBuscado = VIDEO;
-        } else if (tipoMatBuscado == 3){
-            ETipoMaterial tipoMatBuscado = VIDEO;
-        Biblioteca.getInstacia().getGestPrest().printPorTipo((ETipoMaterial)tipoMatBuscado);
+        int tipoEscogido = getInteger(in);
+        if (tipoEscogido == 1){
+            ETipoMaterial tipoMatBuscado = ETipoMaterial.LIBRO;
+            Biblioteca.getInstacia().getGestPrest().printPorTipo(tipoMatBuscado);
+        } else if (tipoEscogido == 2){
+            ETipoMaterial tipoMatBuscado = ETipoMaterial.AUDIO;
+            Biblioteca.getInstacia().getGestPrest().printPorTipo(tipoMatBuscado);
+        } else if (tipoEscogido == 3){
+            ETipoMaterial tipoMatBuscado = ETipoMaterial.VIDEO;
+            Biblioteca.getInstacia().getGestPrest().printPorTipo(tipoMatBuscado);
+        } else if (tipoEscogido == 4){
+            ETipoMaterial tipoMatBuscado = ETipoMaterial.PERIODICO;
+            Biblioteca.getInstacia().getGestPrest().printPorTipo(tipoMatBuscado);
+        } else if (tipoEscogido == 5){
+            ETipoMaterial tipoMatBuscado = ETipoMaterial.REVISTA;
+            Biblioteca.getInstacia().getGestPrest().printPorTipo(tipoMatBuscado);
+        }
     }
-}
+    
+    /**
+     * Formulario de alta del tipo de Material 
+     * leyendo las entradas del usuario 
+     * 
+     */
+    public void gestionMultas()
+    {
+        Socio socioMultado = (Socio)buscarPerfil();
+        Biblioteca.getInstacia().getGestPrest().historialMultas(socioMultado);
+    }
+    
+     // Menús SUSCRIPCIONES
+    
+}    

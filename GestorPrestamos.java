@@ -28,6 +28,7 @@ public class GestorPrestamos
     public GestorPrestamos()
     {
         prestamos = new ArrayList<Prestamo>();
+        reservas = new ArrayList<Prestamo>();
     }
     
     /**
@@ -76,9 +77,9 @@ public class GestorPrestamos
     public Prestamo buscarPrestamo(Material matPrestado, Socio socioPrestamo)
     {
         for (Prestamo prestamo : prestamos){
-            if (prestamo.getMatPrestado() == matPrestado){
+            if (prestamo.getMatPrestado().equals(matPrestado)){
                 return prestamo;
-            } else if (prestamo.getSocioPrestamo() == socioPrestamo) {
+            } else if (prestamo.getSocioPrestamo().equals(socioPrestamo)){
                 return prestamo;
             }
         }
@@ -181,6 +182,31 @@ public class GestorPrestamos
        long multa = diferenciaDias * 2;
        System.out.println("Se debe abonar la cantidad de " + multa + " euros.");
     }
+    
+    /**
+     * Cálculo de los días que ha estado sin entregarse el material
+     * y proceso de multa siguiente
+     * 
+     * @param  socio   el prestamo a devolver
+     */
+    public void historialMultas(Socio socio)
+    {
+        long totalMultas = 0;
+        for (Prestamo prestamo : socio.getPrestamosEnActivo()){
+            // instanciamos y calculamos la diferencia en dias
+            long diferencia = Math.abs(fechaActual.getTime() - prestamo.getFechaDevolucion().getTime());
+            long diferenciaDias = diferencia / (24 * 60 * 60 * 1000);
+            if (diferenciaDias > 0){
+                long multa = diferenciaDias * 2;
+                print(prestamo);
+                System.out.println("Deuda: " + multa);
+                totalMultas += multa;
+            }else {
+                System.out.println("El usuario no tiene multas");
+            }
+        }
+        System.out.println("Total acumulado de multas: " + totalMultas);
+    }
 
     /**
      * Imprime en pantalla los datos correspondientes al prestamo indicado
@@ -189,12 +215,12 @@ public class GestorPrestamos
      */
     public void print(Prestamo prestamo)
     {
-        System.out.println("***************************************");
-        System.out.println("DNI (Socio): " + prestamo.getSocioPrestamo().getPerDNI() +
-        "Nombre (Socio): " + prestamo.getSocioPrestamo().getPerNombre());
+        System.out.println("***********************************************");
+        System.out.println("DNI (Socio): " + prestamo.getSocioPrestamo().getPerDNI());
+        System.out.println("Nombre (Socio): " + prestamo.getSocioPrestamo().getPerNombre());
         System.out.println("Material prestado (Título): " + prestamo.getMatPrestado().getMatTitulo());
-        System.out.println("Fecha Préstamo: " + prestamo.getFechaPrestamo() +
-        ", Fecha Devolución: " + prestamo.getFechaDevolucion()); 
+        System.out.println("Fecha Préstamo: " + prestamo.getFechaPrestamo());
+        System.out.println("Fecha Devolución: " + prestamo.getFechaDevolucion());
     }
     
     /**
@@ -213,5 +239,38 @@ public class GestorPrestamos
             }
         }
     }
-
+    
+    /**
+     * Imprime listado de préstamos por tipo de Material
+     * 
+     * @param  tipoMatBuscado   tipo de Material a imprimir
+     */
+    public void printHistorial(Socio socio)
+    {
+        // recorre el array de prestamos e imprime los que coincidan con el tipo
+        if (socio.getHistorialPrestamo().size() == 0){
+            System.out.println("No hay préstamos en el historial");
+        } else {
+            for (Prestamo prestamo : socio.getHistorialPrestamo()){
+                print(prestamo);
+            }
+        }
+    }
+    
+    /**
+     * Imprime listado de préstamos por tipo de Material
+     * 
+     * @param  tipoMatBuscado   tipo de Material a imprimir
+     */
+    public void printPrestamosEnActivo(Socio socio)
+    {
+        // recorre el array de prestamos e imprime los que coincidan con el tipo
+        if (socio.getPrestamosEnActivo().size() == 0){
+            System.out.println("No hay préstamos en activo");
+        } else {
+            for (Prestamo prestamo : socio.getPrestamosEnActivo()){
+                print(prestamo);
+            }
+        }
+    }
 }

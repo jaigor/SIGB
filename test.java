@@ -10,10 +10,13 @@ import java.util.Calendar;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class test extends Biblioteca
+public class test 
 {
+    private GestorPerfiles gP;
     private Perfil user1;
     private Perfil user2;
+    private Perfil admin;
+    private Perfil biblio;
     
     private GestorMateriales gM;
     private Material mat1;
@@ -22,29 +25,25 @@ public class test extends Biblioteca
     private Material mat4;
     private Material mat5;
     
-    private GestorPerfiles gP;
-    
     private Calendar cal = Calendar.getInstance();
     private Date fechaActual = cal.getTime();
-    
     /**
      * Constructor for objects of class test
      */
     public test()
-    {
-        // Creacion de Biblioteca
-        
+    {        
         // Perfiles        
-        user1 = new Socio("789254640J", "Igor", "Q", "Calle Haro", "iqs", "pass");
-        user2 = new Socio("455646122F", "Ello", "S", "Calle Bilbao", "ello", "pass");
+        user1 = new Socio("789254640J", "Igor", "Quintela", "Calle Haro", "iqs", "pass");
+        user2 = new Socio("455646122F", "Francisco", "Garcia", "Calle Bilbao", "fran", "pass");
+        biblio = new Bibliotecario("999999999Z", "Indiana", "Jones", "Plaza Latorre", "biblio", "admin");
+        admin = new Director("111111111Z", "Señor", "Director", "Calle Portugalete", "admin", "admin");
         
         // intento meter mismos perfiles con el dni igual
         gP = Biblioteca.getInstacia().getGestPerf();
         gP.añadirPerfil(user1);
         gP.añadirPerfil(user2);
-        for (Perfil perfil : gP.getPerfiles()) {
-            gP.generarTarjeta(perfil);
-        }
+        gP.añadirPerfil(admin);
+        gP.añadirPerfil(biblio);
         
         // Creacion de Materiales asociados
         mat1 = new Libro("Los Mundos de Koda", "Perico", 10, 50, "HFGG12312", "02/01/2015", 140);
@@ -60,21 +59,6 @@ public class test extends Biblioteca
         gM.añadirMaterial(mat4);
         gM.añadirMaterial(mat5);
         
-        for (Material material : gM.getMateriales(ETipoMaterial.LIBRO)) {
-             gM.print(material);
-        }
-        for (Material material : gM.getMateriales(ETipoMaterial.AUDIO)) {
-             gM.print(material);
-        }
-        for (Material material : gM.getMateriales(ETipoMaterial.VIDEO)) {
-             gM.print(material);
-        }
-        for (Material material : gM.getMateriales(ETipoMaterial.PERIODICO)) {
-             gM.print(material);
-        }
-        for (Material material : gM.getMateriales(ETipoMaterial.REVISTA)) {
-             gM.print(material);
-        }
     }    
     
     public void buscaMaterial(){

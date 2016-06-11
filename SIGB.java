@@ -25,7 +25,6 @@ public class SIGB
         //se inicia la clase principal de biblioteca
         Biblioteca.getInstacia().inicializarBiblioteca("UNED", "Portugalete", 944448888, "10:00-20:00"); // datos ejemplo
         SIGBInterfaz sigbInterfaz = new  SIGBInterfaz();
-        new test();
         sigbInterfaz.inicio();
     }
   

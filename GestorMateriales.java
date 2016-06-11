@@ -110,37 +110,37 @@ public class GestorMateriales
             
        // Recorre por cada lista comparando si se encuentra el Titulo o Autor de la obra
        for (Material material : listaMatLibro){
-            if (material.getMatTitulo() == matTitulo){
+            if (material.getMatTitulo().equals(matTitulo)){
                 return material;
-            } else if (material.getMatAutor() == matAutor) {
+            } else if (material.getMatAutor().equals(matAutor)) {
                 return material;
             }
        }
        for (Material material : listaMatAudio){
-            if (material.getMatTitulo() == matTitulo){
+            if (material.getMatTitulo().equals(matTitulo)){
                 return material;
-            } else if (material.getMatAutor() == matAutor) {
+            } else if (material.getMatAutor().equals(matAutor)) {
                 return material;
             }
        }
        for (Material material : listaMatVideo){
-            if (material.getMatTitulo() == matTitulo){
+            if (material.getMatTitulo().equals(matTitulo)){
                 return material;
-            } else if (material.getMatAutor() == matAutor) {
+            } else if (material.getMatAutor().equals(matAutor)) {
                 return material;
             }
        }
        for (Material material : listaMatPeriodico){
-            if (material.getMatTitulo() == matTitulo){
+            if (material.getMatTitulo().equals(matTitulo)){
                 return material;
-            } else if (material.getMatAutor() == matAutor) {
+            } else if (material.getMatAutor().equals(matAutor)) {
                 return material;
             }
        }
        for (Material material : listaMatRevista){
-            if (material.getMatTitulo() == matTitulo){
+            if (material.getMatTitulo().equals(matTitulo)){
                 return material;
-            } else if (material.getMatAutor() == matAutor) {
+            } else if (material.getMatAutor().equals(matAutor)) {
                 return material;
             }
        }
