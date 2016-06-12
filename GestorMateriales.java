@@ -157,7 +157,7 @@ public class GestorMateriales
      */
     public void print(Material material)
     {
-        System.out.println("***************************************");
+        System.out.println("-------------------------------------------");
         System.out.println("IDMaterial: " + material.getIDMaterial() +
         ", Título: " + material.getMatTitulo() + ", Autor: " + material.getMatAutor());
         System.out.println("Inventario: " + material.getStockActual() +

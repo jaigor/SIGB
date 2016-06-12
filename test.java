@@ -24,6 +24,13 @@ public class test
     private Material mat3;
     private Material mat4;
     private Material mat5;
+    private Material mat6;
+    
+    private GestorPrestamos gPr;
+    private Prestamo prest1;
+    private Prestamo prest2;
+    private Prestamo prest3;
+    private Prestamo prest4;
     
     private Calendar cal = Calendar.getInstance();
     private Date fechaActual = cal.getTime();
@@ -51,6 +58,7 @@ public class test
         mat3 = new Video("Paradyse", "Manolito", 5, 100, 130);
         mat4 = new Periodico("ElMundoToday", "Sol", 3, 4, "Politica");
         mat5 = new Revista("Holas", "Luna", 1, 2, "Rosa");
+        mat6 = new Libro("Zombies", "Dark Seed", 1, 30, "HFGG22222", "02/01/2000", 240);
         
         gM = Biblioteca.getInstacia().getGestMat();
         gM.añadirMaterial(mat1);
@@ -58,7 +66,25 @@ public class test
         gM.añadirMaterial(mat3);
         gM.añadirMaterial(mat4);
         gM.añadirMaterial(mat5);
+        gM.añadirMaterial(mat6);
         
+        // Creacion de Prestamos asociados
+        prest1 = new Prestamo(new Date(),mat1,(Socio)user1, 1);
+        prest2 = new Prestamo(new Date(),mat2,(Socio)user2, -1);
+        prest3 = new Prestamo(new Date(),mat3,(Socio)user2, -5);
+        prest4 = new Prestamo(new Date(),mat6,(Socio)user2, -2);
+        
+        gPr = Biblioteca.getInstacia().getGestPrest();
+        gPr.getPrestamos().add(prest1);
+        Socio socio1 = (Socio)user1;
+        socio1.añadirPrestamos(prest1);
+        gPr.getPrestamos().add(prest2);
+        Socio socio2 = (Socio)user2;
+        socio2.añadirPrestamos(prest2);
+        gPr.getPrestamos().add(prest3);
+        socio2.añadirPrestamos(prest3);
+        gPr.getPrestamos().add(prest4);
+        socio2.añadirPrestamos(prest4);
     }    
     
     public void buscaMaterial(){

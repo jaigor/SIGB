@@ -81,7 +81,6 @@ public class SIGBInterfaz
                 System.out.println("3. Préstamos");
                 System.out.println("4. Suscripciones");
                 System.out.println("0. Salir");
-                System.out.println("***********************************************");
                 int opcion;
                 System.out.print("Escoja una de las opciones siguientes: ");
                 opcion = getInteger(in);
@@ -116,7 +115,6 @@ public class SIGBInterfaz
                 System.out.println("2. Suscripciones");
                 System.out.println("3. Generar Carnet");
                 System.out.println("0. Salir");
-                System.out.println("***********************************************");
                 int opcion;
                 System.out.print("Escoja una de las opciones siguientes: ");
                 opcion = getInteger(in);
@@ -159,7 +157,6 @@ public class SIGBInterfaz
             System.out.println("2. Eliminar Perfil");
             System.out.println("3. Buscar Perfil (Generacion Tarjeta)");
             System.out.println("0. Salir");
-            System.out.println("***********************************************");
             int opcion;
             System.out.print("Escoja una de las opciones siguientes: ");
             opcion = getInteger(in);
@@ -206,7 +203,6 @@ public class SIGBInterfaz
         String perUser = in.next(); 
         System.out.print("Contraseña: ");
         String perPassword = in.next(); 
-        System.out.println("***********************************************");
         
         // Añade el perfil a la base de datos
         Perfil nuevoPerfil = new Perfil(perDNI, perNombre, perApellidos, perDireccion, perUser, perPassword);
@@ -237,7 +233,6 @@ public class SIGBInterfaz
             System.out.println("Indique el DNI o alias del usuario: ");
             System.out.print("DNI o usuario: ");
             String user = in.next(); 
-            System.out.println("***********************************************");
             userBuscado = Biblioteca.getInstacia().getGestPerf().buscarPerfil(user);
             if(userBuscado == null){
                 System.out.println("Perfil no encontrado en la biblioteca.");
@@ -272,7 +267,6 @@ public class SIGBInterfaz
             System.out.println("2. Eliminar Material");
             System.out.println("3. Buscar Material");
             System.out.println("0. Salir");
-            System.out.println("***********************************************");
             int opcion;
             System.out.print("Escoja una de las opciones siguientes: ");
             opcion = getInteger(in);
@@ -358,31 +352,26 @@ public class SIGBInterfaz
             String fechaEdicion = in.next();
             System.out.print("Número de páginas: ");
             int numPaginas = getInteger(in);    
-            System.out.println("***********************************************");
             Material nuevoLibro = new Libro(matTitulo, matAutor, stockActual, matPrecio, isbn, fechaEdicion, numPaginas);
             Biblioteca.getInstacia().getGestMat().añadirMaterial(nuevoLibro);
         } else if (tipoMaterial == 2) { // Audio
             System.out.print("Número de pistas: ");
             int numPistas = getInteger(in);      
-            System.out.println("***********************************************");
             Material nuevoAudio = new Audio(matTitulo, matAutor, stockActual, matPrecio, numPistas);
             Biblioteca.getInstacia().getGestMat().añadirMaterial(nuevoAudio);
         } else if (tipoMaterial == 3) { // Video
             System.out.print("Duración del video: ");
             int duracion = getInteger(in);         
-            System.out.println("***********************************************");
             Material nuevoVideo = new Video(matTitulo, matAutor, stockActual, matPrecio, duracion);
             Biblioteca.getInstacia().getGestMat().añadirMaterial(nuevoVideo);
         } else if (tipoMaterial == 4) { // Periodico
             System.out.print("Tematica: ");
             String tematica = in.next();         
-            System.out.println("***********************************************");
             Material nuevoPeriodico = new Periodico(matTitulo, matAutor, stockActual, matPrecio, tematica);
             Biblioteca.getInstacia().getGestMat().añadirMaterial(nuevoPeriodico);
         } else if (tipoMaterial == 5) { // Revista
             System.out.print("Tematica: ");
             String tematica = in.next();         
-            System.out.println("***********************************************");
             Material nuevaRevista = new Revista(matTitulo, matAutor, stockActual, matPrecio, tematica);
             Biblioteca.getInstacia().getGestMat().añadirMaterial(nuevaRevista);
         }
@@ -466,7 +455,6 @@ public class SIGBInterfaz
             System.out.println("Indique el Nombre del Autor, si lo desconoce introduzca 0");
             System.out.print("Autor: ");
             String matAutor = in.next();
-            System.out.println("***********************************************");
             matBuscado = Biblioteca.getInstacia().getGestMat().buscarMaterial(matTitulo, matAutor);
             if(matBuscado == null){
                 System.out.println("Material no encontrado en la biblioteca.");
@@ -504,7 +492,6 @@ public class SIGBInterfaz
             System.out.println("4. Gestión de multas");
             System.out.println("5. Listados de materiales prestados");
             System.out.println("0. Salir");
-            System.out.println("***********************************************");
             int opcion;
             System.out.print("Escoja una de las opciones siguientes: ");
             opcion = getInteger(in);
@@ -519,7 +506,8 @@ public class SIGBInterfaz
                     printPrestamo();
                     break;
                 case 4:
-                    gestionMultas(); 
+                    gestionMultas();
+                    break;
                 case 5:
                     listadosPrestamos();
                     break;
@@ -554,7 +542,6 @@ public class SIGBInterfaz
             System.out.println("4. Préstamos en activo");
             System.out.println("5. Gestión de multas");
             System.out.println("0. Salir");
-            System.out.println("***********************************************");
             int opcion;
             System.out.print("Escoja una de las opciones siguientes: ");
             opcion = getInteger(in);
@@ -572,7 +559,8 @@ public class SIGBInterfaz
                     Biblioteca.getInstacia().getGestPrest().printPrestamosEnActivo((Socio)userUsado);
                     break;
                 case 5:
-                    //gestionMultas(); ** a implementar **
+                    gestionMultas((Socio)userUsado);
+                    break;
                 case 0:
                     salir = true;
                     break;
@@ -658,13 +646,13 @@ public class SIGBInterfaz
     public void listadosPrestamos()
     {
         System.out.println("***********************************************");
-        System.out.print("Indique el tipo de Material que desea imprimir:");
+        System.out.println("Indique el tipo de Material que desea imprimir:");
         System.out.println("1. Libro");
         System.out.println("2. Audio");
         System.out.println("3. Video");
         System.out.println("4. Periodico");
         System.out.println("5. Revista");
-        System.out.println("***********************************************");
+        System.out.print("Indique opción: ");
         int tipoEscogido = getInteger(in);
         if (tipoEscogido == 1){
             ETipoMaterial tipoMatBuscado = ETipoMaterial.LIBRO;
@@ -693,6 +681,16 @@ public class SIGBInterfaz
     {
         Socio socioMultado = (Socio)buscarPerfil();
         Biblioteca.getInstacia().getGestPrest().historialMultas(socioMultado);
+    }
+    
+    /**
+     * Formulario de alta del tipo de Material 
+     * leyendo las entradas del usuario 
+     * 
+     */
+    public void gestionMultas(Socio socio)
+    {
+        Biblioteca.getInstacia().getGestPrest().historialMultas(socio);
     }
     
      // Menús SUSCRIPCIONES

@@ -46,23 +46,23 @@ public class GestorPrestamos
      */
     public void añadirPrestamo(Material matPrestado, Socio socioPrestamo)
     {
-        // comprobar primero que no excede el limite de los prestamos
+        // comprueba primero que no excede el limite de los prestamos
         boolean excedePrestamos = comprobarNPrestamos(socioPrestamo);
         if (excedePrestamos == false){
-            // Se crea el nuevo préstamo asociando la fecha de creación actual
+            // crea el nuevo préstamo asociando la fecha de creación actual
             Date fechaPrestamo = new Date();
             Prestamo nuevoPrestamo = new Prestamo(fechaPrestamo, matPrestado, socioPrestamo, duracionPrestamo);
             if (matPrestado.getStockActual() > 0){
                 prestamos.add(nuevoPrestamo);
                 matPrestado.actualizarStock(-1);    // -1 para eliminar del stock el material
-                socioPrestamo.añadirPrestamos(nuevoPrestamo); // se añade a prestamos en activo del socio
+                socioPrestamo.añadirPrestamos(nuevoPrestamo); // añade a prestamos en activo del socio
             } else {
-                System.out.println("Todos los materiales se encuentran prestados");
+                System.out.println("Actualmente, no hay stock disponible para este material");
                 System.out.println();
                 procesarReserva(nuevoPrestamo);
             }
         } else {
-            System.out.println("Número máximo de préstamos alcanzado");
+            System.out.println("Ha alcanzado el número máximo de préstamos (6)");
             System.out.println();
         }
     }
@@ -192,6 +192,7 @@ public class GestorPrestamos
     public void historialMultas(Socio socio)
     {
         long totalMultas = 0;
+        boolean tieneMultas = false;
         for (Prestamo prestamo : socio.getPrestamosEnActivo()){
             // instanciamos y calculamos la diferencia en dias
             long diferencia = Math.abs(fechaActual.getTime() - prestamo.getFechaDevolucion().getTime());
@@ -199,13 +200,18 @@ public class GestorPrestamos
             if (diferenciaDias > 0){
                 long multa = diferenciaDias * 2;
                 print(prestamo);
-                System.out.println("Deuda: " + multa);
+                System.out.println("Deuda: " + multa + " euros");
+                tieneMultas = true;
                 totalMultas += multa;
-            }else {
-                System.out.println("El usuario no tiene multas");
             }
         }
-        System.out.println("Total acumulado de multas: " + totalMultas);
+        
+        if (tieneMultas){
+            System.out.println("-------------------------");
+            System.out.println("Total acumulado de multas: " + totalMultas + " euros");
+        } else {
+            System.out.println("El usuario no tiene multas");
+        }
     }
 
     /**
@@ -215,7 +221,7 @@ public class GestorPrestamos
      */
     public void print(Prestamo prestamo)
     {
-        System.out.println("***********************************************");
+        System.out.println("-------------------------");
         System.out.println("DNI (Socio): " + prestamo.getSocioPrestamo().getPerDNI());
         System.out.println("Nombre (Socio): " + prestamo.getSocioPrestamo().getPerNombre());
         System.out.println("Material prestado (Título): " + prestamo.getMatPrestado().getMatTitulo());
@@ -231,12 +237,16 @@ public class GestorPrestamos
     public void printPorTipo(ETipoMaterial tipoMatBuscado)
     {
         // recorre el array de prestamos e imprime los que coincidan con el tipo
+        boolean encontrado = false;
         for (Prestamo prestamo : prestamos){
             if (tipoMatBuscado == prestamo.getTipoMat()){
+                encontrado = true;
                 print(prestamo);
-            } else {
-                System.out.println("No hay préstamos por ese tipo de material");
             }
+        }
+        
+        if (!encontrado){
+            System.out.println("No hay préstamos por ese tipo de material");
         }
     }
     

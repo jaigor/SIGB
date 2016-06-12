@@ -94,14 +94,14 @@ public class GestorPerfiles
     public void generarTarjeta(Perfil user)
     {
         System.out.println();
-        System.out.println("****************CARNET**********************"); 
-        System.out.println("****************BIBLIOTECA******************"); 
+        System.out.println("-----------------CARNET---------------------"); 
+        System.out.println("---------------BIBLIOTECA-------------------"); 
         System.out.println("DNI: " + user.getPerDNI());
         System.out.println("Nombre: " + user.getPerNombre() + "    Apellidos: " + user.getPerApellidos());
         System.out.println("Direccion: " + user.getPerDireccion() + "    Perfil: " +
         traductorPermiso(user.getPermisoID()));
-        System.out.println("********************************************"); 
-        System.out.println("********************************************");
+        System.out.println("--------------------------------------------"); 
+        System.out.println("--------------------------------------------");
         System.out.println();
     }
     
