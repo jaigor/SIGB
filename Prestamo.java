@@ -1,5 +1,6 @@
 import java.util.Date;
 import java.util.Calendar;
+import java.io.Serializable;
 
 /**
  * Clase en la que se almacenan los datos necesarios
@@ -8,7 +9,7 @@ import java.util.Calendar;
  * @author Igor Quintela 
  * @version 01/03/2016
  */
-public class Prestamo
+public class Prestamo implements Serializable
 {
     // Definicion de los campos necesarios para la clase Prestámo
     private Date fechaPrestamo;

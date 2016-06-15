@@ -48,6 +48,7 @@ public class GestorMateriales
         } else if(nuevoMaterial instanceof Revista){
             materiales.get(ETipoMaterial.REVISTA).add(nuevoMaterial);
         }
+        System.out.println("Material añadido");
     }
     
     /**
@@ -68,6 +69,7 @@ public class GestorMateriales
         } else if(bajaMaterial instanceof Revista){
             materiales.get(ETipoMaterial.REVISTA).remove(bajaMaterial);
         }
+        System.out.println("Material eliminado.");
     }
     
     /**
@@ -92,14 +94,13 @@ public class GestorMateriales
     }
     
     /**
-    * Buscador complejo usando el Titulo de la obra o el Nombre
-    * del autor y devolviendo el material buscado
+    * Buscador simple usando el Titulo de la obra 
+    * y devolviendo el material buscado
     * 
     * @param  matTitulo   título del item (String)
-    * @param  matAutor   autor del item (String)
     * @return  el material en concreto buscado por el usuario
     */
-    public Material buscarMaterial(String matTitulo, String matAutor)
+    public Material buscarMaterialSimple(String matTitulo)
     {
        // Crea un Array usado como lista de búsqueda por cada tipo de Material
        ArrayList <Material> listaMatLibro = materiales.get(ETipoMaterial.LIBRO);
@@ -109,39 +110,88 @@ public class GestorMateriales
        ArrayList <Material> listaMatRevista = materiales.get(ETipoMaterial.REVISTA);
             
        // Recorre por cada lista comparando si se encuentra el Titulo o Autor de la obra
-       for (Material material : listaMatLibro){
-            if (material.getMatTitulo().equals(matTitulo)){
-                return material;
-            } else if (material.getMatAutor().equals(matAutor)) {
-                return material;
+       for (Material m : listaMatLibro){
+            if (m.getMatTitulo().equals(matTitulo)){
+                return m;
             }
        }
-       for (Material material : listaMatAudio){
-            if (material.getMatTitulo().equals(matTitulo)){
-                return material;
-            } else if (material.getMatAutor().equals(matAutor)) {
-                return material;
+       for (Material m : listaMatAudio){
+            if (m.getMatTitulo().equals(matTitulo)){
+                return m;
             }
        }
-       for (Material material : listaMatVideo){
-            if (material.getMatTitulo().equals(matTitulo)){
-                return material;
-            } else if (material.getMatAutor().equals(matAutor)) {
-                return material;
+       for (Material m : listaMatVideo){
+            if (m.getMatTitulo().equals(matTitulo)){
+                return m;
             }
        }
-       for (Material material : listaMatPeriodico){
-            if (material.getMatTitulo().equals(matTitulo)){
-                return material;
-            } else if (material.getMatAutor().equals(matAutor)) {
-                return material;
+       for (Material m : listaMatPeriodico){
+            if (m.getMatTitulo().equals(matTitulo)){
+                return m;
             }
        }
-       for (Material material : listaMatRevista){
-            if (material.getMatTitulo().equals(matTitulo)){
-                return material;
-            } else if (material.getMatAutor().equals(matAutor)) {
-                return material;
+       for (Material m : listaMatRevista){
+            if (m.getMatTitulo().equals(matTitulo)){
+                return m;
+            }
+       }
+       
+       // Si no se encuentra en la base de datos o los 
+       // datos introducidos no son correctos
+       return null;
+    }
+    
+    /**
+    * Buscador complejo usando el Titulo de la obra o el Nombre
+    * del autor y devolviendo el material buscado
+    * 
+    * @param  matTitulo   título del item (String)
+    * @param  matAutor   autor del item (String)
+    * @return  el material en concreto buscado por el usuario
+    */
+    public Material buscarMaterialMulti(String matTitulo, String matAutor)
+    {
+       // Crea un Array usado como lista de búsqueda por cada tipo de Material
+       ArrayList <Material> listaMatLibro = materiales.get(ETipoMaterial.LIBRO);
+       ArrayList <Material> listaMatAudio = materiales.get(ETipoMaterial.AUDIO);
+       ArrayList <Material> listaMatVideo = materiales.get(ETipoMaterial.VIDEO);
+       ArrayList <Material> listaMatPeriodico = materiales.get(ETipoMaterial.PERIODICO);
+       ArrayList <Material> listaMatRevista = materiales.get(ETipoMaterial.REVISTA);
+            
+       // Recorre por cada lista comparando si se encuentra el Titulo o Autor de la obra
+       for (Material m : listaMatLibro){
+            if (m.getMatTitulo().equals(matTitulo)){
+                return m;
+            } else if (m.getMatAutor().equals(matAutor)) {
+                return m;
+            }
+       }
+       for (Material m : listaMatAudio){
+            if (m.getMatTitulo().equals(matTitulo)){
+                return m;
+            } else if (m.getMatAutor().equals(matAutor)) {
+                return m;
+            }
+       }
+       for (Material m : listaMatVideo){
+            if (m.getMatTitulo().equals(matTitulo)){
+                return m;
+            } else if (m.getMatAutor().equals(matAutor)) {
+                return m;
+            }
+       }
+       for (Material m : listaMatPeriodico){
+            if (m.getMatTitulo().equals(matTitulo)){
+                return m;
+            } else if (m.getMatAutor().equals(matAutor)) {
+                return m;
+            }
+       }
+       for (Material m : listaMatRevista){
+            if (m.getMatTitulo().equals(matTitulo)){
+                return m;
+            } else if (m.getMatAutor().equals(matAutor)) {
+                return m;
             }
        }
        
@@ -159,8 +209,65 @@ public class GestorMateriales
     {
         System.out.println("-------------------------------------------");
         System.out.println("IDMaterial: " + material.getIDMaterial() +
-        ", Título: " + material.getMatTitulo() + ", Autor: " + material.getMatAutor());
-        System.out.println("Inventario: " + material.getStockActual() +
-        ", Precio: " + material.getMatPrecio() + " €");
+        " | Título: " + material.getMatTitulo() + " | Autor: " + material.getMatAutor() +
+        " | Stock: " + material.getStockActual() +" | Precio: " + material.getMatPrecio() + " €");
+        
+        if (material instanceof Libro){
+            Libro libro = (Libro)material;
+            System.out.println("Fecha de Edición: " + libro.getFechaEdicion() +
+            " | ISBN: " + libro.getISBN() + " | Número de páginas: " + libro.getNumPaginas());
+            System.out.println("-----------------Libro---------------------");
+        } else if (material instanceof Audio){
+            Audio audio = (Audio)material;
+            System.out.println("Número de pistas: " + audio.getNumPistas());
+            System.out.println("-----------------Audio---------------------");
+        } else if (material instanceof Video){
+            Video video = (Video)material;
+            System.out.println("Duración: " + video.getDuracion());
+            System.out.println("-----------------Video---------------------");
+        } else if (material instanceof Revista){
+            Revista revista = (Revista)material;
+            System.out.println("Periodicidad: " + revista.getPeriodicidad() + 
+            " | Temática: " + revista.getTematica());
+            System.out.println("-----------------Revista---------------------");
+        } else if (material instanceof Periodico){
+            Periodico periodico = (Periodico)material;
+            System.out.println("Periodicidad: " + periodico.getPeriodicidad() + 
+            " | Temática: " + periodico.getTematica());
+            System.out.println("-----------------Periodico---------------------");
+        }
     }
+    
+    /**
+     * Imprime en pantalla todos los materiales almacenados
+     * hasta ahora
+     * 
+     */
+    public void listadoMateriales()
+    {
+        // Crea un Array por cada tipo de Material
+        ArrayList <Material> listaMatLibro = materiales.get(ETipoMaterial.LIBRO);
+        ArrayList <Material> listaMatAudio = materiales.get(ETipoMaterial.AUDIO);
+        ArrayList <Material> listaMatVideo = materiales.get(ETipoMaterial.VIDEO);
+        ArrayList <Material> listaMatPeriodico = materiales.get(ETipoMaterial.PERIODICO);
+        ArrayList <Material> listaMatRevista = materiales.get(ETipoMaterial.REVISTA);
+       
+        // Recorre por cada lista comparando si se encuentra el Titulo o Autor de la obra
+       for (Material m : listaMatLibro){
+            print(m);
+       }
+       for (Material m : listaMatAudio){
+            print(m);
+       }
+       for (Material m : listaMatVideo){
+            print(m);
+       }
+       for (Material m : listaMatPeriodico){
+            print(m);
+       }
+       for (Material m : listaMatRevista){
+            print(m);
+       }
+    }
+    
 }

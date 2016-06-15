@@ -86,35 +86,5 @@ public class test
         gPr.getPrestamos().add(prest4);
         socio2.añadirPrestamos(prest4);
     }    
-    
-    public void buscaMaterial(){
-        //prueba de buscar un material en la biblioteca
-        Material matBuscado = gM.buscarMaterial("Apocalipse",null);
-        gM.print(matBuscado);
-    }
-    
-    public void tiempo(){
-        //Prestamo prest1 =  new Prestamo(1462989126, mat1, user1, 7);
-    }
-    
-    public void fechaActual()
-    {
-       // se define el formato de la fecha a mostrar
-       DateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-       
-       //consigue la fecha actual
-       Calendar fechaActual = Calendar.getInstance();
-       System.out.println(formatoFecha.format(fechaActual.getTime()));
-       
-    }
-    
-    public void calcFecha()
-    {
-       //consigue la fecha actual
-       //Calendar fechaActual = Calendar.getInstance();
-       //System.out.println(fechaActual);
-       
-       long diff = Math.abs(fechaActual.getTime() - fechaActual.getTime());
-       long diffDays = diff / (24 * 60 * 60 * 1000);
-    }
+        
 }

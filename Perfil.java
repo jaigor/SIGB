@@ -1,3 +1,5 @@
+import java.io.Serializable;
+
 /**
  * Esta es la clase abstracta en la que se definen los métodos generales 
  * que afectan a distintos tipos de usuario pertenecientes a la biblioteca. 
@@ -9,7 +11,7 @@
  * @author Igor Quintela 
  * @version 01/03/2016
  */
-public class Perfil
+public class Perfil implements Serializable
 {
     // Campos genéricos de los perfiles
     private String perDNI;

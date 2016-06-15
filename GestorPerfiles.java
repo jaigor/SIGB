@@ -42,7 +42,7 @@ public class GestorPerfiles
         // se comprueba que el perfil (DNI) no está en la base de datos
         if (buscarPerfil(nuevoPerfil.getPerDNI()) == null){
             perfiles.add(nuevoPerfil);
-            System.out.println("Perfil: "+ nuevoPerfil.getPerDNI() +" añadido correctamente");
+            System.out.println("Perfil "+ nuevoPerfil.getPerDNI() +" añadido correctamente");
         } else {
             System.out.println("El perfil que intenta añadir ya se encuentra en la base de datos");
         }
@@ -58,7 +58,7 @@ public class GestorPerfiles
         // se comprueba que el perfil(DNI) está en la base de datos
         if (buscarPerfil(bajaPerfil.getPerDNI()) != null){
             perfiles.remove(bajaPerfil);
-            System.out.println("Perfil: eliminado correctamente");
+            System.out.println("Perfil eliminado correctamente");
         } else {
             System.out.println("El perfil que intenta eliminar no se encuentra en la base de datos");
         }
@@ -73,11 +73,11 @@ public class GestorPerfiles
     public Perfil buscarPerfil(String stringBuscado)
     { 
         if (perfiles.size() > 0){
-            for (Perfil perfil : perfiles) {
-                if (perfil.getPerDNI().equals(stringBuscado)){
-                    return perfil;
-                }else if (perfil.getPerUser().equals(stringBuscado)){
-                    return perfil;
+            for (Perfil p : perfiles) {
+                if (p.getPerDNI().equals(stringBuscado)){
+                    return p;
+                }else if (p.getPerUser().equals(stringBuscado)){
+                    return p;
                 }
             }
         }
@@ -97,8 +97,8 @@ public class GestorPerfiles
         System.out.println("-----------------CARNET---------------------"); 
         System.out.println("---------------BIBLIOTECA-------------------"); 
         System.out.println("DNI: " + user.getPerDNI());
-        System.out.println("Nombre: " + user.getPerNombre() + "    Apellidos: " + user.getPerApellidos());
-        System.out.println("Direccion: " + user.getPerDireccion() + "    Perfil: " +
+        System.out.println("Nombre: " + user.getPerNombre() + "|  Apellidos: " + user.getPerApellidos());
+        System.out.println("Direccion: " + user.getPerDireccion() + "|    Perfil: " +
         traductorPermiso(user.getPermisoID()));
         System.out.println("--------------------------------------------"); 
         System.out.println("--------------------------------------------");
@@ -136,8 +136,8 @@ public class GestorPerfiles
      */
     public boolean controlAcceso(String user, String password)
     {
-        for (Perfil perfil : perfiles){
-            if (perfil.getPerUser().equals(user) && perfil.getPerPassword().equals(password)) {
+        for (Perfil p : perfiles){
+            if (p.getPerUser().equals(user) && p.getPerPassword().equals(password)) {
                 return true;
             }
         }

@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.params=matTitulo\ matAutor\ stockActual\ matPrecio\ duracion
 comment0.target=Video(java.lang.String,\ java.lang.String,\ int,\ double,\ int)
-comment0.text=\r\n\ Instaciaci\u00F3n\ de\ campos\ propios\ y\ gen\u00E9ricos\ del\ Material\r\n\ \r\n\ @param\ matTitulo\ \ \ \ \ Nombre\ de\ la\ obra/item.\r\n\ @param\ matAutor\ \ \ \ \ \ Nombre\ del\ autor\ de\ la\ obra.\r\n\ @param\ matStock\ \ \ \ \ \ N\u00FAmero\ de\ elementos\ que\ hay\ en\ base\ de\ datos.\r\n\ @param\ matPrecio\ \ \ \ \ Cantidad\ de\ euros\ que\ cuesta\ el\ elemento.\r\n\ @param\ duracion\ \ \ \ \ \ Minutos\ totales\ de\ duraci\u00F3n\ del\ video.\r\n
+comment0.text=\n\ Instaciaci\u00F3n\ de\ campos\ propios\ y\ gen\u00E9ricos\ del\ Material\n\ \n\ @param\ matTitulo\ \ \ \ \ Nombre\ de\ la\ obra/item.\n\ @param\ matAutor\ \ \ \ \ \ Nombre\ del\ autor\ de\ la\ obra.\n\ @param\ matStock\ \ \ \ \ \ N\u00FAmero\ de\ elementos\ que\ hay\ en\ base\ de\ datos.\n\ @param\ matPrecio\ \ \ \ \ Cantidad\ de\ euros\ que\ cuesta\ el\ elemento.\n\ @param\ duracion\ \ \ \ \ \ Minutos\ totales\ de\ duraci\u00F3n\ del\ video.\n
 comment1.params=
 comment1.target=int\ getDuracion()
-comment1.text=\r\n\ Devuelve\ los\ minutos\ totales\ de\ duraci\u00F3n\ del\ objeto\ de\ video\r\n\ \r\n\ @return\ \ n\u00FAmero\ entero\ de\ los\ minutos\ de\ duracion\ \r\n
+comment1.text=\n\ Devuelve\ los\ minutos\ totales\ de\ duraci\u00F3n\ del\ objeto\ de\ video\n\ \n\ @return\ \ n\u00FAmero\ entero\ de\ los\ minutos\ de\ duracion\ \n
 numComments=2

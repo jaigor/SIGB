@@ -1,3 +1,4 @@
+import java.io.Serializable;
 
 /**
  * Esta es la clase abstracta en la que se definen los métodos generales 
@@ -12,7 +13,7 @@
  * @author Igor Quintela 
  * @version 01/03/2016
  */
-public abstract class Material
+public abstract class Material implements Serializable
 {
     // definición de los campos genéricos
     private int idMaterial;
@@ -117,6 +118,17 @@ public abstract class Material
             stockActual = stockActual + dato;
             System.out.println("Stock modificado correctamente");
         }
+    }
+    
+    /**
+     * 
+     * (non-Javadoc)
+     * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+        return "Material [IDMaterial:" + idMaterial + " | Titulo:" + matTitulo + 
+        " | Autor:" + matAutor + "]";
     }
     
 }

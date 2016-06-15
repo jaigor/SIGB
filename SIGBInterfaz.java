@@ -1,5 +1,5 @@
 import java.util.Scanner;
-import java.lang.NullPointerException;
+import java.lang.ClassCastException;
 
 /**
  * Clase usada para presentar textualmente el
@@ -75,6 +75,7 @@ public class SIGBInterfaz
             boolean salir = false;
             do {
                 System.out.println("***********************************************");
+                System.out.println("----ADMIN----");
                 System.out.println("Menú opciones");
                 System.out.println("1. Perfiles");
                 System.out.println("2. Materiales");
@@ -95,7 +96,8 @@ public class SIGBInterfaz
                         menuPrestamos();
                         break;
                     case 4:
-                        //menuSuscripciones(); ** a implementar **
+                        menuSuscripciones();
+                        break;
                     case 0:
                         salir = true;
                         break;
@@ -110,6 +112,7 @@ public class SIGBInterfaz
             boolean salir = false;
             do {
                 System.out.println("***********************************************");
+                System.out.println("----SOCIO----");
                 System.out.println("Menú opciones");
                 System.out.println("1. Préstamos");
                 System.out.println("2. Suscripciones");
@@ -122,12 +125,13 @@ public class SIGBInterfaz
                     case 1:
                         menuPrestamos(user);
                         break;
-                    case 2: 
-                         //menuSuscripciones(); ** a implementar **
+                    case 2:
+                        menuSuscripciones(user);
+                        break;
                     case 3: 
-                         Perfil userBuscado = Biblioteca.getInstacia().getGestPerf().buscarPerfil(user);
-                         Biblioteca.getInstacia().getGestPerf().generarTarjeta(userBuscado);
-                         break;
+                        Perfil userBuscado = Biblioteca.getInstacia().getGestPerf().buscarPerfil(user);
+                        Biblioteca.getInstacia().getGestPerf().generarTarjeta(userBuscado);
+                        break;
                     case 0:
                         salir = true;
                         break;
@@ -153,6 +157,7 @@ public class SIGBInterfaz
         boolean salir = false;
         do {
             System.out.println("***********************************************");
+            System.out.println("----Perfiles----");
             System.out.println("1. Añadir Perfil");
             System.out.println("2. Eliminar Perfil");
             System.out.println("3. Buscar Perfil (Generacion Tarjeta)");
@@ -190,6 +195,7 @@ public class SIGBInterfaz
     public void altaPerfil()
     {
         System.out.println("***********************************************");
+        System.out.println("----Alta Perfil----");
         System.out.println("Introduzca los datos del formulario: ");
         System.out.print("DNI: ");
         String perDNI = in.next(); 
@@ -230,6 +236,7 @@ public class SIGBInterfaz
         Perfil userBuscado = null;
         while(userBuscado == null){
             System.out.println("***********************************************");
+            System.out.println("----Buscar Perfil----");
             System.out.println("Indique el DNI o alias del usuario: ");
             System.out.print("DNI o usuario: ");
             String user = in.next(); 
@@ -263,9 +270,12 @@ public class SIGBInterfaz
         boolean salir = false;
         do {
             System.out.println("***********************************************");
+            System.out.println("----Materiales----");
             System.out.println("1. Añadir Material");
             System.out.println("2. Eliminar Material");
-            System.out.println("3. Buscar Material");
+            System.out.println("3. Buscar Material (1 campo)");
+            System.out.println("4. Buscar Material (2 campos)");
+            System.out.println("5. Listado de Materiales");
             System.out.println("0. Salir");
             int opcion;
             System.out.print("Escoja una de las opciones siguientes: ");
@@ -278,7 +288,13 @@ public class SIGBInterfaz
                     bajaMaterial();
                     break;
                 case 3:
-                    printMaterial();
+                    printMaterialSimple();
+                    break;
+                case 4:
+                    printMaterialMulti();
+                    break;    
+                case 5:
+                    Biblioteca.getInstacia().getGestMat().listadoMateriales();
                     break;
                 case 0:
                     salir = true;
@@ -300,7 +316,7 @@ public class SIGBInterfaz
     public void altaTipoMaterial()
     {
         System.out.println("***********************************************");
-        System.out.println("Alta Material");
+        System.out.println("----Alta Material----");
         System.out.println("1. Libro");
         System.out.println("2. Audio");
         System.out.println("3. Video");
@@ -332,6 +348,7 @@ public class SIGBInterfaz
         }
 
         System.out.println("Introduzca los datos para añadir Material.");
+        System.out.println("----Alta Material----");
         System.out.print("Titulo: ");
         String matTitulo = in.next(); 
         System.out.print("Autor: ");
@@ -375,8 +392,6 @@ public class SIGBInterfaz
             Material nuevaRevista = new Revista(matTitulo, matAutor, stockActual, matPrecio, tematica);
             Biblioteca.getInstacia().getGestMat().añadirMaterial(nuevaRevista);
         }
-        
-        System.out.print("El material se ha añadido correctamente.");
     }
     
     /**
@@ -434,7 +449,7 @@ public class SIGBInterfaz
      */
     public void bajaMaterial()
     {
-        Material matBaja = buscarMaterial();
+        Material matBaja = buscarMaterialSimple();
         Biblioteca.getInstacia().getGestMat().eliminarMaterial(matBaja);
         System.out.print("El material se ha eliminado correctamente.");
     }
@@ -444,18 +459,71 @@ public class SIGBInterfaz
      * del parametro, en el que se busca por Titulo o Autor
      * @return  el Material Buscado
      */
-    public Material buscarMaterial()
+    public Material buscarMaterialSimple()
     {
         Material matBuscado = null;
         while(matBuscado == null){
             System.out.println("***********************************************");
-            System.out.println("Indique el Titulo del material, si lo desconoce introduzca 0");
+            System.out.println("----Buscar Material----");
+            System.out.println("Indique el Titulo del Material");
+            System.out.print("Titulo: ");
+            String matTitulo = in.next();;
+            matBuscado = Biblioteca.getInstacia().getGestMat().buscarMaterialSimple(matTitulo);
+            if(matBuscado == null){
+                System.out.println("Material no encontrado en la biblioteca.");
+                System.out.println();
+            }
+        }
+        return matBuscado;
+    }
+    
+    /**
+     * Formulario de búsqueda de material, dependiendo 
+     * del parametro, en el que se busca por Titulo o Autor
+     * @return  el Material Buscado
+     */
+    public Material buscarMaterialMulti()
+    {
+        Material matBuscado = null;
+        while(matBuscado == null){
+            System.out.println("***********************************************");
+            System.out.println("----Buscar Material----");
+            System.out.println("Indique el Titulo del Material");
             System.out.print("Titulo: ");
             String matTitulo = in.next();
-            System.out.println("Indique el Nombre del Autor, si lo desconoce introduzca 0");
+            System.out.println("Indique el Nombre del Autor");
             System.out.print("Autor: ");
             String matAutor = in.next();
-            matBuscado = Biblioteca.getInstacia().getGestMat().buscarMaterial(matTitulo, matAutor);
+            matBuscado = Biblioteca.getInstacia().getGestMat().buscarMaterialMulti(matTitulo, matAutor);
+            if(matBuscado == null){
+                System.out.println("Material no encontrado en la biblioteca.");
+                System.out.println();
+            }
+        }
+        return matBuscado;
+    }
+    
+    /**
+     * Formulario de búsqueda de material, dependiendo 
+     * del parametro, en el que se busca por Titulo o Autor
+     * @return  el Material Buscado
+     */
+    public MaterialSuscripcion buscarMatSuscripcion()
+    {
+        MaterialSuscripcion matBuscado = null;
+        while(matBuscado == null){
+            System.out.println("***********************************************");
+            System.out.println("----Buscar Material (Suscripción)----");
+            System.out.println("Indique el Titulo del Material");
+            System.out.print("Titulo: ");
+            String matTitulo = in.next();
+            try{
+                matBuscado = (MaterialSuscripcion)Biblioteca.getInstacia().getGestMat().buscarMaterialSimple(matTitulo);
+            } 
+            catch(Exception e){
+                System.out.println("El material escogido no es suscribible.");
+            }
+            
             if(matBuscado == null){
                 System.out.println("Material no encontrado en la biblioteca.");
                 System.out.println();
@@ -468,9 +536,19 @@ public class SIGBInterfaz
      * Imprimir el material, buscándolo primero
      * 
      */
-    public void printMaterial()
+    public void printMaterialSimple()
     {
-        Material matPrint = buscarMaterial();
+        Material matPrint = buscarMaterialSimple();
+        Biblioteca.getInstacia().getGestMat().print(matPrint);
+    }
+    
+    /**
+     * Imprimir el material, buscándolo primero
+     * 
+     */
+    public void printMaterialMulti()
+    {
+        Material matPrint = buscarMaterialMulti();
         Biblioteca.getInstacia().getGestMat().print(matPrint);
     }
     
@@ -486,6 +564,7 @@ public class SIGBInterfaz
         boolean salir = false;
         do {
             System.out.println("***********************************************");
+            System.out.println("----Préstamos----");
             System.out.println("1. Añadir Préstamo");
             System.out.println("2. Eliminar Préstamo");
             System.out.println("3. Buscar Préstamo");
@@ -536,6 +615,7 @@ public class SIGBInterfaz
         Perfil userUsado = Biblioteca.getInstacia().getGestPerf().buscarPerfil(user);
         do {
             System.out.println("***********************************************");
+            System.out.println("----Préstamos----");
             System.out.println("1. Añadir Préstamo");
             System.out.println("2. Eliminar Préstamo");
             System.out.println("3. Historial de Préstamos");
@@ -547,7 +627,7 @@ public class SIGBInterfaz
             opcion = getInteger(in);
             switch(opcion) {
                 case 1:
-                    altaPrestamo(userUsado);
+                    altaPrestamo((Socio)userUsado);
                     break;
                 case 2: 
                     bajaPrestamo();
@@ -580,7 +660,7 @@ public class SIGBInterfaz
      */
     public void altaPrestamo()
     {
-        Material matPrestado = buscarMaterial();
+        Material matPrestado = buscarMaterialSimple();
         Socio socioPrestamo = (Socio)buscarPerfil();
         Biblioteca.getInstacia().getGestPrest().añadirPrestamo(matPrestado, socioPrestamo);
     }
@@ -590,10 +670,10 @@ public class SIGBInterfaz
      * leyendo las entradas del usuario 
      * 
      */
-    public void altaPrestamo(Perfil userUsado)
+    public void altaPrestamo(Socio userUsado)
     {
-        Material matPrestado = buscarMaterial();
-        Biblioteca.getInstacia().getGestPrest().añadirPrestamo(matPrestado, (Socio)userUsado);  
+        Material matPrestado = buscarMaterialSimple();
+        Biblioteca.getInstacia().getGestPrest().añadirPrestamo(matPrestado, userUsado);  
     }
     
     /**
@@ -616,7 +696,7 @@ public class SIGBInterfaz
     {
         Prestamo prestamoBuscado = null;
         while(prestamoBuscado == null){
-            Material matPrestado = buscarMaterial();
+            Material matPrestado = buscarMaterialSimple();
             Socio socioPrestamo = (Socio)buscarPerfil();
             prestamoBuscado = Biblioteca.getInstacia().getGestPrest().buscarPrestamo(matPrestado, socioPrestamo);
             if(prestamoBuscado == null){
@@ -646,6 +726,7 @@ public class SIGBInterfaz
     public void listadosPrestamos()
     {
         System.out.println("***********************************************");
+        System.out.println("----Préstamos----");
         System.out.println("Indique el tipo de Material que desea imprimir:");
         System.out.println("1. Libro");
         System.out.println("2. Audio");
@@ -693,6 +774,173 @@ public class SIGBInterfaz
         Biblioteca.getInstacia().getGestPrest().historialMultas(socio);
     }
     
-     // Menús SUSCRIPCIONES
+     // Menús SUSCRIPCIONES (admin y user)
+    /**
+     * Formulario de alta del tipo de Material 
+     * leyendo las entradas del usuario 
+     * 
+     */
+    public void menuSuscripciones()
+    {
+        // inicio del menú Suscripciones
+        boolean salir = false;
+        do {
+            System.out.println("***********************************************");
+            System.out.println("----Suscripciones----");
+            System.out.println("1. Añadir Suscripción");
+            System.out.println("2. Eliminar Suscripción");
+            System.out.println("3. Buscar Suscripción");
+            System.out.println("4. Listado de Suscripciones");
+            System.out.println("0. Salir");
+            int opcion;
+            System.out.print("Escoja una de las opciones siguientes: ");
+            opcion = getInteger(in);
+            switch(opcion) {
+                case 1:
+                    altaSuscripcion();
+                    break;
+                case 2: 
+                    bajaSuscripcion();
+                    break;
+                case 3:
+                    printSuscripcion();
+                    break;
+                case 4:
+                    Biblioteca.getInstacia().getGestSusc().listadoSuscripciones();
+                    break;
+                case 0:
+                    salir = true;
+                    break;
+                default:
+                    System.out.println("Error, Vuelva a intentarlo");
+                    System.out.println();
+            }
+        }
+        while (!salir);
+        menuAcceso();
+    }
     
+    /**
+     * Formulario de alta del tipo de Material 
+     * leyendo las entradas del usuario 
+     * 
+     */
+    public void menuSuscripciones(String user)
+    {
+        boolean salir = false;
+        Perfil perfilSuscrito = Biblioteca.getInstacia().getGestPerf().buscarPerfil(user);
+        Socio socioSuscrito = (Socio)perfilSuscrito;
+        do {
+            System.out.println("***********************************************");
+            System.out.println("----Suscripciones----");
+            System.out.println("1. Alta Suscripción");
+            System.out.println("2. Baja Suscripción");
+            System.out.println("3. Ver Materiales suscritos");
+            System.out.println("0. Salir");
+            int opcion;
+            System.out.print("Escoja una de las opciones siguientes: ");
+            opcion = getInteger(in);
+            switch(opcion) {
+                case 1:
+                    altaSuscripcion(socioSuscrito);
+                    break;
+                case 2: 
+                    bajaSuscripcion(socioSuscrito);
+                    break;
+                case 3:
+                    for (MaterialSuscripcion matSuscrito : socioSuscrito.getListaMatSuscritos()){
+                        Biblioteca.getInstacia().getGestMat().print(matSuscrito);
+                    }
+                    break;
+                case 0:
+                    salir = true;
+                    break;
+                default:
+                    System.out.println("Error, Vuelva a intentarlo");
+                    System.out.println();
+            }
+        }
+        while (!salir);
+        menuAcceso();
+    }
+    
+    /**
+     * Formulario de alta del tipo de Material 
+     * leyendo las entradas del usuario 
+     * 
+     */
+    public void altaSuscripcion()
+    {
+        MaterialSuscripcion matSuscrito = buscarMatSuscripcion();
+        Socio socioSuscrito = (Socio)buscarPerfil();
+        Suscripcion nuevaSuscripcion = new Suscripcion(socioSuscrito, matSuscrito);
+        Biblioteca.getInstacia().getGestSusc().añadirSuscripcion(nuevaSuscripcion);
+    }
+    
+        /**
+     * Formulario de alta del tipo de Material 
+     * leyendo las entradas del usuario 
+     * 
+     */
+    public void altaSuscripcion(Socio socioSuscrito)
+    {
+        MaterialSuscripcion matSuscrito = buscarMatSuscripcion();
+        Suscripcion nuevaSuscripcion = new Suscripcion(socioSuscrito, matSuscrito);
+        Biblioteca.getInstacia().getGestSusc().añadirSuscripcion(nuevaSuscripcion);
+    }
+    
+     /**
+     * Formulario de alta del tipo de Material 
+     * leyendo las entradas del usuario 
+     * 
+     */
+    public void bajaSuscripcion()
+    {
+        Suscripcion bajaSuscripcion = buscarSuscripcion();
+        Biblioteca.getInstacia().getGestSusc().eliminarSuscripcion(bajaSuscripcion);
+    }
+    
+    /**
+     * Formulario de alta del tipo de Material 
+     * leyendo las entradas del usuario 
+     * 
+     */
+    public void bajaSuscripcion(Socio socioSuscrito)
+    {
+        MaterialSuscripcion matSuscrito = buscarMatSuscripcion();
+        Suscripcion suscripcionBuscada = Biblioteca.getInstacia().getGestSusc().buscarSuscripcion(socioSuscrito, matSuscrito);
+        Biblioteca.getInstacia().getGestSusc().eliminarSuscripcion(suscripcionBuscada);
+    }
+    
+    /**
+     * Formulario de alta del tipo de Material 
+     * leyendo las entradas del usuario 
+     * 
+     */
+    public Suscripcion buscarSuscripcion()
+    {
+        Suscripcion suscripcionBuscada = null;
+        while(suscripcionBuscada == null){
+            MaterialSuscripcion matSuscrito = buscarMatSuscripcion();
+            Socio socioSuscrito = (Socio)buscarPerfil();
+            suscripcionBuscada = Biblioteca.getInstacia().getGestSusc().buscarSuscripcion(socioSuscrito, matSuscrito);
+            if(suscripcionBuscada == null){
+                System.out.println("El usuario no tiene suscripciones a ese Material");
+                System.out.println();
+            }
+        }
+        return suscripcionBuscada;
+    }
+    
+    /**
+     * Formulario de alta del tipo de Material 
+     * leyendo las entradas del usuario 
+     * 
+     */
+    public void printSuscripcion()
+    {
+        Suscripcion suscripcionBuscada = buscarSuscripcion();
+        Biblioteca.getInstacia().getGestSusc().printSuscripcion(suscripcionBuscada);
+    }
+
 }    

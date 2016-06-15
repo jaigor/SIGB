@@ -56,6 +56,7 @@ public class GestorPrestamos
                 prestamos.add(nuevoPrestamo);
                 matPrestado.actualizarStock(-1);    // -1 para eliminar del stock el material
                 socioPrestamo.añadirPrestamos(nuevoPrestamo); // añade a prestamos en activo del socio
+                System.out.println("Préstamo añadido");
             } else {
                 System.out.println("Actualmente, no hay stock disponible para este material");
                 System.out.println();
@@ -76,11 +77,9 @@ public class GestorPrestamos
      */
     public Prestamo buscarPrestamo(Material matPrestado, Socio socioPrestamo)
     {
-        for (Prestamo prestamo : prestamos){
-            if (prestamo.getMatPrestado().equals(matPrestado)){
-                return prestamo;
-            } else if (prestamo.getSocioPrestamo().equals(socioPrestamo)){
-                return prestamo;
+        for (Prestamo p : prestamos){
+            if (p.getMatPrestado().equals(matPrestado) && p.getSocioPrestamo().equals(socioPrestamo)){
+                return p;
             }
         }
         // Si no se encuentra en la base de datos o los 
@@ -116,11 +115,11 @@ public class GestorPrestamos
         // se hace una búsqueda por todos los usuarios que tienen
         // un prestamo con ese material y se les avisa.
         int matBuscado = nuevaReserva.getMatPrestado().getIDMaterial();
-        for (Prestamo prestamo : prestamos){
-            int matPrestado = prestamo.getMatPrestado().getIDMaterial();
+        for (Prestamo p : prestamos){
+            int matPrestado = p.getMatPrestado().getIDMaterial();
             if (matPrestado == matBuscado){
-                Socio userPrestamo = prestamo.getSocioPrestamo();
-                System.out.println("Enviar aviso para entregar material a " + userPrestamo);
+                Socio userPrestamo = p.getSocioPrestamo();
+                System.out.println("Enviar aviso para entregar material a " + userPrestamo.getPerNombre());
             }
         }
     }
@@ -142,6 +141,8 @@ public class GestorPrestamos
        }
        // damos de baja el prestamo de la coleccion
        prestamos.remove(bajaPrestamo);
+       System.out.println("Préstamo eliminado");
+       
        // se elimina de los prestamos en activo del socio
        bajaPrestamo.getSocioPrestamo().eliminarPrestamo(bajaPrestamo);
        
@@ -149,10 +150,10 @@ public class GestorPrestamos
        // pero antes se verifica que existan reservas
        if (reservas.size() > 0){
            int matDevuelto = bajaPrestamo.getMatPrestado().getIDMaterial();
-           for (Prestamo reserva : reservas){
-               int matReservado = reserva.getMatPrestado().getIDMaterial();
+           for (Prestamo r : reservas){
+               int matReservado = r.getMatPrestado().getIDMaterial();
                if (matReservado == matDevuelto){
-                   Socio userReserva = reserva.getSocioPrestamo();
+                   Socio userReserva = r.getSocioPrestamo();
                    System.out.println("Enviar aviso de material devuelto a " + userReserva);
                } else {
                    // 1 para devolverlo al stock del material y dejarlo como libre
@@ -238,10 +239,10 @@ public class GestorPrestamos
     {
         // recorre el array de prestamos e imprime los que coincidan con el tipo
         boolean encontrado = false;
-        for (Prestamo prestamo : prestamos){
-            if (tipoMatBuscado == prestamo.getTipoMat()){
+        for (Prestamo p : prestamos){
+            if (tipoMatBuscado == p.getTipoMat()){
                 encontrado = true;
-                print(prestamo);
+                print(p);
             }
         }
         
@@ -261,8 +262,8 @@ public class GestorPrestamos
         if (socio.getHistorialPrestamo().size() == 0){
             System.out.println("No hay préstamos en el historial");
         } else {
-            for (Prestamo prestamo : socio.getHistorialPrestamo()){
-                print(prestamo);
+            for (Prestamo p : socio.getHistorialPrestamo()){
+                print(p);
             }
         }
     }
@@ -278,8 +279,8 @@ public class GestorPrestamos
         if (socio.getPrestamosEnActivo().size() == 0){
             System.out.println("No hay préstamos en activo");
         } else {
-            for (Prestamo prestamo : socio.getPrestamosEnActivo()){
-                print(prestamo);
+            for (Prestamo p : socio.getPrestamosEnActivo()){
+                print(p);
             }
         }
     }

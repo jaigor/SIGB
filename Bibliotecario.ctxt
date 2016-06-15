@@ -1,5 +1,5 @@
 #BlueJ class context
 comment0.params=perDNI\ perNombre\ perApellidos\ perDireccion\ perUser\ perPassword
 comment0.target=Bibliotecario(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
-comment0.text=\r\n\ Inicializa\ el\ usuario\ Bibliotecario\r\n\ \r\n\ @param\ perDNI\ \ \ \ \ \ \ \ N\u00FAmero\ y\ letra\ del\ DNI\ del\ usuario.\r\n\ @param\ perNombre\ \ \ \ \ Nombre\ del\ usuario.\r\n\ @param\ perApellidos\ \ Apellidos\ del\ usuario.\r\n\ @param\ perDireccion\ \ Direccion\ local\ del\ usuario.\r\n\ @param\ perUser\ \ \ \ \ \ \ Nombre/nick\ del\ usuario.\r\n\ @param\ perPassword\ \ \ Password\ del\ usuario.\r\n
+comment0.text=\n\ Inicializa\ el\ usuario\ Bibliotecario\n\ \n\ @param\ perDNI\ \ \ \ \ \ \ \ N\u00FAmero\ y\ letra\ del\ DNI\ del\ usuario.\n\ @param\ perNombre\ \ \ \ \ Nombre\ del\ usuario.\n\ @param\ perApellidos\ \ Apellidos\ del\ usuario.\n\ @param\ perDireccion\ \ Direccion\ local\ del\ usuario.\n\ @param\ perUser\ \ \ \ \ \ \ Nombre/nick\ del\ usuario.\n\ @param\ perPassword\ \ \ Password\ del\ usuario.\n
 numComments=1

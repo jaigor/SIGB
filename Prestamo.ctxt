@@ -1,20 +1,20 @@
 #BlueJ class context
 comment0.params=fechaPrestamo\ matPrestado\ socioPrestamo\ duracionPrestamo
 comment0.target=Prestamo(java.util.Date,\ Material,\ Socio,\ int)
-comment0.text=\r\n\ Da\ de\ alta\ los\ campos\ gen\u00E9ricos\ de\ un\ material\r\n\ \r\n\ @param\ fechaPrestamo\ \ \ \ \ Fecha\ en\ la\ que\ se\ ha\ iniciado\ el\ prestamo.\r\n\ @param\ matPrestado\ \ \ \ \ \ \ Material\ que\ se\ prestado.\r\n\ @param\ socioPrestamo\ \ \ \ \ Socio\ al\ que\ se\ le\ hace\ el\ pr\u00E9stamo.\r\n\ @param\ duracionPrestamo\ \ Duraci\u00F3n\ en\ d\u00EDas\ del\ Pr\u00E9stamo.\r\n
+comment0.text=\n\ Da\ de\ alta\ los\ campos\ gen\u00E9ricos\ de\ un\ material\n\ \n\ @param\ fechaPrestamo\ \ \ \ \ Fecha\ en\ la\ que\ se\ ha\ iniciado\ el\ prestamo.\n\ @param\ matPrestado\ \ \ \ \ \ \ Material\ que\ se\ prestado.\n\ @param\ socioPrestamo\ \ \ \ \ Socio\ al\ que\ se\ le\ hace\ el\ pr\u00E9stamo.\n\ @param\ duracionPrestamo\ \ Duraci\u00F3n\ en\ d\u00EDas\ del\ Pr\u00E9stamo.\n
 comment1.params=
 comment1.target=java.util.Date\ getFechaPrestamo()
-comment1.text=\r\n\ Devuelve\ la\ fecha\ en\ la\ que\ se\ hizo\ el\ prestamo\r\n\ \r\n\ @return\ \ Fecha\ (Date)\ del\ prestamo\ \r\n
+comment1.text=\n\ Devuelve\ la\ fecha\ en\ la\ que\ se\ hizo\ el\ prestamo\n\ \n\ @return\ \ Fecha\ (Date)\ del\ prestamo\ \n
 comment2.params=
 comment2.target=Material\ getMatPrestado()
-comment2.text=\r\n\ Devuelve\ el\ material\ que\ se\ ha\ prestado\r\n\ \r\n\ @return\ \ Material\ (clase)\ prestado\ \r\n
+comment2.text=\n\ Devuelve\ el\ material\ que\ se\ ha\ prestado\n\ \n\ @return\ \ Material\ (clase)\ prestado\ \n
 comment3.params=
 comment3.target=ETipoMaterial\ getTipoMat()
-comment3.text=\r\n\ Devuelve\ el\ tipo\ del\ material\ prestado\r\n\ \r\n\ @return\ \ Material\ (clase)\ prestado\ \r\n
+comment3.text=\n\ Devuelve\ el\ tipo\ del\ material\ prestado\n\ \n\ @return\ \ Material\ (clase)\ prestado\ \n
 comment4.params=
 comment4.target=Socio\ getSocioPrestamo()
-comment4.text=\r\n\ Devuelve\ el\ socio\ al\ que\ se\ le\ ha\ prestado\ el\ material\r\n\ \r\n\ @return\ \ Socio\ (clase)\ que\ tiene\ el\ material\ \r\n
+comment4.text=\n\ Devuelve\ el\ socio\ al\ que\ se\ le\ ha\ prestado\ el\ material\n\ \n\ @return\ \ Socio\ (clase)\ que\ tiene\ el\ material\ \n
 comment5.params=
 comment5.target=java.util.Date\ getFechaDevolucion()
-comment5.text=\r\n\ Devuelve\ la\ fecha\ exacta\ de\ devoluci\u00F3n\ del\ material\r\n\ \r\n\ @return\ \ Fecha\ (Date)\ con\ la\ que\ se\ tiene\ que\ devolver\ el\ material\ \r\n
+comment5.text=\n\ Devuelve\ la\ fecha\ exacta\ de\ devoluci\u00F3n\ del\ material\n\ \n\ @return\ \ Fecha\ (Date)\ con\ la\ que\ se\ tiene\ que\ devolver\ el\ material\ \n
 numComments=6
