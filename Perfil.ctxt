@@ -1,29 +1,29 @@
 #BlueJ class context
 comment0.params=perDNI\ perNombre\ perApellidos\ perDireccion\ perUser\ perPassword
 comment0.target=Perfil(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
-comment0.text=\n\ Da\ de\ alta\ los\ campos\ gen\u00E9ricos\ de\ un\ perfil\ de\ usuario\n\ \n\ @param\ perDNI\ \ \ \ \ \ \ \ N\u00FAmero\ y\ letra\ del\ DNI\ del\ usuario.\n\ @param\ perNombre\ \ \ \ \ Nombre\ del\ usuario.\n\ @param\ perApellidos\ \ Apellidos\ del\ usuario.\n\ @param\ perDireccion\ \ Direccion\ local\ del\ usuario.\n\ @param\ perUser\ \ \ \ \ \ \ Alias/nick\ del\ usuario.\n\ @param\ perPassword\ \ \ Password\ del\ usuario.\n
+comment0.text=\r\n\ Da\ de\ alta\ los\ campos\ gen\u00E9ricos\ de\ un\ perfil\ de\ usuario\r\n\ \r\n\ @param\ perDNI\ \ \ \ \ \ \ \ N\u00FAmero\ y\ letra\ del\ DNI\ del\ usuario.\r\n\ @param\ perNombre\ \ \ \ \ Nombre\ del\ usuario.\r\n\ @param\ perApellidos\ \ Apellidos\ del\ usuario.\r\n\ @param\ perDireccion\ \ Direccion\ local\ del\ usuario.\r\n\ @param\ perUser\ \ \ \ \ \ \ Alias/nick\ del\ usuario.\r\n\ @param\ perPassword\ \ \ Password\ del\ usuario.\r\n
 comment1.params=permisoID
 comment1.target=void\ setPermisoID(int)
-comment1.text=\n\ Modificaci\u00F3n\ de\ los\ permisos\ y\ el\ tipo\ de\ usuario\ que\ se\ crea\n\ \n\ @param\ \ permisoID\ \ \ numero\ que\ establece\ el\ tipo\ de\ usuario\n\ 1\ \=\ Socio,\ \n\ 2\ \=\ Bibliotecario,\ \n\ 3\ \=\ Director\n
+comment1.text=\r\n\ Modificaci\u00F3n\ de\ los\ permisos\ y\ el\ tipo\ de\ usuario\ que\ se\ crea\r\n\ \r\n\ @param\ \ permisoID\ \ \ numero\ que\ establece\ el\ tipo\ de\ usuario\r\n\ 1\ \=\ Socio,\ \r\n\ 2\ \=\ Bibliotecario,\ \r\n\ 3\ \=\ Director\r\n
 comment2.params=
 comment2.target=int\ getPermisoID()
-comment2.text=\n\ Devuelve\ el\ n\u00FAmero\ de\ ID\ del\ permiso\ del\ usuario\ en\ cuesti\u00F3n.\n\ \n\ @return\ ID\ del\ tipo\ de\ permiso\ \n
+comment2.text=\r\n\ Devuelve\ el\ n\u00FAmero\ de\ ID\ del\ permiso\ del\ usuario\ en\ cuesti\u00F3n.\r\n\ \r\n\ @return\ ID\ del\ tipo\ de\ permiso\ \r\n
 comment3.params=
 comment3.target=java.lang.String\ getPerDNI()
-comment3.text=\n\ Devuelve\ el\ n\u00FAmero\ de\ DNI\ del\ perfil\ en\ cuesti\u00F3n.\n\ \n\ @return\ DNI\ con\ letra\ (String)\ \n
+comment3.text=\r\n\ Devuelve\ el\ n\u00FAmero\ de\ DNI\ del\ perfil\ en\ cuesti\u00F3n.\r\n\ \r\n\ @return\ DNI\ con\ letra\ (String)\ \r\n
 comment4.params=
 comment4.target=java.lang.String\ getPerNombre()
-comment4.text=\n\ Devuelve\ el\ Nombre\ del\ perfil\ en\ cuesti\u00F3n.\n\ \n\ @return\ \ Nombre\ (String)\ del\ usuario\ \n
+comment4.text=\r\n\ Devuelve\ el\ Nombre\ del\ perfil\ en\ cuesti\u00F3n.\r\n\ \r\n\ @return\ \ Nombre\ (String)\ del\ usuario\ \r\n
 comment5.params=
 comment5.target=java.lang.String\ getPerApellidos()
-comment5.text=\n\ Devuelve\ los\ Apellidos\ del\ perfil\ en\ cuesti\u00F3n.\n\ \n\ @return\ \ Apellidos\ (String)\ del\ usuario\ \n
+comment5.text=\r\n\ Devuelve\ los\ Apellidos\ del\ perfil\ en\ cuesti\u00F3n.\r\n\ \r\n\ @return\ \ Apellidos\ (String)\ del\ usuario\ \r\n
 comment6.params=
 comment6.target=java.lang.String\ getPerDireccion()
-comment6.text=\n\ Devuelve\ la\ Direcci\u00F3n\ del\ perfil\ en\ cuesti\u00F3n.\n\ \n\ @return\ \ Direcci\u00F3n\ (String)\ del\ usuario\ \n
+comment6.text=\r\n\ Devuelve\ la\ Direcci\u00F3n\ del\ perfil\ en\ cuesti\u00F3n.\r\n\ \r\n\ @return\ \ Direcci\u00F3n\ (String)\ del\ usuario\ \r\n
 comment7.params=
 comment7.target=java.lang.String\ getPerUser()
-comment7.text=\n\ Devuelve\ el\ alias\ del\ perfil\ en\ cuesti\u00F3n.\n\ \n\ @return\ \ Alias\ (String)\ del\ usuario\ \n
+comment7.text=\r\n\ Devuelve\ el\ alias\ del\ perfil\ en\ cuesti\u00F3n.\r\n\ \r\n\ @return\ \ Alias\ (String)\ del\ usuario\ \r\n
 comment8.params=
 comment8.target=java.lang.String\ getPerPassword()
-comment8.text=\n\ Devuelve\ el\ password\ del\ perfil\ en\ cuesti\u00F3n.\n\ \n\ @return\ \ Password\ (String)\ del\ usuario\ \n
+comment8.text=\r\n\ Devuelve\ el\ password\ del\ perfil\ en\ cuesti\u00F3n.\r\n\ \r\n\ @return\ \ Password\ (String)\ del\ usuario\ \r\n
 numComments=9

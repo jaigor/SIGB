@@ -48,7 +48,6 @@ public class GestorMateriales
         } else if(nuevoMaterial instanceof Revista){
             materiales.get(ETipoMaterial.REVISTA).add(nuevoMaterial);
         }
-        System.out.println("Material añadido");
     }
     
     /**
@@ -69,7 +68,6 @@ public class GestorMateriales
         } else if(bajaMaterial instanceof Revista){
             materiales.get(ETipoMaterial.REVISTA).remove(bajaMaterial);
         }
-        System.out.println("Material eliminado.");
     }
     
     /**
@@ -241,7 +239,6 @@ public class GestorMateriales
     /**
      * Imprime en pantalla todos los materiales almacenados
      * hasta ahora
-     * 
      */
     public void listadoMateriales()
     {
@@ -270,4 +267,27 @@ public class GestorMateriales
        }
     }
     
+    /**
+     * Imprime todos materiales a los que
+     * se encuentra suscrito el usuario
+     * @param  socioSuscrito   socio del que se imprimen los materiales
+     */
+    public void listadoMatSuscritos(Socio socioSuscrito)
+    {
+         for (MaterialSuscripcion matSuscrito : socioSuscrito.getListaMatSuscritos()){
+             print(matSuscrito);
+         }
+    }
+    /*
+    /**
+     * Imprime todos materiales a los que
+     * se encuentra suscrito el usuario
+     * @param  socioSuscrito   socio del que se imprimen los materiales
+     
+    public void exportarMateriales()
+    {
+         for (MaterialSuscripcion matSuscrito : socioSuscrito.getListaMatSuscritos()){
+             print(matSuscrito);
+         }
+    }*/
 }

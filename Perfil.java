@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @author Igor Quintela 
  * @version 01/03/2016
  */
-public class Perfil implements Serializable
+public abstract class Perfil implements Serializable
 {
     // Campos genéricos de los perfiles
     private String perDNI;

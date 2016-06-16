@@ -42,7 +42,6 @@ public class GestorPerfiles
         // se comprueba que el perfil (DNI) no está en la base de datos
         if (buscarPerfil(nuevoPerfil.getPerDNI()) == null){
             perfiles.add(nuevoPerfil);
-            System.out.println("Perfil "+ nuevoPerfil.getPerDNI() +" añadido correctamente");
         } else {
             System.out.println("El perfil que intenta añadir ya se encuentra en la base de datos");
         }

@@ -1,14 +1,14 @@
 #BlueJ class context
 comment0.params=perSuscrito\ matSuscrito
 comment0.target=Suscripcion(Socio,\ MaterialSuscripcion)
-comment0.text=\n\ Constructor\ for\ objects\ of\ class\ Suscripcion\n
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Suscripcion\r\n
 comment1.params=
 comment1.target=Socio\ getPerSuscrito()
-comment1.text=\n\ Retorna\ el\ Socio\ que\ se\ encuentra\ suscrito\n\ \n\ @return\ \ Socio\ (clase)\ suscrito\ \n
+comment1.text=\r\n\ Retorna\ el\ Socio\ que\ se\ encuentra\ suscrito\r\n\ \r\n\ @return\ \ Socio\ (clase)\ suscrito\ \r\n
 comment2.params=
 comment2.target=MaterialSuscripcion\ getMatSuscrito()
-comment2.text=\n\ Retorna\ el\ Material\ que\ se\ encuentra\ suscrito\n\ \n\ @return\ \ Material\ (clase)\ suscrito\ \ \n
+comment2.text=\r\n\ Retorna\ el\ Material\ que\ se\ encuentra\ suscrito\r\n\ \r\n\ @return\ \ Material\ (clase)\ suscrito\ \ \r\n
 comment3.params=
 comment3.target=java.util.Date\ getFechaSuscripcion()
-comment3.text=\n\ Retorna\ el\ Material\ que\ se\ encuentra\ suscrito\n\ \n\ @return\ \ Material\ (clase)\ suscrito\ \ \n
+comment3.text=\r\n\ Retorna\ el\ Material\ que\ se\ encuentra\ suscrito\r\n\ \r\n\ @return\ \ Material\ (clase)\ suscrito\ \ \r\n
 numComments=4
