@@ -44,6 +44,16 @@ public class Libro extends Material
     }
     
     /**
+     * Modifica el ISBN del Libro
+     * 
+     * @param  isbn    String a modificar en el ISBN
+     */
+    public void setISBN(String isbn)
+    {
+        this.isbn = isbn;
+    }
+    
+    /**
      * Devuelve la fecha de edición del Libro
      * 
      * @return  String que tiene la Fecha de Edicion 
@@ -54,6 +64,16 @@ public class Libro extends Material
     }
     
     /**
+     * Modifica la fecha de edición del Libro
+     * 
+     * @param  fechaEdicion    String a modificar en la fecha de Edición
+     */
+    public void setFechaEdicion(String fechaEdicion)
+    {
+        this.fechaEdicion = fechaEdicion;
+    }
+    
+    /**
      * Devuelve el número de páginas totales del Libro
      * 
      * @return  número entero de las páginas 
@@ -61,5 +81,15 @@ public class Libro extends Material
     public int getNumPaginas()
     {
         return numPaginas;
+    }
+    
+    /**
+     * Modifica el número de páginas totales del Libro
+     * 
+     * @param  numPaginas    String a modificar en el número de páginas
+     */
+    public void setNumPaginas(int numPaginas)
+    {
+        this.numPaginas = numPaginas;
     }
 }

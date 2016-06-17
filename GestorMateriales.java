@@ -278,8 +278,8 @@ public class GestorMateriales
              print(matSuscrito);
          }
     }
+    
     /*
-    /**
      * Imprime todos materiales a los que
      * se encuentra suscrito el usuario
      * @param  socioSuscrito   socio del que se imprimen los materiales

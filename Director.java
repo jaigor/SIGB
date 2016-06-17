@@ -26,6 +26,5 @@ public class Director extends Perfil
         super(perDNI, perNombre, perApellidos, perDireccion, perUser, perPassword);
         setPermisoID(permisoID);
     }
-
     
 }

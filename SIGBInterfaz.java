@@ -304,6 +304,8 @@ public class SIGBInterfaz
             System.out.println("3. Buscar Material (1 campo)");
             System.out.println("4. Buscar Material (2 campos)");
             System.out.println("5. Listado de Materiales");
+            System.out.println("6. Exportar Materiales");
+            System.out.println("7. Importar Materiales");
             System.out.println("0. Salir");
             int opcion;
             System.out.print("Escoja una de las opciones siguientes: ");
@@ -324,6 +326,9 @@ public class SIGBInterfaz
                 case 5:
                     Biblioteca.getInstacia().getGestMat().listadoMateriales();
                     break;
+                case 6:
+                    //Biblioteca.getInstacia().getGestMat().listadoMateriales();
+                    break;    
                 case 0:
                     salir = true;
                     break;
@@ -692,18 +697,21 @@ public class SIGBInterfaz
         Material matPrestado = buscarMaterialSimple();
         Socio socioPrestamo = (Socio)buscarPerfil();
         Biblioteca.getInstacia().getGestPrest().añadirPrestamo(matPrestado, socioPrestamo);
+        System.out.println("Préstamo añadido correctamente");
     }
     
     /**
      * Alta del Préstamo asignando 
-     * el material y el socio al mismo
+     * el material enviando el socio
+     * asignado como parámetro
      * 
      * @param   userUsado   alias del usuario logueado
      */
     public void altaPrestamo(Socio userUsado)
     {
         Material matPrestado = buscarMaterialSimple();
-        Biblioteca.getInstacia().getGestPrest().añadirPrestamo(matPrestado, userUsado);  
+        Biblioteca.getInstacia().getGestPrest().añadirPrestamo(matPrestado, userUsado); 
+        System.out.println("Préstamo añadido correctamente");
     }
     
     /**
@@ -714,6 +722,7 @@ public class SIGBInterfaz
     {
         Prestamo bajaPrestamo = buscarPrestamo();
         Biblioteca.getInstacia().getGestPrest().devolverPrestamo(bajaPrestamo);
+        System.out.println("Material(Préstamo) devuelto correctamente");
     }
     
     /**
@@ -847,7 +856,7 @@ public class SIGBInterfaz
     
      /**
      * Distintas opciones o submenús 
-     * del menú Préstamos correspondiente
+     * del menú Suscripciones correspondiente
      * al Usuario.
      * 
      * @param   user    alias del usuario logueado
@@ -890,8 +899,9 @@ public class SIGBInterfaz
     }
     
     /**
-     * Formulario de alta del tipo de Material 
-     * leyendo las entradas del usuario 
+     * Alta de nueva suscripción buscando
+     * el material suscribible y el socio
+     * al que se le asociará.
      * 
      */
     public void altaSuscripcion()
@@ -900,35 +910,40 @@ public class SIGBInterfaz
         Socio socioSuscrito = (Socio)buscarPerfil();
         Suscripcion nuevaSuscripcion = new Suscripcion(socioSuscrito, matSuscrito);
         Biblioteca.getInstacia().getGestSusc().añadirSuscripcion(nuevaSuscripcion);
+        System.out.println("Suscripción añadida correctamente");
     }
     
-        /**
-     * Formulario de alta del tipo de Material 
-     * leyendo las entradas del usuario 
-     * 
+    /**
+     * Alta de nueva suscripción buscando
+     * el material suscribible con el usuario
+     * asociado.
+     * @param   socioSuscrito    alias del usuario logueado
      */
     public void altaSuscripcion(Socio socioSuscrito)
     {
         MaterialSuscripcion matSuscrito = buscarMatSuscripcion();
         Suscripcion nuevaSuscripcion = new Suscripcion(socioSuscrito, matSuscrito);
         Biblioteca.getInstacia().getGestSusc().añadirSuscripcion(nuevaSuscripcion);
+        System.out.println("Suscripción añadida correctamente");
     }
     
      /**
-     * Formulario de alta del tipo de Material 
-     * leyendo las entradas del usuario 
+     * Baja de Suscripción buscándola
+     * por el material y el socio asignados
      * 
      */
     public void bajaSuscripcion()
     {
         Suscripcion bajaSuscripcion = buscarSuscripcion();
         Biblioteca.getInstacia().getGestSusc().eliminarSuscripcion(bajaSuscripcion);
+        System.out.println("Suscripción eliminada correctamente");
     }
     
     /**
-     * Formulario de alta del tipo de Material 
-     * leyendo las entradas del usuario 
-     * 
+     * Baja de Suscripción buscándola
+     * por el material enviando el socio
+     * asignado como parámetro
+     * @param   socioSuscrito    alias del usuario logueado
      */
     public void bajaSuscripcion(Socio socioSuscrito)
     {
@@ -938,9 +953,10 @@ public class SIGBInterfaz
     }
     
     /**
-     * Formulario de alta del tipo de Material 
-     * leyendo las entradas del usuario 
-     * 
+     * Método de Búsqueda de Suscripción 
+     * comparando por el material y el socio 
+     * asignados a la misma
+     * @return  la suscripción buscada
      */
     public Suscripcion buscarSuscripcion()
     {
@@ -958,8 +974,8 @@ public class SIGBInterfaz
     }
     
     /**
-     * Formulario de alta del tipo de Material 
-     * leyendo las entradas del usuario 
+     * Imprime en pantalla 
+     * los datos de la suscripción buscada
      * 
      */
     public void printSuscripcion()

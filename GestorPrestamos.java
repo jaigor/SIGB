@@ -56,7 +56,6 @@ public class GestorPrestamos
                 prestamos.add(nuevoPrestamo);
                 matPrestado.actualizarStock(-1);    // -1 para eliminar del stock el material
                 socioPrestamo.añadirPrestamos(nuevoPrestamo); // añade a prestamos en activo del socio
-                System.out.println("Préstamo añadido");
             } else {
                 System.out.println("Actualmente, no hay stock disponible para este material");
                 System.out.println();
@@ -141,7 +140,6 @@ public class GestorPrestamos
        }
        // damos de baja el prestamo de la coleccion
        prestamos.remove(bajaPrestamo);
-       System.out.println("Préstamo eliminado");
        
        // se elimina de los prestamos en activo del socio
        bajaPrestamo.getSocioPrestamo().eliminarPrestamo(bajaPrestamo);

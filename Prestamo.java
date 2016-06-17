@@ -62,6 +62,16 @@ public class Prestamo implements Serializable
     }
     
     /**
+     * Modifica la fecha en la que se hizo el prestamo
+     * 
+     * @param  fechaPrestamo    la fecha de realización del préstamo
+     */
+    public void setFechaPrestamo(Date fechaPrestamo)
+    {
+        this.fechaPrestamo = fechaPrestamo;
+    }
+    
+    /**
      * Devuelve el material que se ha prestado
      * 
      * @return  Material (clase) prestado 
@@ -69,6 +79,16 @@ public class Prestamo implements Serializable
     public Material getMatPrestado()
     {
         return matPrestado;
+    }
+    
+    /**
+     * Modifica el material que se ha prestado
+     * 
+     * @param  matPrestado    el material prestado
+     */
+    public void setMatPrestado(Material matPrestado)
+    {
+        this.matPrestado = matPrestado;
     }
     
      /**
@@ -92,6 +112,16 @@ public class Prestamo implements Serializable
     }
     
     /**
+     * Modifica el socio al que se le ha prestado el material
+     * 
+     * @param  socioPrestamo    el socio al que se le ha prestado
+     */
+    public void setSocioPrestamo(Socio socioPrestamo)
+    {
+        this.socioPrestamo = socioPrestamo;
+    }
+    
+    /**
      * Devuelve la fecha exacta de devolución del material
      * 
      * @return  Fecha (Date) con la que se tiene que devolver el material 
@@ -99,5 +129,15 @@ public class Prestamo implements Serializable
     public Date getFechaDevolucion()
     {
         return fechaDevolucion;
+    }
+    
+    /**
+     * Modifica la fecha exacta de devolución del material
+     * 
+     * @param  fechaDevolucion    Fecha devolución del material
+     */
+    public void setFechaDevolucion(Date fechaDevolucion)
+    {
+        this.fechaDevolucion = fechaDevolucion;
     }
 }

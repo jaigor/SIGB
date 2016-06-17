@@ -35,4 +35,14 @@ public class Video extends Material
     {
         return duracion;
     }
+    
+    /**
+     * Modifica los minutos totales de duración del objeto de video
+     * 
+     * @param  duracion    String a modificar en los minutos totales
+     */
+    public void setDuracion(int duracion)
+    {
+        this.duracion = duracion;
+    }
 }

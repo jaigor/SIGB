@@ -35,4 +35,14 @@ public class Audio extends Material
     {
         return numPistas;
     }
+    
+    /**
+     * Modifica el número de pistas totales del Disco de audio
+     * 
+     * @param  numPistas    String a modificar en el número de pistas
+     */
+    public void setNumPistas(int numPistas)
+    {
+        this.numPistas = numPistas;
+    }
 }

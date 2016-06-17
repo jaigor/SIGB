@@ -3,7 +3,9 @@ import java.util.Calendar;
 import java.io.Serializable;
 
 /**
- * Write a description of class Suscripcion here.
+ * Clase que representa la suscripción
+ * de un usuario asociada a un Material 
+ * Suscribible y a su periodicidad.
  * 
  * @author Igor Quintela 
  * @version 01/03/2016
@@ -30,7 +32,7 @@ public class Suscripcion implements Serializable
     }
 
     /**
-     * Retorna el Socio que se encuentra suscrito
+     * Retorna el Socio al que se encuentra suscrito
      * 
      * @return  Socio (clase) suscrito 
      */
@@ -40,9 +42,19 @@ public class Suscripcion implements Serializable
     }
     
     /**
-     * Retorna el Material que se encuentra suscrito
+     * Modifica el Socio al que se encuentra suscrito
      * 
-     * @return  Material (clase) suscrito  
+     * @param  perSuscrito    nuevo Socio asociado a la suscripción
+     */
+    public void setPerSuscrito(Socio perSuscrito)
+    {
+        this.perSuscrito = perSuscrito;
+    }
+    
+    /**
+     * Retorna el Material al que se encuentra suscrito
+     * 
+     * @return  Material (clase) asociado a la suscripción  
      */
     public MaterialSuscripcion getMatSuscrito()
     {
@@ -50,14 +62,33 @@ public class Suscripcion implements Serializable
     }
     
     /**
-     * Retorna el Material que se encuentra suscrito
+     * Modifica el Material al que se encuentra suscrito
      * 
-     * @return  Material (clase) suscrito  
+     * @param  matSuscrito    nuevo Material(MaterialSuscripcion) de suscripción
+     */
+    public void setMatSuscrito(MaterialSuscripcion matSuscrito)
+    {
+        this.matSuscrito = matSuscrito;
+    }
+    
+    /**
+     * Retorna la fecha de cuando se hizo la suscripción
+     * 
+     * @return  Fecha de Suscripcion  
      */
     public Date getFechaSuscripcion()
     {
         return fechaSuscripcion;
     }
     
+    /**
+     * Modifica la fecha de cuando se hizo la suscripción
+     * 
+     * @param  fechaSuscripcion    nueva fecha (Date) de suscripción
+     */
+    public void setFechaSuscripcion(Date fechaSuscripcion)
+    {
+        this.fechaSuscripcion = fechaSuscripcion;
+    }
     
 }

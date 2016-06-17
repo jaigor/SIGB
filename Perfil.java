@@ -77,6 +77,16 @@ public abstract class Perfil implements Serializable
     }
     
     /**
+     * Modifica el número de DNI del perfil en cuestión.
+     * 
+     * @param  perDNI    número de DNI a modificar
+     */
+    public void setPerDNI(String perDNI)
+    {
+        this.perDNI = perDNI;
+    }
+    
+    /**
      * Devuelve el Nombre del perfil en cuestión.
      * 
      * @return  Nombre (String) del usuario 
@@ -84,6 +94,16 @@ public abstract class Perfil implements Serializable
     public String getPerNombre()
     {
          return perNombre;
+    }
+    
+    /**
+     * Modifica el Nombre del perfil en cuestión.
+     * 
+     * @param  perNombre    Nombre del perfil a modificar
+     */
+    public void setPerNombre(String perNombre)
+    {
+        this.perNombre = perNombre;
     }
     
     /**
@@ -97,6 +117,16 @@ public abstract class Perfil implements Serializable
     }
     
     /**
+     * Modifica los Apellidos del perfil en cuestión.
+     * 
+     * @param  perApellidos    Apellidos del usuario a modificar
+     */
+    public void setPerApellidos(String perApellidos)
+    {
+        this.perApellidos = perApellidos;
+    }
+    
+    /**
      * Devuelve la Dirección del perfil en cuestión.
      * 
      * @return  Dirección (String) del usuario 
@@ -104,6 +134,16 @@ public abstract class Perfil implements Serializable
     public String getPerDireccion()
     {
          return perDireccion;
+    }
+    
+    /**
+     * Modifica la Dirección del perfil en cuestión.
+     * 
+     * @param  perDireccion    la Dirección del perfil a modificar
+     */
+    public void setPerDireccion(String perDireccion)
+    {
+        this.perDireccion = perDireccion;
     }
     
     /**
@@ -117,6 +157,16 @@ public abstract class Perfil implements Serializable
     }
     
     /**
+     * Modifica el alias del perfil en cuestión.
+     * 
+     * @param  perUser    el alias del perfil a modificar
+     */
+    public void setPerUser(String perUser)
+    {
+        this.perUser = perUser;
+    }
+    
+    /**
      * Devuelve el password del perfil en cuestión.
      * 
      * @return  Password (String) del usuario 
@@ -124,5 +174,15 @@ public abstract class Perfil implements Serializable
     public String getPerPassword()
     {
          return perPassword;
+    }
+    
+    /**
+     * Modifica el password del perfil en cuestión.
+     * 
+     * @param  perPassword    el password del perfil a modificar
+     */
+    public void setPerPassword(String perPassword)
+    {
+        this.perPassword = perPassword;
     }
 }

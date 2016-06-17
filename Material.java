@@ -1,4 +1,5 @@
-import java.io.Serializable;
+// Only objects that support the java.io.Serializable interface can be written to streams
+import java.io.Serializable; 
 
 /**
  * Esta es la clase abstracta en la que se definen los métodos generales 
@@ -74,6 +75,16 @@ public abstract class Material implements Serializable
     }
     
     /**
+     * Modifica el título de la obra
+     * 
+     * @param  matTitulo    El Título del material a modificar
+     */
+    public void setMatTitulo(String matTitulo)
+    {
+        this.matTitulo = matTitulo;
+    }
+    
+    /**
      * Devuelve el nombre del autor de la obra
      * 
      * @return  El Nombre del Autor del material buscado
@@ -84,13 +95,33 @@ public abstract class Material implements Serializable
     }
     
     /**
-     * Devuelve el total de materiales disponibles 
+     * Modifica el nombre del autor de la obra
+     * 
+     * @param  matAutor    El Autor del material a modificar
+     */
+    public void setMatAutor(String matAutor)
+    {
+        this.matAutor = matAutor;
+    }
+    
+    /**
+     * Devuelve el stock correspondiente al material 
      * 
      * @return  número entero de materiales por prestar
     */
     public int getStockActual()
     {
         return stockActual;
+    }
+    
+    /**
+     * Modifica el stock correspondiente al material
+     * 
+     * @param  stockActual    stock actual del material
+     */
+    public void setStockActual(int stockActual)
+    {
+        this.stockActual = stockActual;
     }
     
     /**
@@ -101,6 +132,16 @@ public abstract class Material implements Serializable
     public double getMatPrecio()
     {
         return matPrecio;
+    }
+    
+    /**
+     * Modifica el precio correspondiente al material
+     * 
+     * @param  matPrecio    Precio (decimal) del material
+     */
+    public void setMatPrecio(double matPrecio)
+    {
+        this.matPrecio = matPrecio;
     }
     
     /**

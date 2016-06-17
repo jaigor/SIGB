@@ -27,6 +27,7 @@ class Biblioteca
     private GestorPerfiles gestPerf;
     private GestorMateriales gestorMat;
     private GestorPrestamos gestorPrest;
+    private GestorPrestamosExternos gestorPrestExt;
     private GestorSuscripciones gestorSusc;
     
     // Campos especificos pertenecientes a la biblioteca
@@ -52,8 +53,9 @@ class Biblioteca
         gestPerf = new GestorPerfiles();
         gestorMat = new GestorMateriales();
         gestorPrest = new GestorPrestamos();
+        gestorPrestExt = new GestorPrestamosExternos();
         gestorSusc = new GestorSuscripciones();
-        
+                
         // Asignacion de los campos correspondientes a la biblioteca
         this.bibNombre = bibNombre;
         this.bibDireccion = bibDireccion;
@@ -62,13 +64,23 @@ class Biblioteca
     }
     
     /**
-     * Devuelve el nombre de la biblioteca.
+     * Devuelve el nombre de la biblioteca instanciada.
      * 
      *  @return   Nombre (String) de la biblioteca 
      */
     public String getBibNombre()
     {
          return bibNombre;
+    }
+    
+    /**
+     * Modifica el nombre de la biblioteca instanciada.
+     * 
+     * @param  bibNombre    nombre de la biblioteca a modificar
+     */
+    public void setBibNombre(String bibNombre)
+    {
+        this.bibNombre = bibNombre;
     }
     
     /**
@@ -82,6 +94,16 @@ class Biblioteca
     }
     
     /**
+     * Modifica la dirección de la biblioteca.
+     * 
+     * @param  bibDireccion    dirección de la biblioteca a modificar
+     */
+    public void setBibDireccion(String bibDireccion)
+    {
+        this.bibDireccion = bibDireccion;
+    }
+    
+    /**
      * Devuelve el teléfono de la biblioteca.
      * 
      *  @return   Teléfono (int) de la biblioteca  
@@ -92,6 +114,16 @@ class Biblioteca
     }
     
     /**
+     * Modifica el teléfono de la biblioteca.
+     * 
+     * @param  bibTelefono    el teléfono de la biblioteca a modificar
+     */
+    public void setBibTelefono(int bibTelefono)
+    {
+        this.bibTelefono = bibTelefono;
+    }
+    
+    /**
      * Devuelve el horario de la biblioteca.
      * 
      *  @return   Horario (String) de la biblioteca  
@@ -99,6 +131,16 @@ class Biblioteca
     public String getBibHorario()
     {
          return bibHorario;
+    }
+    
+    /**
+     * Modifica el horario de la biblioteca.
+     * 
+     * @param  bibHorario    el horario de la biblioteca a modificar
+     */
+    public void setBibHorario(String bibHorario)
+    {
+        this.bibHorario = bibHorario;
     }
     
     /**
