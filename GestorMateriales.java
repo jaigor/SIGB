@@ -192,9 +192,10 @@ public class GestorMateriales
                 return m;
             }
        }
-       
-       // Si no se encuentra en la base de datos o los 
-       // datos introducidos no son correctos
+       // Si no se encuentra en la base de datos, primero
+       // prepara un material a exportar en la lista de la solicitud
+       exportarMateriales(matTitulo, matAutor);
+       // Si los datos introducidos no son correctos
        return null;
     }
     
@@ -279,15 +280,14 @@ public class GestorMateriales
          }
     }
     
-    /*
+    /**
      * Imprime todos materiales a los que
      * se encuentra suscrito el usuario
      * @param  socioSuscrito   socio del que se imprimen los materiales
-     
-    public void exportarMateriales()
+    */ 
+    public void exportarMateriales(String matTitulo, String matAutor)
     {
-         for (MaterialSuscripcion matSuscrito : socioSuscrito.getListaMatSuscritos()){
-             print(matSuscrito);
-         }
-    }*/
+         //MaterialExterno matExterno = new MaterialExterno(matTitulo, matAutor);
+         //Biblioteca.getInstacia().getGestSolicExt().añadirSolicitudes(matExterno);
+    }
 }

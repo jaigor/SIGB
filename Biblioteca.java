@@ -27,7 +27,7 @@ class Biblioteca
     private GestorPerfiles gestPerf;
     private GestorMateriales gestorMat;
     private GestorPrestamos gestorPrest;
-    private GestorPrestamosExternos gestorPrestExt;
+    private GestorSolicitudesExternas gestorSolicExt;
     private GestorSuscripciones gestorSusc;
     
     // Campos especificos pertenecientes a la biblioteca
@@ -53,7 +53,7 @@ class Biblioteca
         gestPerf = new GestorPerfiles();
         gestorMat = new GestorMateriales();
         gestorPrest = new GestorPrestamos();
-        gestorPrestExt = new GestorPrestamosExternos();
+        gestorSolicExt = new GestorSolicitudesExternas();
         gestorSusc = new GestorSuscripciones();
                 
         // Asignacion de los campos correspondientes a la biblioteca
@@ -174,6 +174,16 @@ class Biblioteca
     }
     
     /**
+     * Devuelve el gestor de Solicitudes Externos asociado.
+     * 
+     *  @return   Gestor de Solicitudes Externos 
+     */
+    public GestorSolicitudesExternas getGestSolicExt()
+    {
+         return gestorSolicExt;
+    } 
+    
+     /**
      * Devuelve el gestor de Suscripciones asociado.
      * 
      *  @return   Gestor de Suscripciones 
@@ -181,5 +191,5 @@ class Biblioteca
     public GestorSuscripciones getGestSusc()
     {
          return gestorSusc;
-    }  
+    } 
 }

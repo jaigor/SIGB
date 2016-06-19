@@ -14,7 +14,7 @@ public class SIGBInterfaz
     // Variable a llamar cada vez que se pide input al usuario
     Scanner in = new Scanner(System.in);
     /**
-     * Constructor for objects of class SIGBInterfaz
+     * Constructor de la clase de Interfaz inicializado vacío 
      */
     public SIGBInterfaz()
     {
@@ -304,8 +304,9 @@ public class SIGBInterfaz
             System.out.println("3. Buscar Material (1 campo)");
             System.out.println("4. Buscar Material (2 campos)");
             System.out.println("5. Listado de Materiales");
-            System.out.println("6. Exportar Materiales");
-            System.out.println("7. Importar Materiales");
+            System.out.println("6. Buscar Material Externo (2 campos)");
+            System.out.println("7. Exportar Materiales");
+            System.out.println("8. Importar Materiales");
             System.out.println("0. Salir");
             int opcion;
             System.out.print("Escoja una de las opciones siguientes: ");
@@ -327,8 +328,14 @@ public class SIGBInterfaz
                     Biblioteca.getInstacia().getGestMat().listadoMateriales();
                     break;
                 case 6:
-                    //Biblioteca.getInstacia().getGestMat().listadoMateriales();
-                    break;    
+                    printMatExterno();
+                    break;
+                case 7:
+                    exportarSolicitudes();
+                    break; 
+                case 8:
+                    importarSolicitudes();
+                    break;     
                 case 0:
                     salir = true;
                     break;
@@ -486,7 +493,7 @@ public class SIGBInterfaz
     {
         Material matBaja = buscarMaterialSimple();
         Biblioteca.getInstacia().getGestMat().eliminarMaterial(matBaja);
-        System.out.print("El material se ha eliminado correctamente.");
+        System.out.println("El material se ha eliminado correctamente.");
     }
       
     /**
@@ -533,6 +540,13 @@ public class SIGBInterfaz
             if(matBuscado == null){
                 System.out.println("Material no encontrado en la biblioteca.");
                 System.out.println();
+                // al no encontrar material preparamos una solicitud para el resto de bibliotecas
+                MaterialExterno matSolicitud = 
+                Biblioteca.getInstacia().getGestSolicExt().buscarMatExternos(matTitulo,matAutor);
+                if (matSolicitud != null) {
+                    // y lo añadimos al array de solicitudes
+                    Biblioteca.getInstacia().getGestSolicExt().añadirSolicitudes(matSolicitud);
+                }
             }
         }
         return matBuscado;
@@ -554,7 +568,8 @@ public class SIGBInterfaz
             System.out.print("Titulo: ");
             String matTitulo = in.next();
             try{
-                matBuscado = (MaterialSuscripcion)Biblioteca.getInstacia().getGestMat().buscarMaterialSimple(matTitulo);
+                matBuscado = 
+                (MaterialSuscripcion)Biblioteca.getInstacia().getGestMat().buscarMaterialSimple(matTitulo);
             } 
             catch(ClassCastException e){
                 System.out.println("El material escogido no es suscribible.");
@@ -588,6 +603,55 @@ public class SIGBInterfaz
         Biblioteca.getInstacia().getGestMat().print(matPrint);
     }
     
+    /**
+     * Imprimir el material, buscándolo primero
+     * de manera compleja
+     */
+    public void printMatExterno()
+    {
+        MaterialExterno matExtBuscado = null;
+        while(matExtBuscado == null){
+            System.out.println("***********************************************");
+            System.out.println("----Buscar Material----");
+            System.out.println("Indique el Titulo del Material");
+            System.out.print("Titulo: ");
+            String matTitulo = in.next();
+            System.out.println("Indique el Nombre del Autor");
+            System.out.print("Autor: ");
+            String matAutor = in.next();
+            matExtBuscado = Biblioteca.getInstacia().getGestSolicExt().buscarMatExternos(matTitulo, matAutor);
+            if(matExtBuscado == null){
+                System.out.println("Material no encontrado en la biblioteca.");
+                System.out.println();
+            }
+        }
+        Biblioteca.getInstacia().getGestSolicExt().printMatExterno(matExtBuscado);
+    }
+    
+    /**
+     * Exportar XXXXXXXXXXXXXXXXXXX
+     */
+    public void exportarSolicitudes()
+    {
+        System.out.println("***********************************************");
+        System.out.println("----Guardar archivo----");
+        System.out.print("Indique la ruta del archivo (ej: C:\\Solicitudes\\archivo.txt): ");
+        String ruta = in.next();
+        Biblioteca.getInstacia().getGestSolicExt().exportarPrestamos(ruta);
+    }
+    
+    /**
+     * Importar XXXXXXXXXXXXXXXXXXX
+     */
+    public void importarSolicitudes()
+    {
+        System.out.println("***********************************************");
+        System.out.println("----Importar archivo----");
+        System.out.print("Indique la ruta del archivo (ej: C:\\Solicitudes\\archivo.txt): ");
+        String ruta = in.next();
+        //Biblioteca.getInstacia().getGestSolicExt().importarPrestamos(ruta);
+    }
+
     //      Menús PRESTAMOS (Administrador y Usuario)
     /**
      * Distintas opciones o submenús 
@@ -655,6 +719,7 @@ public class SIGBInterfaz
             System.out.println("3. Historial de Préstamos");
             System.out.println("4. Préstamos en activo");
             System.out.println("5. Gestión de multas");
+            System.out.println("6. Solicitud Préstamo Exterior");
             System.out.println("0. Salir");
             int opcion;
             System.out.print("Escoja una de las opciones siguientes: ");
@@ -675,6 +740,9 @@ public class SIGBInterfaz
                 case 5:
                     gestionMultas((Socio)userUsado);
                     break;
+                case 6:
+                    //gestionMultas((Socio)userUsado);
+                    break;    
                 case 0:
                     salir = true;
                     break;

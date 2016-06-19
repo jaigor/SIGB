@@ -143,7 +143,7 @@ public class GestorPrestamos
        
        // se elimina de los prestamos en activo del socio
        bajaPrestamo.getSocioPrestamo().eliminarPrestamo(bajaPrestamo);
-       
+        
        // procesamos si existe una reserva para avisar al usuario de que está disponible
        // pero antes se verifica que existan reservas
        if (reservas.size() > 0){

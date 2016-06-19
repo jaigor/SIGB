@@ -32,6 +32,10 @@ public class test
     private Prestamo prest3;
     private Prestamo prest4;
     
+    private GestorSolicitudesExternas gSE;
+    //private Biblioteca bib;
+    private Material matSolic;
+    
     private Calendar cal = Calendar.getInstance();
     private Date fechaActual = cal.getTime();
     /**
@@ -45,7 +49,7 @@ public class test
         biblio = new Bibliotecario("999999999Z", "Indiana", "Jones", "Plaza Latorre", "biblio", "admin");
         admin = new Director("111111111Z", "Señor", "Director", "Calle Portugalete", "admin", "admin");
         
-        // intento meter mismos perfiles con el dni igual
+        // Creacion de Perfiles asociados
         gP = Biblioteca.getInstacia().getGestPerf();
         gP.añadirPerfil(user1);
         gP.añadirPerfil(user2);
@@ -59,6 +63,9 @@ public class test
         mat4 = new Periodico("ElMundoToday", "Sol", 3, 4, "Politica");
         mat5 = new Revista("Holas", "Luna", 1, 2, "Rosa");
         mat6 = new Libro("Zombies", "Dark Seed", 1, 30, "HFGG22222", "02/01/2000", 240);
+        // prueba
+        matSolic = new Video("Matrix", "What", 5, 100, 130);
+        gM.añadirMaterial(matSolic);
         
         gM = Biblioteca.getInstacia().getGestMat();
         gM.añadirMaterial(mat1);
@@ -69,9 +76,10 @@ public class test
         gM.añadirMaterial(mat6);
         
         // Creacion de Prestamos asociados
+        // El simbolo negativo esta usado para comprobar la funcion de multas
         prest1 = new Prestamo(new Date(),mat1,(Socio)user1, 1);
         prest2 = new Prestamo(new Date(),mat2,(Socio)user2, -1);
-        prest3 = new Prestamo(new Date(),mat3,(Socio)user2, -5);
+        prest3 = new Prestamo(new Date(),mat3,(Socio)user2, -5); 
         prest4 = new Prestamo(new Date(),mat6,(Socio)user2, -2);
         
         gPr = Biblioteca.getInstacia().getGestPrest();
@@ -85,6 +93,20 @@ public class test
         socio2.añadirPrestamos(prest3);
         gPr.getPrestamos().add(prest4);
         socio2.añadirPrestamos(prest4);
+        
+        /*
+        gSE = Biblioteca.getInstacia().getGestSolicExt();
+        Biblioteca bib;
+        bib.getInstacia().inicializarBiblioteca("UPV", "Calle Falsa 2", 652766165, "12:00-20:00");
+        matSolic = new Video("Matrix", "Watchoski", 5, 100, 130);
+        
+        System.out.println(Biblioteca.getInstacia().getGestMat());
+        System.out.println(bib.getGestPrest());
+        System.out.println(bib.getGestPerf());
+        System.out.println(bib.getGestMat());
+        bib.getGestMat().añadirMaterial(matSolic);
+        gSE.getBibliotecas().add(bib);
+        */
     }    
         
 }
