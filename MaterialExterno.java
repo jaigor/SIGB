@@ -1,11 +1,17 @@
+// se importa para tener la posibilidad de escribir
+// y leer el objeto en un archivo externo (Serializar)
+import java.io.Serializable;
 
 /**
- * Write a description of class MaterialExterno here.
+ * Clase en la que se almacenan los 
+ * datos y métodos necesarios 
+ * para gestionar un Material Externo,
+ * o solicitud exterior.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Igor Quintela 
+ * @version 01/06/2016
  */
-public class MaterialExterno
+public class MaterialExterno implements Serializable
 {
     private String biblioOrigen;
     private String biblioDestino;
@@ -13,7 +19,12 @@ public class MaterialExterno
     private String matAutor;    
     
     /**
-     * Constructor for objects of class MaterialExterno
+     * Da de alta los campos genéricos de un material externo
+     * 
+     * @param biblioOrigen     Nombre de la biblioteca Origen de la peticion.
+     * @param biblioDestino    Nombre de la biblioteca Destino.
+     * @param matTitulo        Titulo del material solicitado.
+     * @param matAutor         Autor del material solicitado.
      */
     public MaterialExterno(String biblioOrigen, String biblioDestino, String matTitulo, String matAutor)
     {
@@ -24,7 +35,9 @@ public class MaterialExterno
     }
     
     /**
-     * Constructor for objects of class MaterialExterno
+     * Devuelve el Nombre de la biblioteca Origen de la peticion
+     * 
+     * @return  nombre de la biblioteca origen
      */
     public String getBiblioOrigen()
     {
@@ -32,7 +45,9 @@ public class MaterialExterno
     }
     
     /**
-     * Constructor for objects of class MaterialExterno
+     * Devuelve el Nombre de la biblioteca Destino
+     * 
+     * @return  nombre de la biblioteca destino
      */
     public String getBiblioDestino()
     {
@@ -40,7 +55,9 @@ public class MaterialExterno
     }
     
     /**
-     * Constructor for objects of class MaterialExterno
+     * Devuelve el titulo del material solicitado
+     * 
+     * @return  titulo del material
      */
     public String getMatTitulo()
     {
@@ -48,7 +65,9 @@ public class MaterialExterno
     }
     
     /**
-     * Constructor for objects of class MaterialExterno
+     * Devuelve el autor del material solicitado
+     * 
+     * @return  autor del material
      */
     public String getMatAutor()
     {

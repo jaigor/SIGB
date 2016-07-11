@@ -3,18 +3,21 @@ import java.lang.ClassCastException;
 import java.lang.NullPointerException;
 
 /**
- * Clase usada para presentar textualmente el
- * menú de la herramienta de gestión.
+ * Clase usada para presentar textualmente,
+ * o bajo terminal, el menú de la herramienta 
+ * de gestión y sus funcionalidades.
  * 
  * @author Igor Quintela 
- * @version 11/06/2016
+ * @version 20/06/2016
  */
 public class SIGBInterfaz
 {
-    // Variable a llamar cada vez que se pide input al usuario
+    // Variable a llamar cada vez que se pide el 
+    // input del usuario
     Scanner in = new Scanner(System.in);
     /**
-     * Constructor de la clase de Interfaz inicializado vacío 
+     * Constructor de la clase de Interfaz 
+     * inicializado vacío 
      */
     public SIGBInterfaz()
     {
@@ -22,24 +25,26 @@ public class SIGBInterfaz
     }
 
     /**
-     * Inicia el menú de acceso al sistema de gestión
+     * Método que inicia el menú
+     * de acceso al sistema de gestión
      * 
      */
     public void inicio()
     {
-        // inicia el menu principal de la interfaz
+        // ejecuta la clase test para añadir los datos de prueba
         new test();
+        // inicia el menu principal de la interfaz
         this.menuAcceso();
     }
     
     /**
      * Menú usado para comprobar si el usuario se
      * encuentra registrado en la base de datos
-     * 
+     * (Control de acceso)
      */
     public void menuAcceso()
     {
-        // iniciamos el menu de acceso de la interfaz
+        // inicia el menu de acceso de la interfaz
         System.out.println("***********************************************");
         System.out.println("    Control de acceso");
         System.out.println("***********************************************");
@@ -59,7 +64,7 @@ public class SIGBInterfaz
                 System.out.println("Usuario/Contraseña no válido, Vuelva a intentarlo.");
                 System.out.println();
             }
-        } while (inputValido == false);
+        } while (!inputValido);
     } 
     
     /**
@@ -147,7 +152,7 @@ public class SIGBInterfaz
         }
     }
     
-    //       Menús PERFILES
+    //       Menús pertenecientes a PERFILES
     /**
      * Método que continua con las opciones 
      * o submenus del menú Perfiles
@@ -194,9 +199,11 @@ public class SIGBInterfaz
      * leyendo las entradas del usuario 
      * y escogiendo el tipo de usuario a 
      * añadir (Socio, Bibliotecario, Director)
+     * 
      */
     public void altaPerfil()
     {
+        // Datos genéricos de todos los perfiles
         System.out.println("***********************************************");
         System.out.println("----Alta Perfil----");
         System.out.println("Introduzca los datos del formulario: ");
@@ -215,7 +222,7 @@ public class SIGBInterfaz
         
         boolean salir = false;
         do{
-            System.out.print("Indique el tipo de perfil a crear:");
+            System.out.println("Indique el tipo de perfil a crear:");
             System.out.println("1. Socio");
             System.out.println("2. Bibliotecario");
             System.out.println("3. Director");
@@ -238,7 +245,6 @@ public class SIGBInterfaz
                 System.out.println("Indique una de las opciones descritas en el menú");
             }
         } while (!salir);
-        System.out.println("Perfil añadido correctamente");
     }
     
     /**
@@ -278,8 +284,8 @@ public class SIGBInterfaz
     
     /**
      * Imprime el perfil, 
-     * generando la tarjeta correspondiente
-     * 
+     * generando la tarjeta 
+     * con sus correspondientes datos
      */
     public void printPerfil()
     {
@@ -287,9 +293,10 @@ public class SIGBInterfaz
         Biblioteca.getInstacia().getGestPerf().generarTarjeta(userBuscado);
     }
         
-    //       Menús MATERIALES
+    //       Menús pertenecientes a MATERIALES
     /**
-     * Distintas opciones o submenús del menú Materiales
+     * Distintas opciones o submenús 
+     * del menú Materiales
      * 
      */
     public void menuMateriales()
@@ -604,7 +611,8 @@ public class SIGBInterfaz
     }
     
     /**
-     * Imprimir el material, buscándolo primero
+     * Imprimir el material externo
+     * solicitado, buscándolo primero
      * de manera compleja
      */
     public void printMatExterno()
@@ -621,7 +629,7 @@ public class SIGBInterfaz
             String matAutor = in.next();
             matExtBuscado = Biblioteca.getInstacia().getGestSolicExt().buscarMatExternos(matTitulo, matAutor);
             if(matExtBuscado == null){
-                System.out.println("Material no encontrado en la biblioteca.");
+                System.out.println("Material no encontrado en el resto de bibliotecas.");
                 System.out.println();
             }
         }
@@ -629,7 +637,8 @@ public class SIGBInterfaz
     }
     
     /**
-     * Exportar XXXXXXXXXXXXXXXXXXX
+     * Método que llama a la exportación
+     * de solicitudes a un archivo exterior
      */
     public void exportarSolicitudes()
     {
@@ -637,11 +646,12 @@ public class SIGBInterfaz
         System.out.println("----Guardar archivo----");
         System.out.print("Indique la ruta del archivo (ej: C:\\Solicitudes\\archivo.txt): ");
         String ruta = in.next();
-        Biblioteca.getInstacia().getGestSolicExt().exportarPrestamos(ruta);
+        Biblioteca.getInstacia().getGestSolicExt().exportarMateriales(ruta);
     }
     
     /**
-     * Importar XXXXXXXXXXXXXXXXXXX
+     * Método que llama a la importación
+     * de solicitudes de un archivo exterior
      */
     public void importarSolicitudes()
     {
@@ -649,10 +659,10 @@ public class SIGBInterfaz
         System.out.println("----Importar archivo----");
         System.out.print("Indique la ruta del archivo (ej: C:\\Solicitudes\\archivo.txt): ");
         String ruta = in.next();
-        //Biblioteca.getInstacia().getGestSolicExt().importarPrestamos(ruta);
+        Biblioteca.getInstacia().getGestSolicExt().importarMateriales(ruta);
     }
 
-    //      Menús PRESTAMOS (Administrador y Usuario)
+    //      Menús pertenecientes a PRESTAMOS (Administrador y Usuario)
     /**
      * Distintas opciones o submenús 
      * del menú Préstamos correspondiente
@@ -719,7 +729,6 @@ public class SIGBInterfaz
             System.out.println("3. Historial de Préstamos");
             System.out.println("4. Préstamos en activo");
             System.out.println("5. Gestión de multas");
-            System.out.println("6. Solicitud Préstamo Exterior");
             System.out.println("0. Salir");
             int opcion;
             System.out.print("Escoja una de las opciones siguientes: ");
@@ -739,10 +748,7 @@ public class SIGBInterfaz
                     break;
                 case 5:
                     gestionMultas((Socio)userUsado);
-                    break;
-                case 6:
-                    //gestionMultas((Socio)userUsado);
-                    break;    
+                    break;  
                 case 0:
                     salir = true;
                     break;
@@ -814,7 +820,8 @@ public class SIGBInterfaz
     }
     
     /**
-     * Imprimir el préstamo, buscándolo primero
+     * Imprimir el préstamo en pantalla,
+     * buscándolo primero
      */
     public void printPrestamo()
     {
@@ -877,7 +884,7 @@ public class SIGBInterfaz
         Biblioteca.getInstacia().getGestPrest().historialMultas(socio);
     }
     
-    //       Menús SUSCRIPCIONES (Administrador y Usuario)
+    //       Menús pertenecientes a SUSCRIPCIONES (Administrador y Usuario)
     /**
      * Distintas opciones o submenús 
      * del menú Suscripciones correspondiente

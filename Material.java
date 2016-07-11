@@ -1,20 +1,20 @@
-// Only objects that support the java.io.Serializable interface can be written to streams
-import java.io.Serializable; 
-
 /**
- * Esta es la clase abstracta en la que se definen los métodos generales 
- * que afectan a distintos tipos de usuario pertenecientes a la biblioteca. 
- * Los tipos de usuario o perfiles que heredan esta clase son: 
+ * Clase abstracta en la que se 
+ * definen los métodos generales que afectan 
+ * a distintos tipos de materiales 
+ * pertenecientes a la biblioteca. 
+ * Los tipos de materiales que heredan esta clase son: 
  *      Libro
  *      Audio
  *      Video
- *      Periodico
- *      Revista
+ *      Material Suscribible
+ *          Periodico
+ *          Revista
  * 
  * @author Igor Quintela 
- * @version 01/03/2016
+ * @version 01/05/2016
  */
-public abstract class Material implements Serializable
+public abstract class Material
 {
     // definición de los campos genéricos
     private int idMaterial;
@@ -27,7 +27,8 @@ public abstract class Material implements Serializable
     private static int contadorMateriales; 
     
     /**
-     * Da de alta los campos genéricos de un material
+     * Asocia los campos genéricos de un material
+     * pasados al constructor
      * 
      * @param matTitulo Nombre de la obra/item.
      * @param matAutor  Nombre del autor de la obra.
@@ -44,7 +45,10 @@ public abstract class Material implements Serializable
     }
     
      /**
-     * Método usado para agregar un campo id númerico a cada material
+     * Método usado para agregar un campo 
+     * id númerico a cada material
+     * Se declara como static porque
+     * una vez instanciado no varía
      * 
      * @return  El número de ID exacto buscado
      */
@@ -55,9 +59,9 @@ public abstract class Material implements Serializable
     }
     
     /**
-     * Devuelve el título de la obra
+     * Devuelve el ID del material
      * 
-     * @return  El Título del material buscado
+     * @return  el ID del material buscado
      */
     public int getIDMaterial()
     {
@@ -160,15 +164,5 @@ public abstract class Material implements Serializable
             System.out.println("Stock modificado correctamente");
         }
     }
-    
-    /**
-     * (non-Javadoc)
-     * @see java.lang.Object#toString()
-    */
-    @Override
-    public String toString() {
-        return "Material [IDMaterial:" + idMaterial + " | Titulo:" + matTitulo + 
-        " | Autor:" + matAutor + "]";
-    }
-    
+
 }

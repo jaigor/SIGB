@@ -1,16 +1,17 @@
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Clase donde se gestionan y almacenan los
  * distintos tipos de materiales.
  * 
  * @author Igor Quintela 
- * @version 01/03/2016
+ * @version 30/05/2016
  */
 public class GestorMateriales
 {
-    // Array de la coleccion almacenada
+    // Array de la coleccion almacenada de materiales
     private HashMap<ETipoMaterial, ArrayList> materiales;
 
     /**
@@ -106,8 +107,8 @@ public class GestorMateriales
        ArrayList <Material> listaMatVideo = materiales.get(ETipoMaterial.VIDEO);
        ArrayList <Material> listaMatPeriodico = materiales.get(ETipoMaterial.PERIODICO);
        ArrayList <Material> listaMatRevista = materiales.get(ETipoMaterial.REVISTA);
-            
-       // Recorre por cada lista comparando si se encuentra el Titulo o Autor de la obra
+        
+       // Recorre por cada lista comparando si se encuentra el Titulo de la obra
        for (Material m : listaMatLibro){
             if (m.getMatTitulo().equals(matTitulo)){
                 return m;
@@ -155,52 +156,43 @@ public class GestorMateriales
        ArrayList <Material> listaMatVideo = materiales.get(ETipoMaterial.VIDEO);
        ArrayList <Material> listaMatPeriodico = materiales.get(ETipoMaterial.PERIODICO);
        ArrayList <Material> listaMatRevista = materiales.get(ETipoMaterial.REVISTA);
-            
-       // Recorre por cada lista comparando si se encuentra el Titulo o Autor de la obra
+                   
+       // Recorre por cada lista comparando si se encuentra el Titulo y Autor de la obra
        for (Material m : listaMatLibro){
-            if (m.getMatTitulo().equals(matTitulo)){
-                return m;
-            } else if (m.getMatAutor().equals(matAutor)) {
+            if (m.getMatTitulo().equals(matTitulo) && m.getMatAutor().equals(matAutor)){
                 return m;
             }
        }
        for (Material m : listaMatAudio){
-            if (m.getMatTitulo().equals(matTitulo)){
-                return m;
-            } else if (m.getMatAutor().equals(matAutor)) {
+            if (m.getMatTitulo().equals(matTitulo) && m.getMatAutor().equals(matAutor)){
                 return m;
             }
        }
        for (Material m : listaMatVideo){
-            if (m.getMatTitulo().equals(matTitulo)){
-                return m;
-            } else if (m.getMatAutor().equals(matAutor)) {
+            if (m.getMatTitulo().equals(matTitulo) && m.getMatAutor().equals(matAutor)){
                 return m;
             }
        }
        for (Material m : listaMatPeriodico){
-            if (m.getMatTitulo().equals(matTitulo)){
-                return m;
-            } else if (m.getMatAutor().equals(matAutor)) {
+            if (m.getMatTitulo().equals(matTitulo) && m.getMatAutor().equals(matAutor)){
                 return m;
             }
        }
        for (Material m : listaMatRevista){
-            if (m.getMatTitulo().equals(matTitulo)){
-                return m;
-            } else if (m.getMatAutor().equals(matAutor)) {
+            if (m.getMatTitulo().equals(matTitulo) && m.getMatAutor().equals(matAutor)){
                 return m;
             }
        }
        // Si no se encuentra en la base de datos, primero
        // prepara un material a exportar en la lista de la solicitud
-       exportarMateriales(matTitulo, matAutor);
+       //exportarMateriales(matTitulo, matAutor);
        // Si los datos introducidos no son correctos
        return null;
     }
     
     /**
-     * Imprime en pantalla los datos correspondientes al material indicado
+     * Imprime en pantalla los datos 
+     * correspondientes al material indicado
      * 
      * @param  material   material a imprimir
      */
@@ -238,7 +230,8 @@ public class GestorMateriales
     }
     
     /**
-     * Imprime en pantalla todos los materiales almacenados
+     * Imprime en pantalla todos los 
+     * materiales almacenados
      * hasta ahora
      */
     public void listadoMateriales()
@@ -250,7 +243,6 @@ public class GestorMateriales
         ArrayList <Material> listaMatPeriodico = materiales.get(ETipoMaterial.PERIODICO);
         ArrayList <Material> listaMatRevista = materiales.get(ETipoMaterial.REVISTA);
        
-        // Recorre por cada lista comparando si se encuentra el Titulo o Autor de la obra
        for (Material m : listaMatLibro){
             print(m);
        }
@@ -271,6 +263,7 @@ public class GestorMateriales
     /**
      * Imprime todos materiales a los que
      * se encuentra suscrito el usuario
+     * 
      * @param  socioSuscrito   socio del que se imprimen los materiales
      */
     public void listadoMatSuscritos(Socio socioSuscrito)
@@ -279,15 +272,5 @@ public class GestorMateriales
              print(matSuscrito);
          }
     }
-    
-    /**
-     * Imprime todos materiales a los que
-     * se encuentra suscrito el usuario
-     * @param  socioSuscrito   socio del que se imprimen los materiales
-    */ 
-    public void exportarMateriales(String matTitulo, String matAutor)
-    {
-         //MaterialExterno matExterno = new MaterialExterno(matTitulo, matAutor);
-         //Biblioteca.getInstacia().getGestSolicExt().añadirSolicitudes(matExterno);
-    }
+     
 }

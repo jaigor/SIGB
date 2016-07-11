@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.params=matTitulo\ matAutor\ stockActual\ matPrecio\ numPistas
 comment0.target=Audio(java.lang.String,\ java.lang.String,\ int,\ double,\ int)
-comment0.text=\r\n\ Instaciaci\u00F3n\ de\ campos\ propios\ y\ gen\u00E9ricos\ del\ Material\r\n\ \r\n\ @param\ matTitulo\ \ \ \ \ Nombre\ de\ la\ obra/item.\r\n\ @param\ matAutor\ \ \ \ \ \ Nombre\ del\ autor\ de\ la\ obra.\r\n\ @param\ stockActual\ \ \ \ \ \ N\u00FAmero\ de\ elementos\ que\ hay\ en\ base\ de\ datos.\r\n\ @param\ matPrecio\ \ \ \ \ Cantidad\ de\ euros\ que\ cuesta\ el\ elemento.\r\n\ @param\ numPistas\ \ \ \ \ N\u00FAmero\ total\ de\ pistas/canciones\ del\ disco.\r\n
+comment0.text=\r\n\ Instaciaci\u00F3n\ de\ campos\ propios\ y\ gen\u00E9ricos\ del\ Material\r\n\ \r\n\ @param\ matTitulo\ \ \ \ \ Nombre\ de\ la\ obra/item.\r\n\ @param\ matAutor\ \ \ \ \ \ Nombre\ del\ autor\ de\ la\ obra.\r\n\ @param\ stockActual\ \ \ N\u00FAmero\ de\ elementos\ que\ hay\ en\ base\ de\ datos.\r\n\ @param\ matPrecio\ \ \ \ \ Cantidad\ de\ euros\ que\ cuesta\ el\ elemento.\r\n\ @param\ numPistas\ \ \ \ \ N\u00FAmero\ total\ de\ pistas/canciones\ del\ disco.\r\n
 comment1.params=
 comment1.target=int\ getNumPistas()
 comment1.text=\r\n\ Devuelve\ el\ n\u00FAmero\ de\ pistas\ totales\ del\ Disco\ de\ audio\r\n\ \r\n\ @return\ \ n\u00FAmero\ entero\ de\ las\ pistas\ \r\n

@@ -9,18 +9,22 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 
 /**
- * Write a description of class GestorPrestBiblio here.
+ * Clase gestora desde donde 
+ * se instancian el listado de bibliotecas
+ * externas, y las solicitudes externas, 
+ * asi como los métodos que les afectan.
  * 
  * @author Igor Quintela 
- * @version 17/06/2016
+ * @version 20/06/2016
  */
-public class GestorSolicitudesExternas extends GestorPrestamos
+public class GestorSolicitudesExternas 
 {
     private ArrayList<MaterialExterno> solicitudes;
     private ArrayList<Biblioteca> bibliotecas;
     
     /**
-     * Constructor for objects of class GestorPrestamosExternos
+     * Instancia las colecciones de
+     * solicitudes y bibliotecas
      */
     public GestorSolicitudesExternas()
     {
@@ -30,9 +34,9 @@ public class GestorSolicitudesExternas extends GestorPrestamos
 
     /**
      * Método para retornar la colección
-     * de préstamos externos
+     * de solicitudes externas
      * 
-     * @return     listado de prestamos externos 
+     * @return     colección de solicitudes externos 
      */
     public ArrayList<MaterialExterno> getSolicitudes()
     {
@@ -41,9 +45,9 @@ public class GestorSolicitudesExternas extends GestorPrestamos
     
     /**
      * Método para retornar la colección
-     * de préstamos externos
+     * de bibliotecas
      * 
-     * @return     listado de prestamos externos 
+     * @return     colección de bibliotecas
      */
     public ArrayList<Biblioteca> getBibliotecas()
     {
@@ -51,17 +55,32 @@ public class GestorSolicitudesExternas extends GestorPrestamos
     }
     
     /**
-     * Método para retornar la colección
-     * de préstamos externos
+     * Método para añadir un Material 
+     * Externo a la colección de solicitudes
      * 
-     * @return     listado de prestamos externos 
+     * @param   matExterno  Material externo a agregar 
+     */
+    public void añadirSolicitudes(MaterialExterno matExterno)
+    {
+        solicitudes.add(matExterno);      
+    }
+    
+    /**
+     * Método para buscar un Material
+     * en el resto de bibliotecas buscando 
+     * por Titulo y Autor
+     * 
+     * @param   matTitulo  Titulo del material
+     * @param   matAutor   Autor del material 
+     * @return    Material externo encontrado 
      */
     public MaterialExterno buscarMatExternos(String matTitulo, String matAutor)
     {
         for (Biblioteca b : bibliotecas){
             if (b.getGestMat().buscarMaterialMulti(matTitulo, matAutor) != null){
                 MaterialExterno matEncontrado = 
-                new MaterialExterno(Biblioteca.getInstacia().getBibNombre(),b.getBibNombre(),matTitulo, matAutor);
+                new MaterialExterno(Biblioteca.getInstacia().getBibNombre(),
+                b.getBibNombre(),matTitulo, matAutor);
                 return matEncontrado;
             }
         }
@@ -69,10 +88,10 @@ public class GestorSolicitudesExternas extends GestorPrestamos
     }
     
     /**
-     * Método para retornar la colección
-     * de préstamos externos
+     * Método para imprimir en pantalla
+     * un Material externo
      * 
-     * @return     listado de prestamos externos 
+     * @param   matExterno  material a imprimir
      */
     public void printMatExterno(MaterialExterno matExterno)
     {
@@ -82,28 +101,25 @@ public class GestorSolicitudesExternas extends GestorPrestamos
         " | Autor: " + matExterno.getMatAutor());
     }
     
-     /**
-     * Método para retornar la colección
-     * de préstamos externos
-     * 
-     * @return     listado de prestamos externos 
-     */
-    public void añadirSolicitudes(MaterialExterno matExterno)
-    {
-        solicitudes.add(matExterno);      
-    }
-    
     /**
-     * An example of a method - replace this comment with your own
-     *
+     * Método para exportar los materiales
+     * externos solicitados mediante la
+     * creación de un archivo en una ruta concreta.
+     * 
+     * @param   ruta  String con la ruta o path
     */ 
-    public void exportarPrestamos(String ruta)
+    public void exportarMateriales(String ruta)
     {
+        // crea el fichero en la ruta en concreto
         File archivo = new File(ruta);
         try{
+            // se usan las clases FileOutputStream y 
+            // ObjectOutputStream para serializar el objeto en el fichero
             FileOutputStream fos = new FileOutputStream(archivo);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             for (MaterialExterno p : this.solicitudes){
+                // escribe todas las solicitudes
+                // recorriendo el array
                 oos.writeObject(p);
             }
             oos.close();
@@ -117,10 +133,13 @@ public class GestorSolicitudesExternas extends GestorPrestamos
     }
    
     /**
-     * An example of a method - replace this comment with your own
+     * Método para importar los materiales
+     * que han sido solicitados mediante la
+     * lectura de un archivo a través de una ruta concreta.
      * 
+     * @param   ruta  String con la ruta o path
     */ 
-    public void importarPrestamos(String ruta)
+    public void importarMateriales(String ruta)
     {
         File archivo = new File(ruta);
         boolean salir = false;
@@ -129,10 +148,18 @@ public class GestorSolicitudesExternas extends GestorPrestamos
             ObjectInputStream ois = new ObjectInputStream(fis);
             MaterialExterno me = leerArchivo(ois);
             while (me != null){
-                Socio nuevoSocio = new Socio(me.getBiblioOrigen(), "", 
-                String perApellidos, String perDireccion,String perUser, String perPassword);
-                
-                Biblioteca.getInstacia().añadirPrestamo(me.getMatPrestado(),pe.getSocioPrestamo());
+                // se crea un socio con el identificador
+                // de la biblioteca de Origen
+                Socio socioBusqueda = 
+                new Socio(me.getBiblioOrigen(), "nombre", "apellidos", "direccion", 
+                "perUser","perPassword");
+                // se localiza el material solicitado en la 
+                // biblioteca actual
+                Material matBusqueda = 
+                Biblioteca.getInstacia().getGestMat().buscarMaterialMulti(me.getMatTitulo(),
+                me.getMatAutor());
+                // se añade el préstamo a la base de datos actual
+                Biblioteca.getInstacia().getGestPrest().añadirPrestamo(matBusqueda, socioBusqueda);
                 me = leerArchivo(ois);
             } 
             ois.close();
@@ -149,8 +176,12 @@ public class GestorSolicitudesExternas extends GestorPrestamos
     }
     
     /**
-     * An example of a method - replace this comment with your own
+     * Método para leer del objeto
+     * (cargado previamente), cada 
+     * linea escrita.
      * 
+     * @param   ois  objeto cargado para deserializar
+     * @return  Material Externo como objeto
     */
     public MaterialExterno leerArchivo(ObjectInputStream ois)
     {

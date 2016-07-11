@@ -4,14 +4,15 @@
  * Almacena y devuelve información relacionada con el mismo.
  * 
  * @author Igor Quintela 
- * @version 01/03/2016
+ * @version 01/04/2016
  */
 public class Bibliotecario extends Perfil
 {
     private int permisoID = 2; //id equivalente a clase bibliotecario, dentro de perfiles
 
     /**
-     * Inicializa el usuario Bibliotecario
+     * Inicializa el usuario (Bibliotecario)
+     * asociando los campos 
      * 
      * @param perDNI        Número y letra del DNI del usuario.
      * @param perNombre     Nombre del usuario.

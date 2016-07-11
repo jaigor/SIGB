@@ -1,23 +1,27 @@
 import java.util.Date;
 import java.util.Calendar;
-import java.io.Serializable;
 
 /**
  * Clase que representa la suscripción
- * de un usuario asociada a un Material 
- * Suscribible y a su periodicidad.
+ * de un usuario asociada a el mismo,
+ * un Material Suscribible y a su periodicidad.
  * 
  * @author Igor Quintela 
  * @version 01/03/2016
  */
-public class Suscripcion implements Serializable
+public class Suscripcion
 {
     private Socio perSuscrito;
     private MaterialSuscripcion matSuscrito;
     private Date fechaSuscripcion;
 
     /**
-     * Constructor for objects of class Suscripcion
+     * Asocia los campos de socio y material
+     * a la Suscripción
+     * pasados al constructor
+     * 
+     * @param perSuscrito   socio suscrito 
+     * @param matSuscrito   material suscrito 
      */
     public Suscripcion(Socio perSuscrito, MaterialSuscripcion matSuscrito)
     {

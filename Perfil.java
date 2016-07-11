@@ -1,5 +1,3 @@
-import java.io.Serializable;
-
 /**
  * Esta es la clase abstracta en la que se definen los métodos generales 
  * que afectan a distintos tipos de usuario pertenecientes a la biblioteca. 
@@ -11,7 +9,7 @@ import java.io.Serializable;
  * @author Igor Quintela 
  * @version 01/03/2016
  */
-public abstract class Perfil implements Serializable
+public abstract class Perfil 
 {
     // Campos genéricos de los perfiles
     private String perDNI;
@@ -23,7 +21,9 @@ public abstract class Perfil implements Serializable
     private int permisoID;  // campo usado para guardar el valor del tipo de usuario creado
 
     /**
-     * Da de alta los campos genéricos de un perfil de usuario
+     * Asocia los campos genericos
+     * al Perfil de usuario
+     * pasados al constructor
      * 
      * @param perDNI        Número y letra del DNI del usuario.
      * @param perNombre     Nombre del usuario.
@@ -44,7 +44,8 @@ public abstract class Perfil implements Serializable
     }
 
     /**
-     * Modificación de los permisos y el tipo de usuario que se crea
+     * Modificación de los permisos y 
+     * el tipo de usuario que se crea
      * 
      * @param  permisoID   numero que establece el tipo de usuario
      * 1 = Socio, 
@@ -57,7 +58,8 @@ public abstract class Perfil implements Serializable
     }
     
     /**
-     * Devuelve el número de ID del permiso del usuario en cuestión.
+     * Devuelve el número de ID del 
+     * permiso del usuario en cuestión.
      * 
      * @return ID del tipo de permiso 
      */
@@ -67,7 +69,8 @@ public abstract class Perfil implements Serializable
     }
     
     /**
-     * Devuelve el número de DNI del perfil en cuestión.
+     * Devuelve el número de DNI 
+     * del perfil en cuestión.
      * 
      * @return DNI con letra (String) 
      */
@@ -77,7 +80,8 @@ public abstract class Perfil implements Serializable
     }
     
     /**
-     * Modifica el número de DNI del perfil en cuestión.
+     * Modifica el número de 
+     * DNI del perfil en cuestión.
      * 
      * @param  perDNI    número de DNI a modificar
      */
@@ -107,7 +111,8 @@ public abstract class Perfil implements Serializable
     }
     
     /**
-     * Devuelve los Apellidos del perfil en cuestión.
+     * Devuelve los Apellidos 
+     * del perfil en cuestión.
      * 
      * @return  Apellidos (String) del usuario 
      */
@@ -117,7 +122,8 @@ public abstract class Perfil implements Serializable
     }
     
     /**
-     * Modifica los Apellidos del perfil en cuestión.
+     * Modifica los Apellidos 
+     * del perfil en cuestión.
      * 
      * @param  perApellidos    Apellidos del usuario a modificar
      */
@@ -127,7 +133,8 @@ public abstract class Perfil implements Serializable
     }
     
     /**
-     * Devuelve la Dirección del perfil en cuestión.
+     * Devuelve la Dirección 
+     * del perfil en cuestión.
      * 
      * @return  Dirección (String) del usuario 
      */
@@ -137,7 +144,8 @@ public abstract class Perfil implements Serializable
     }
     
     /**
-     * Modifica la Dirección del perfil en cuestión.
+     * Modifica la Dirección 
+     * del perfil en cuestión.
      * 
      * @param  perDireccion    la Dirección del perfil a modificar
      */
@@ -147,7 +155,8 @@ public abstract class Perfil implements Serializable
     }
     
     /**
-     * Devuelve el alias del perfil en cuestión.
+     * Devuelve el alias del 
+     * perfil en cuestión.
      * 
      * @return  Alias (String) del usuario 
      */
@@ -157,7 +166,8 @@ public abstract class Perfil implements Serializable
     }
     
     /**
-     * Modifica el alias del perfil en cuestión.
+     * Modifica el alias del 
+     * perfil en cuestión.
      * 
      * @param  perUser    el alias del perfil a modificar
      */
@@ -167,7 +177,8 @@ public abstract class Perfil implements Serializable
     }
     
     /**
-     * Devuelve el password del perfil en cuestión.
+     * Devuelve el password del 
+     * perfil en cuestión.
      * 
      * @return  Password (String) del usuario 
      */
@@ -177,7 +188,8 @@ public abstract class Perfil implements Serializable
     }
     
     /**
-     * Modifica el password del perfil en cuestión.
+     * Modifica el password del 
+     * perfil en cuestión.
      * 
      * @param  perPassword    el password del perfil a modificar
      */
@@ -185,4 +197,5 @@ public abstract class Perfil implements Serializable
     {
         this.perPassword = perPassword;
     }
+
 }

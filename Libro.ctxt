@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.params=matTitulo\ matAutor\ stockActual\ matPrecio\ isbn\ fechaEdicion\ numPaginas
 comment0.target=Libro(java.lang.String,\ java.lang.String,\ int,\ double,\ java.lang.String,\ java.lang.String,\ int)
-comment0.text=\r\n\ Instaciaci\u00F3n\ de\ campos\ propios\ y\ gen\u00E9ricos\ del\ Material\r\n\ \r\n\ @param\ matTitulo\ \ \ \ \ Nombre\ de\ la\ obra/item.\r\n\ @param\ matAutor\ \ \ \ \ \ Nombre\ del\ autor\ de\ la\ obra.\r\n\ @param\ stockActual\ \ \ \ \ \ N\u00FAmero\ de\ elementos\ que\ hay\ en\ base\ de\ datos.\r\n\ @param\ matPrecio\ \ \ \ \ Cantidad\ de\ euros\ que\ cuesta\ el\ elemento.\r\n\ @param\ isbn\ \ \ \ \ \ \ \ \ \ ISBN\ del\ libro.\r\n\ @param\ fechaEdicion\ \ \u00DAltima\ fecha\ de\ edici\u00F3n\ del\ libro.\r\n\ @param\ numPaginas\ \ \ \ N\u00FAmero\ total\ de\ p\u00E1ginas\ del\ libro.\r\n
+comment0.text=\r\n\ Instaciaci\u00F3n\ de\ campos\ propios\ y\ gen\u00E9ricos\ del\ Material\r\n\ \r\n\ @param\ matTitulo\ \ \ \ \ Nombre\ de\ la\ obra/item.\r\n\ @param\ matAutor\ \ \ \ \ \ Nombre\ del\ autor\ de\ la\ obra.\r\n\ @param\ stockActual\ \ \ N\u00FAmero\ de\ elementos\ que\ hay\ en\ base\ de\ datos.\r\n\ @param\ matPrecio\ \ \ \ \ Cantidad\ de\ euros\ que\ cuesta\ el\ elemento.\r\n\ @param\ isbn\ \ \ \ \ \ \ \ \ \ ISBN\ del\ libro.\r\n\ @param\ fechaEdicion\ \ \u00DAltima\ fecha\ de\ edici\u00F3n\ del\ libro.\r\n\ @param\ numPaginas\ \ \ \ N\u00FAmero\ total\ de\ p\u00E1ginas\ del\ libro.\r\n
 comment1.params=
 comment1.target=java.lang.String\ getISBN()
 comment1.text=\r\n\ Devuelve\ el\ ISBN\ del\ Libro\r\n\ \r\n\ @return\ \ String\ correspondiente\ al\ ISBN\ \r\n

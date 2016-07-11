@@ -11,4 +11,12 @@ métodos de gestión de la misma.
 VERSION or DATE: 04/03/2016
 HOW TO START THIS PROJECT: 
 AUTHORS: Igor Quintela
-USER INSTRUCTIONS:
+USER INSTRUCTIONS: ejecuta la aplicación mediante la clase principal SIGB.class
+y el método main, y sigue las instrucciones de la interfaz textual
+Usuarios de ejemplo: 
+ADMIN
+user: admin
+password: admin
+SOCIO
+user: fran
+password: pass

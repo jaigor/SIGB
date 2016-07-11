@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * Almacena y devuelve información relacionada con el mismo.
  * 
  * @author Igor Quintela 
- * @version 01/03/2016
+ * @version 20/04/2016
  */
 public class Socio extends Perfil
 {
@@ -13,9 +13,10 @@ public class Socio extends Perfil
     private ArrayList<Prestamo> historialPrestamo;
     private ArrayList<Prestamo> prestamosEnActivo;
     private ArrayList<MaterialSuscripcion> listaMatSuscritos;
-    
     /**
      * Inicializa el usuario (Socio)
+     * asociando campos e iniciando las
+     * colecciones que mantiene el objeto
      * 
      * @param perDNI        Número y letra del DNI del usuario.
      * @param perNombre     Nombre del usuario.
@@ -37,9 +38,10 @@ public class Socio extends Perfil
     }
     
     /**
-     * Devuelve el listado de los materiales a los que se encuentran suscritos
+     * Devuelve el listado de los materiales
+     * a los que se encuentran suscritos
      * 
-     * @return  Lista (Array) de los Materiales que se encuentran suscritos 
+     * @return  Lista (Array) de los Materiales suscritos 
      */
     public ArrayList<MaterialSuscripcion> getListaMatSuscritos()
     {
@@ -47,19 +49,21 @@ public class Socio extends Perfil
     }
     
     /**
-     * Devuelve el listado de los materiales a los que se encuentran suscritos
+     * Añade un nuevo Material al que
+     * se ha suscrito el usuario
      * 
-     * @return  Lista (Array) de los Materiales que se encuentran suscritos 
+     * @param  nuevoMatSusc nuevo material suscribible
      */
     public void añadirMatSusc(MaterialSuscripcion nuevoMatSusc)
     {
         listaMatSuscritos.add(nuevoMatSusc);
     }
     
-        /**
-     * Devuelve el listado de los materiales a los que se encuentran suscritos
+    /**
+     * Elimina un Material al que
+     * se encontraba suscrito el usuario
      * 
-     * @return  Lista (Array) de los Materiales que se encuentran suscritos 
+     * @param  bajaMatSusc material suscribible a eliminar
      */
     public void eliminarMatSusc(MaterialSuscripcion bajaMatSusc)
     {
@@ -67,9 +71,10 @@ public class Socio extends Perfil
     }
     
     /**
-     * Devuelve el listado de todo su historial de prestámos de materiales
+     * Devuelve el listado de todo su 
+     * historial de prestámos que ha tenido
      * 
-     * @return  Lista (Array) de los Materiales que se encuentran suscritos 
+     * @return  Lista (Array) de los Materiales suscritos (total)
      */
     public ArrayList<Prestamo> getHistorialPrestamo()
     {
@@ -77,9 +82,10 @@ public class Socio extends Perfil
     }
     
     /**
-     * Devuelve el listado de todo su historial de prestámos de materiales
+     * Devuelve el listado de todo sus
+     * prestámos en activo
      * 
-     * @return  Lista (Array) de los Materiales que se encuentran suscritos 
+     * @return  Lista (Array) de los Materiales suscritos activos
      */
     public ArrayList<Prestamo> getPrestamosEnActivo()
     {
@@ -87,9 +93,10 @@ public class Socio extends Perfil
     }
     
     /**
-     * Devuelve el listado de los materiales a los que se encuentran suscritos
+     * Añade un nuevo préstamo tanto
+     * al historial activo como al histórico
      * 
-     * @return  Lista (Array) de los Materiales que se encuentran suscritos 
+     * @param   nuevoPrestamo   nuevo préstamo a añadir 
      */
     public void añadirPrestamos(Prestamo nuevoPrestamo)
     {
@@ -98,9 +105,10 @@ public class Socio extends Perfil
     }
     
     /**
-     * Devuelve el listado de los materiales a los que se encuentran suscritos
+     * Elimina un préstamo existente tanto
+     * del historial activo
      * 
-     * @return  Lista (Array) de los Materiales que se encuentran suscritos 
+     * @param   bajaPrestamo   préstamo existente a eliminar  
      */
     public void eliminarPrestamo(Prestamo bajaPrestamo)
     {

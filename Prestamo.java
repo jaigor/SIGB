@@ -1,15 +1,15 @@
 import java.util.Date;
 import java.util.Calendar;
-import java.io.Serializable;
 
 /**
- * Clase en la que se almacenan los datos necesarios
- * para gestionar el Préstamo.
+ * Clase en la que se almacenan los 
+ * datos y métodos necesarios 
+ * para gestionar un Préstamo.
  * 
  * @author Igor Quintela 
- * @version 01/03/2016
+ * @version 01/06/2016
  */
-public class Prestamo implements Serializable
+public class Prestamo 
 {
     // Definicion de los campos necesarios para la clase Prestámo
     private Date fechaPrestamo;
@@ -19,9 +19,9 @@ public class Prestamo implements Serializable
     private ETipoMaterial tipoMaterial;
     
     /**
-     * Da de alta los campos genéricos de un material
+     * Da de alta los campos genéricos de un préstamo
      * 
-     * @param fechaPrestamo     Fecha en la que se ha iniciado el prestamo.
+     * @param fechaPrestamo     Fecha en la que se ha iniciado el préstamo.
      * @param matPrestado       Material que se prestado.
      * @param socioPrestamo     Socio al que se le hace el préstamo.
      * @param duracionPrestamo  Duración en días del Préstamo.
@@ -44,7 +44,7 @@ public class Prestamo implements Serializable
             tipoMaterial = ETipoMaterial.REVISTA;
         } 
         
-        // se llama a la Clase Calendar para establecer una periodicidad en el prestamo
+        // se llama a la Clase Calendar para establecer una periodicidad en el préstamo
         Calendar cal = Calendar.getInstance();
         cal.setTime(fechaPrestamo);               // se fija la fecha a comparar
         cal.add(Calendar.DATE, duracionPrestamo); // periodicidad calculada de introducido en el constructor
@@ -140,4 +140,5 @@ public class Prestamo implements Serializable
     {
         this.fechaDevolucion = fechaDevolucion;
     }
+    
 }

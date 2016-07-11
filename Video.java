@@ -1,7 +1,8 @@
 
 /**
  * Esta clase representa al objeto Video.
- * Almacena y devuelve información relacionada con el mismo.
+ * Almacena y devuelve información 
+ * relacionada con el mismo.
  * 
  * @author Igor Quintela 
  * @version 01/03/2016
@@ -16,7 +17,7 @@ public class Video extends Material
      * 
      * @param matTitulo     Nombre de la obra/item.
      * @param matAutor      Nombre del autor de la obra.
-     * @param matStock      Número de elementos que hay en base de datos.
+     * @param stockActual   Número de elementos que hay en base de datos.
      * @param matPrecio     Cantidad de euros que cuesta el elemento.
      * @param duracion      Minutos totales de duración del video.
      */

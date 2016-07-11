@@ -1,7 +1,9 @@
 
 /**
- * Esta clase representa al objeto Audio (o Disco de Audio).
- * Almacena y devuelve información relacionada con el mismo.
+ * Esta clase representa al objeto 
+ * Audio (o Disco de Audio).
+ * Almacena y devuelve información 
+ * relacionada con el mismo.
  * 
  * @author Igor Quintela 
  * @version 01/03/2016
@@ -16,7 +18,7 @@ public class Audio extends Material
      * 
      * @param matTitulo     Nombre de la obra/item.
      * @param matAutor      Nombre del autor de la obra.
-     * @param stockActual      Número de elementos que hay en base de datos.
+     * @param stockActual   Número de elementos que hay en base de datos.
      * @param matPrecio     Cantidad de euros que cuesta el elemento.
      * @param numPistas     Número total de pistas/canciones del disco.
      */

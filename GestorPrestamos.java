@@ -4,18 +4,21 @@ import java.util.Calendar;
 
 /**
  * Clase donde se gestionan y almacenan los
- * distintos tipos de préstamos.
+ * métodos correspondientes 
+ * a los préstamos.
  * 
  * @author Igor Quintela 
- * @version 01/03/2016
+ * @version 01/06/2016
  */
 public class GestorPrestamos
 {
-    // Array de la coleccion almacenada
+    // Arrays de la coleccion almacenada para
+    // prestamos y 
     private ArrayList<Prestamo> prestamos;
+    // reservas
     private ArrayList<Prestamo> reservas;
     
-    //instancia la fecha actual en fechaActual
+    //instancia la fecha actual en el campo fechaActual
     private Calendar cal = Calendar.getInstance();
     private Date fechaActual = cal.getTime();
     
@@ -23,7 +26,9 @@ public class GestorPrestamos
     private int duracionPrestamo = 7;
 
     /**
-     * Inicialización de la colección de préstamos
+     * Inicialización de las colecciones
+     * de préstamos y reservas
+     * 
      */
     public GestorPrestamos()
     {
@@ -32,21 +37,35 @@ public class GestorPrestamos
     }
     
     /**
-     * Constructor for objects of class GestorPrestamos
+     * Devuelve la colección de los préstamos
+     * 
+     * @return  la colección total de préstamos
      */
     public ArrayList<Prestamo> getPrestamos()
     {
         return prestamos;
     }
+    
+    /**
+     * Devuelve la colección de las reservas
+     * 
+     * @return  la colección total de reservas
+     */
+    public ArrayList<Prestamo> getReservas()
+    {
+        return reservas;
+    }
 
     /** 
-     * Añadir un nuevo Prestamo a la base de datos
+     * Crear un nuevo Prestamo 
+     * a la base de datos/colección
      * 
-     * @param  nuevoPrestamo   el nuevo prestamo a añadir
+     * @param  matPrestado   el material asociado al préstamo
+     * @param  socioPrestamo   el socio asociado al préstamo
      */
     public void añadirPrestamo(Material matPrestado, Socio socioPrestamo)
     {
-        // comprueba primero que no excede el limite de los prestamos
+        // comprueba primero que no excede el límite de los prestamos
         boolean excedePrestamos = comprobarNPrestamos(socioPrestamo);
         if (excedePrestamos == false){
             // crea el nuevo préstamo asociando la fecha de creación actual
@@ -55,7 +74,7 @@ public class GestorPrestamos
             if (matPrestado.getStockActual() > 0){
                 prestamos.add(nuevoPrestamo);
                 matPrestado.actualizarStock(-1);    // -1 para eliminar del stock el material
-                socioPrestamo.añadirPrestamos(nuevoPrestamo); // añade a prestamos en activo del socio
+                socioPrestamo.añadirPrestamos(nuevoPrestamo); // añade a la colección prestamos en activo del socio
             } else {
                 System.out.println("Actualmente, no hay stock disponible para este material");
                 System.out.println();
@@ -70,14 +89,15 @@ public class GestorPrestamos
     /** 
      * Buscar un Préstamo en la base de datos
      * 
-     * @param   matPrestado   el material al que pertenece el prestamo
-     * @param   socioPrestamo   el socio al que pertenece el prestamo
+     * @param   matPrestado   el material al que pertenece el préstamo
+     * @param   socioPrestamo   el socio al que pertenece el préstamo
      * @return  el préstamo buscado
      */
     public Prestamo buscarPrestamo(Material matPrestado, Socio socioPrestamo)
     {
         for (Prestamo p : prestamos){
-            if (p.getMatPrestado().equals(matPrestado) && p.getSocioPrestamo().equals(socioPrestamo)){
+            if (p.getMatPrestado().equals(matPrestado) &&
+                p.getSocioPrestamo().equals(socioPrestamo)){
                 return p;
             }
         }
@@ -87,9 +107,11 @@ public class GestorPrestamos
     }
     
     /**
-     * Borrar un Prestamo de la base de datos (Dar de Baja)
+     * Comprueba si un usuario
+     * excede el limite de préstamos
+     * establecido
      * 
-     * @param  bajaPrestamo   el prestamo a eliminar
+     * @param  socioPrestamo   el socio a comprobar
      */
     public boolean comprobarNPrestamos(Socio socioPrestamo)
     {
@@ -103,16 +125,19 @@ public class GestorPrestamos
     }
     
     /**
-     * Borrar un Prestamo de la base de datos (Dar de Baja)
+     * Crea una reserva nueva en 
+     * la colección de reservas
+     * cuando no está libre el material
+     * a escoger
      * 
-     * @param  bajaPrestamo   el prestamo a eliminar
+     * @param  nuevaReserva   la reserva a agregar
      */
     public void procesarReserva(Prestamo nuevaReserva)
     {
         //añadimos la reserva a una colección
         reservas.add(nuevaReserva);
         // se hace una búsqueda por todos los usuarios que tienen
-        // un prestamo con ese material y se les avisa.
+        // un prestamo con ese material y se les avisa de que deben devolverlo
         int matBuscado = nuevaReserva.getMatPrestado().getIDMaterial();
         for (Prestamo p : prestamos){
             int matPrestado = p.getMatPrestado().getIDMaterial();
@@ -125,7 +150,7 @@ public class GestorPrestamos
       
     /**
      * Método para gestionar la devolución de un material prestado
-     * y su eliminacion de base de datos
+     * y su eliminacion de base de datos (baja)
      * 
      * @param  bajaPrestamo   el prestamo a devolver
      */
@@ -138,13 +163,14 @@ public class GestorPrestamos
        } else {
            System.out.println("Prestamo entregado a tiempo");
        }
-       // damos de baja el prestamo de la coleccion
+       // baja de la coleccion
        prestamos.remove(bajaPrestamo);
        
-       // se elimina de los prestamos en activo del socio
+       // y elimina de los prestamos en activo del socio
        bajaPrestamo.getSocioPrestamo().eliminarPrestamo(bajaPrestamo);
         
-       // procesamos si existe una reserva para avisar al usuario de que está disponible
+       // procesamos si existe una reserva para avisar al usuario 
+       // de que ya se encuentra disponible, 
        // pero antes se verifica que existan reservas
        if (reservas.size() > 0){
            int matDevuelto = bajaPrestamo.getMatPrestado().getIDMaterial();
@@ -165,7 +191,8 @@ public class GestorPrestamos
     }
     
     /**
-     * Cálculo de los días que ha estado sin entregarse el material
+     * Cálculo de los días que ha estado sin 
+     * entregarse el material
      * y proceso de multa siguiente
      * 
      * @param  bajaPrestamo   el prestamo a devolver
@@ -183,10 +210,11 @@ public class GestorPrestamos
     }
     
     /**
-     * Cálculo de los días que ha estado sin entregarse el material
-     * y proceso de multa siguiente
+     * Imprime el historial total de multas
+     * pertenecientes a un socio, por préstamo
+     * y suma total
      * 
-     * @param  socio   el prestamo a devolver
+     * @param  socio   el socio a revisar
      */
     public void historialMultas(Socio socio)
     {
@@ -214,7 +242,8 @@ public class GestorPrestamos
     }
 
     /**
-     * Imprime en pantalla los datos correspondientes al prestamo indicado
+     * Imprime en pantalla los datos 
+     * correspondientes al prestamo indicado
      * 
      * @param  prestamo   prestamo a imprimir
      */
@@ -229,7 +258,8 @@ public class GestorPrestamos
     }
     
     /**
-     * Imprime listado de préstamos por tipo de Material
+     * Imprime listado de préstamos 
+     * por tipo de Material
      * 
      * @param  tipoMatBuscado   tipo de Material a imprimir
      */
@@ -250,9 +280,10 @@ public class GestorPrestamos
     }
     
     /**
-     * Imprime listado de préstamos por tipo de Material
+     * Imprime el listado de préstamos
+     * hechos hasta ahora por un socio
      * 
-     * @param  tipoMatBuscado   tipo de Material a imprimir
+     * @param  socio   el socio a revisar
      */
     public void printHistorial(Socio socio)
     {
@@ -267,9 +298,10 @@ public class GestorPrestamos
     }
     
     /**
-     * Imprime listado de préstamos por tipo de Material
+     * Imprime el listado de préstamos
+     * activos actualmente en un socio
      * 
-     * @param  tipoMatBuscado   tipo de Material a imprimir
+     * @param  socio   el socio a revisar
      */
     public void printPrestamosEnActivo(Socio socio)
     {

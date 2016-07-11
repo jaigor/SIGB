@@ -5,10 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
- * Write a description of class test here.
+ * Clase de prueba donde se instancian datos
+ * necesario para gestionar el sistema.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Igor Quintela 
+ * @version 01/03/2016
  */
 public class test 
 {
@@ -22,8 +23,8 @@ public class test
     private Material mat1;
     private Material mat2;
     private Material mat3;
-    private Material mat4;
-    private Material mat5;
+    private MaterialSuscripcion mat4;
+    private MaterialSuscripcion mat5;
     private Material mat6;
     
     private GestorPrestamos gPr;
@@ -63,10 +64,7 @@ public class test
         mat4 = new Periodico("ElMundoToday", "Sol", 3, 4, "Politica");
         mat5 = new Revista("Holas", "Luna", 1, 2, "Rosa");
         mat6 = new Libro("Zombies", "Dark Seed", 1, 30, "HFGG22222", "02/01/2000", 240);
-        // prueba
-        matSolic = new Video("Matrix", "What", 5, 100, 130);
-        gM.añadirMaterial(matSolic);
-        
+                        
         gM = Biblioteca.getInstacia().getGestMat();
         gM.añadirMaterial(mat1);
         gM.añadirMaterial(mat2);
@@ -74,7 +72,7 @@ public class test
         gM.añadirMaterial(mat4);
         gM.añadirMaterial(mat5);
         gM.añadirMaterial(mat6);
-        
+               
         // Creacion de Prestamos asociados
         // El simbolo negativo esta usado para comprobar la funcion de multas
         prest1 = new Prestamo(new Date(),mat1,(Socio)user1, 1);
@@ -93,20 +91,7 @@ public class test
         socio2.añadirPrestamos(prest3);
         gPr.getPrestamos().add(prest4);
         socio2.añadirPrestamos(prest4);
-        
-        /*
-        gSE = Biblioteca.getInstacia().getGestSolicExt();
-        Biblioteca bib;
-        bib.getInstacia().inicializarBiblioteca("UPV", "Calle Falsa 2", 652766165, "12:00-20:00");
-        matSolic = new Video("Matrix", "Watchoski", 5, 100, 130);
-        
-        System.out.println(Biblioteca.getInstacia().getGestMat());
-        System.out.println(bib.getGestPrest());
-        System.out.println(bib.getGestPerf());
-        System.out.println(bib.getGestMat());
-        bib.getGestMat().añadirMaterial(matSolic);
-        gSE.getBibliotecas().add(bib);
-        */
+
     }    
         
 }

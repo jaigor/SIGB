@@ -5,14 +5,12 @@ import java.util.ArrayList;
  * distintos tipos de perfiles.
  * 
  * @author Igor Quintela 
- * @version 01/03/2016
+ * @version 15/06/2016
  */
 public class GestorPerfiles
 {
-    // Array de la coleccion almacenada
+    // Coleccion almacenada de perfiles
     private ArrayList<Perfil> perfiles;
-    
-    private Perfil perfilBuscado;
     
     /**
      * Instaciación de la colección de perfiles
@@ -40,10 +38,14 @@ public class GestorPerfiles
     public void añadirPerfil(Perfil nuevoPerfil)
     {
         // se comprueba que el perfil (DNI) no está en la base de datos
-        if (buscarPerfil(nuevoPerfil.getPerDNI()) == null){
+        // el DNI es usado como clave identificadora
+        // el alias o user tambien se comprueba para que no existan duplicados
+        if ((buscarPerfil(nuevoPerfil.getPerDNI()) == null) && 
+            (buscarPerfil(nuevoPerfil.getPerUser()) == null)){
             perfiles.add(nuevoPerfil);
+            System.out.println("Perfil añadido correctamente");
         } else {
-            System.out.println("El perfil que intenta añadir ya se encuentra en la base de datos");
+            System.out.println("El DNI/user que intenta añadir ya se encuentra en la base de datos");
         }
     }
     
@@ -68,6 +70,7 @@ public class GestorPerfiles
      * con los de la colección
      * 
      * @param   stringBuscado   DNI/alias del usuario a buscar
+     * @return  el perfil buscado
      */ 
     public Perfil buscarPerfil(String stringBuscado)
     { 
@@ -85,7 +88,8 @@ public class GestorPerfiles
     }
    
     /**
-     *  Imprime en pantalla los datos correspondientes al usuario indicado
+     *  Imprime en pantalla los datos 
+     *  correspondientes al usuario indicado
      *  "Generador de tarjetas"
      *  
      * @param   user   usuario (Perfil) a imprimir  
@@ -106,7 +110,6 @@ public class GestorPerfiles
     
     /**
      * Devuelve el Perfil correspondiente al ID del Usuario.
-     * // posibilidad de hacer ENUMs y eliminar el id para el acceso
      * 
      *  @param   permisoID   número de ID del usuario  
      *  @return Texto (String) del tipo de usuario
@@ -128,10 +131,11 @@ public class GestorPerfiles
     }
     
     /**
-     * Devuelve el Perfil correspondiente al ID del Usuario.
+     * Método para controlar el acceso
+     * mediante la interfaz textual.
      * 
-     *  @param   permisoID   número de ID del usuario  
-     *  @return Texto (String) del tipo de usuario
+     *  @param   user       alias introducido
+     *  @param   password   contraseña introducida
      */
     public boolean controlAcceso(String user, String password)
     {

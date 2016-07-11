@@ -4,14 +4,15 @@
  * Almacena y devuelve información relacionada con el mismo.
  * 
  * @author Igor Quintela 
- * @version 01/03/2016
+ * @version 01/04/2016
  */
 public class Director extends Perfil
 {
     private int permisoID = 3; //id equivalente a clase director, dentro de perfiles
 
     /**
-     * Inicializa el usuario Director
+     * Inicializa el usuario (Director)
+     * asociando los campos 
      * 
      * @param perDNI        Número y letra del DNI del usuario.
      * @param perNombre     Nombre del usuario.

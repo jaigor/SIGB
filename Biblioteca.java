@@ -1,18 +1,18 @@
 
 /**
- * Clase en la que se instancian y se
- * gestionan las distintas bibliotecas que
- * pueden encontrarse en el sistema de gestión,
- * así como la gestión de perfiles.
- * En ella, se inician las diferentes colecciones
- * de elementos que tiene el sistema:
- *      Materiales
- *      Prestamos
- *      Suscripciones
- *      Perfiles
+ * Clase única, diseñada mediante el patrón
+ * Singleton, para instanciar únicamente una 
+ * biblioteca en el sistema.
+ * En ella, se instancian los distintos
+ * gestores a utilizar:
+ *      Gestor de Perfiles
+ *      Gestor de Materiales
+ *      Gestor de Prestamos
+ *      Gestor de SolicitudesExternas
+ *      Gestor de Suscripciones
  * 
  * @author Igor Quintela 
- * @version 01/03/2016
+ * @version 20/06/2016
  */
 class Biblioteca
 {
@@ -37,7 +37,7 @@ class Biblioteca
     private String bibHorario;
 
     /**
-     * Instancia los diferentes gestores
+     * Método que instancia los diferentes gestores
      * y asigna los valores registrados a los campos
      * de la nueva biblioteca
      * 
@@ -144,7 +144,8 @@ class Biblioteca
     }
     
     /**
-     * Devuelve el aceeso al gestor de perfiles
+     * Devuelve el aceeso a la clase gestor de
+     * perfiles
      * 
      * @return   El gestor de perfiles indicado
      */
@@ -154,7 +155,8 @@ class Biblioteca
     }
     
     /**
-     * Devuelve el gestor de Materiales asociado.
+     * Devuelve el aceeso a la clase gestor de 
+     * Materiales asociado.
      * 
      *  @return   Gestor de Materiales 
      */
@@ -164,7 +166,8 @@ class Biblioteca
     }
     
     /**
-     * Devuelve el gestor de Préstamos asociado.
+     * Devuelve el aceeso a la clase gestor de
+     * Préstamos asociado.
      * 
      *  @return   Gestor de Préstamos 
      */
@@ -174,7 +177,8 @@ class Biblioteca
     }
     
     /**
-     * Devuelve el gestor de Solicitudes Externos asociado.
+     * Devuelve el aceeso a la clase gestor de
+     * Solicitudes Externas asociado.
      * 
      *  @return   Gestor de Solicitudes Externos 
      */
@@ -184,7 +188,8 @@ class Biblioteca
     } 
     
      /**
-     * Devuelve el gestor de Suscripciones asociado.
+     * Devuelve el aceeso a la clase gestor de
+     * Suscripciones asociado.
      * 
      *  @return   Gestor de Suscripciones 
      */

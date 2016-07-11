@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.params=fechaPrestamo\ matPrestado\ socioPrestamo\ duracionPrestamo
 comment0.target=Prestamo(java.util.Date,\ Material,\ Socio,\ int)
-comment0.text=\r\n\ Da\ de\ alta\ los\ campos\ gen\u00E9ricos\ de\ un\ material\r\n\ \r\n\ @param\ fechaPrestamo\ \ \ \ \ Fecha\ en\ la\ que\ se\ ha\ iniciado\ el\ prestamo.\r\n\ @param\ matPrestado\ \ \ \ \ \ \ Material\ que\ se\ prestado.\r\n\ @param\ socioPrestamo\ \ \ \ \ Socio\ al\ que\ se\ le\ hace\ el\ pr\u00E9stamo.\r\n\ @param\ duracionPrestamo\ \ Duraci\u00F3n\ en\ d\u00EDas\ del\ Pr\u00E9stamo.\r\n
+comment0.text=\r\n\ Da\ de\ alta\ los\ campos\ gen\u00E9ricos\ de\ un\ pr\u00E9stamo\r\n\ \r\n\ @param\ fechaPrestamo\ \ \ \ \ Fecha\ en\ la\ que\ se\ ha\ iniciado\ el\ pr\u00E9stamo.\r\n\ @param\ matPrestado\ \ \ \ \ \ \ Material\ que\ se\ prestado.\r\n\ @param\ socioPrestamo\ \ \ \ \ Socio\ al\ que\ se\ le\ hace\ el\ pr\u00E9stamo.\r\n\ @param\ duracionPrestamo\ \ Duraci\u00F3n\ en\ d\u00EDas\ del\ Pr\u00E9stamo.\r\n
 comment1.params=
 comment1.target=java.util.Date\ getFechaPrestamo()
 comment1.text=\r\n\ Devuelve\ la\ fecha\ en\ la\ que\ se\ hizo\ el\ prestamo\r\n\ \r\n\ @return\ \ Fecha\ (Date)\ del\ prestamo\ \r\n

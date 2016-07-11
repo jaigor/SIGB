@@ -1,9 +1,10 @@
 /**
- * Clase abstracta que diferencia a las clases suscribibles
+ * Clase abstracta (e intermedia) que diferencia a 
+ * las clases suscribibles
  * de material que son Periodico y Revista.
  * 
  * @author Igor Quintela 
- * @version 01/03/2016
+ * @version 30/04/2016
  */
 public abstract class MaterialSuscripcion extends Material
 {
@@ -16,7 +17,7 @@ public abstract class MaterialSuscripcion extends Material
      * 
      * @param matTitulo     Nombre de la obra/item.
      * @param matAutor      Nombre del autor de la obra.
-     * @param stockActual      Número de elementos que hay en base de datos.
+     * @param stockActual   Número de elementos que hay en base de datos.
      * @param matPrecio     Cantidad de euros que cuesta el elemento.
      * @param tematica      Tematica del material suscribible.
      */
